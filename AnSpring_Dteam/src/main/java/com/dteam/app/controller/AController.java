@@ -151,23 +151,20 @@ public class AController {
 	} //anIdCheck()
 	
 	
-	@RequestMapping(value="/anMainSelect", method = {RequestMethod.GET, RequestMethod.POST} )
-	public String anMainSelect(HttpServletRequest request, Model model) {
-		System.out.println("anMainSelect()");
-		
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 	
-		
-		command = new AMainSelectCommand();
-		
-		command.execute(model);
-		
-		return "anMainSelect";
-	}
-	
+	/*
+	 * @RequestMapping(value="/anMainSelect", method = {RequestMethod.GET,
+	 * RequestMethod.POST} ) public String anMainSelect(HttpServletRequest request,
+	 * Model model) { System.out.println("anMainSelect()");
+	 * 
+	 * try { request.setCharacterEncoding("UTF-8"); } catch
+	 * (UnsupportedEncodingException e) { e.printStackTrace(); }
+	 * 
+	 * command = new AMainSelectCommand();
+	 * 
+	 * command.execute(model);
+	 * 
+	 * return "anMainSelect"; }
+	 */
 	
 
 	//검색페이지 
@@ -188,29 +185,25 @@ public class AController {
 		}//SearchSelect
 
 
-	
-	@RequestMapping(value="/anDetail", method = {RequestMethod.GET, RequestMethod.POST} )
-	public String anDetail(HttpServletRequest request, Model model) {
-		System.out.println("anDetail()");
-		
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 		
-		
-		
-		String md_serial_number = (String)request.getParameter("md_serial_number");
-		
-		System.out.println(md_serial_number);
-		
-		model.addAttribute("md_serial_number", md_serial_number);
-		
-		command = new ADetailCommand();
-		command.execute(model);
-		
-		return "anDetail";
-	}
+		/*
+		 * @RequestMapping(value="/anDetail", method = {RequestMethod.GET,
+		 * RequestMethod.POST} ) public String anDetail(HttpServletRequest request,
+		 * Model model) { System.out.println("anDetail()");
+		 * 
+		 * try { request.setCharacterEncoding("UTF-8"); } catch
+		 * (UnsupportedEncodingException e) { e.printStackTrace(); }
+		 * 
+		 * 
+		 * String md_serial_number = (String)request.getParameter("md_serial_number");
+		 * 
+		 * System.out.println(md_serial_number);
+		 * 
+		 * model.addAttribute("md_serial_number", md_serial_number);
+		 * 
+		 * command = new ADetailCommand(); command.execute(model);
+		 * 
+		 * return "anDetail"; }
+		 */
 	
 	@RequestMapping(value="/anInsert", method = {RequestMethod.GET, RequestMethod.POST}  )
 	public String anInsert(HttpServletRequest request, Model model){

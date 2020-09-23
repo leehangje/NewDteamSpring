@@ -16,7 +16,7 @@ public class MemberDto {
     String member_logintype;
     String member_token;
 
-    // ÀÏ¹İ È¸¿ø°¡ÀÔ ½Ã µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¸â¹ö Á¤º¸¸¦ Ãß°¡ÇÒ ¶§
+    // ì¼ë°˜ íšŒì›ê°€ì… ì‹œ ë°ì´í„°ë² ì´ìŠ¤ì— ë©¤ë²„ ì •ë³´ë¥¼ ì¶”ê°€í•  ë•Œ
     public MemberDto(String member_id, String member_pw, String member_nickname, String member_tel, String member_addr,
 			String member_latitude, String member_longitude, String member_grade, String member_name, String member_profile) {
 		super();
@@ -32,9 +32,42 @@ public class MemberDto {
 		this.member_profile = member_profile;
 	}
 
+    // ì•”í˜¸ ì—†ì´ ë©¤ë²„ ì •ë³´ë¥¼ ê°€ì ¸ì˜¬ ë•Œ(ì†Œì…œë¡œê·¸ì¸)
+    // ì´ë©”ì¼ ì¤‘ë³µì²´í¬í•  ë•Œ
+    public MemberDto(String member_id, String member_nickname,
+                     String member_tel, String member_addr, String member_latitude,
+                     String member_longitude, String member_grade, String member_name, String member_profile
+                     , String member_logintype, String member_token) {
+        this.member_id = member_id;
+        this.member_nickname = member_nickname;
+        this.member_tel = member_tel;
+        this.member_addr = member_addr;
+        this.member_latitude = member_latitude;
+        this.member_longitude = member_longitude;
+        this.member_grade = member_grade;
+        this.member_name = member_name;
+        this.member_logintype = member_logintype;
+        this.member_token = member_token;
+    }
     
-    // ¾ÏÈ£ ¾øÀÌ ¸â¹ö Á¤º¸¸¦ °¡Á®¿Ã ¶§
-    // ÀÌ¸ŞÀÏ Áßº¹Ã¼Å©ÇÒ ¶§
+    // ì•”í˜¸ ì—†ì´ ë©¤ë²„ ì •ë³´ë¥¼ ê°€ì ¸ì˜¬ ë•Œ(í”„ë¡œí•„)
+    public MemberDto(String member_id, String member_nickname,
+                     String member_tel, String member_addr, String member_latitude,
+                     String member_longitude, String member_grade, String member_name, String member_profile) {
+        this.member_id = member_id;
+        this.member_nickname = member_nickname;
+        this.member_tel = member_tel;
+        this.member_addr = member_addr;
+        this.member_latitude = member_latitude;
+        this.member_longitude = member_longitude;
+        this.member_grade = member_grade;
+        this.member_name = member_name;
+        this.member_profile = member_profile; 
+    }
+    
+    
+    // ì•”í˜¸ ì—†ì´ ë©¤ë²„ ì •ë³´ë¥¼ ê°€ì ¸ì˜¬ ë•Œ
+    // ì´ë©”ì¼ ì¤‘ë³µì²´í¬í•  ë•Œ
     public MemberDto(String member_id, String member_nickname,
                      String member_tel, String member_addr, String member_latitude,
                      String member_longitude, String member_grade, String member_name) {
@@ -48,7 +81,7 @@ public class MemberDto {
         this.member_name = member_name;
     }
     
-    // ´Ğ³×ÀÓ Áßº¹Ã¼Å©ÇÒ ¶§
+    // ë‹‰ë„¤ì„ ì¤‘ë³µì²´í¬í•  ë•Œ
 	public MemberDto(String member_nickname) {
 		super();
 		this.member_nickname = member_nickname;

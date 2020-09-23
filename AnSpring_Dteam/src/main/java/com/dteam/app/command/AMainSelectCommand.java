@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.ui.Model;
 
-import com.dteam.app.dao.ANDao;
+import com.dteam.app.dao.JEDao;
 import com.dteam.app.dto.MdDto;
 
 public class AMainSelectCommand implements ACommand{
@@ -12,10 +12,9 @@ public class AMainSelectCommand implements ACommand{
 	@Override
 	public void execute(Model model) {
 				
-		ANDao adao = new ANDao();	
+		JEDao jeDao = new JEDao();
 		
-		 
-		ArrayList<MdDto> mdDtos = adao.anMainSelect();
+		ArrayList<MdDto> mdDtos = jeDao.anMainSelect();
 		
 		model.addAttribute("anMainSelect", mdDtos);
 	}
