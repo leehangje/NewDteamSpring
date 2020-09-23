@@ -38,6 +38,7 @@ public class AController {
 	
 	ACommand command;
 	
+	/*
 	@RequestMapping(value="/anLogin", method = {RequestMethod.GET, RequestMethod.POST}  )
 	public String anLogin(HttpServletRequest request, Model model){
 		System.out.println("anLogin()");
@@ -149,7 +150,7 @@ public class AController {
 		
 		return "anNickNameCheck";
 	} //anIdCheck()
-	
+	*/
 	
 	/*
 	 * @RequestMapping(value="/anMainSelect", method = {RequestMethod.GET,

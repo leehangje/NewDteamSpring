@@ -1,8 +1,7 @@
 package com.dteam.app.command;
 
 import org.springframework.ui.Model;
-
-import com.dteam.app.dao.ANDao;
+import com.dteam.app.dao.SEDao;
 
 public class AJoinCommand implements ACommand{
 
@@ -17,11 +16,11 @@ public class AJoinCommand implements ACommand{
 		String member_longitude = (String) model.asMap().get("member_longitude");
 		String member_name = (String) model.asMap().get("member_name");
 		
-		ANDao adao = new ANDao();
-		int state = adao.anJoin(member_id, member_pw, member_nickname, member_tel, member_addr, 
+		SEDao dao = new SEDao();
+		int state = dao.anJoin(member_id, member_pw, member_nickname, member_tel, member_addr, 
 								member_latitude, member_longitude, member_name);
 		
-		model.addAttribute("anJoin", String.valueOf(state));	//model¿¡ Áý¾î³Ö±â
+		model.addAttribute("anJoin", String.valueOf(state));	//modelï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
 	
 	}
 
