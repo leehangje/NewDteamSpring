@@ -1,4 +1,4 @@
-<%@page import="com.dteam.app.dto.MemberDto" %>
+<%@page import="com.dteam.app.dto.MdDto" %>
 
 <%@page import="com.google.gson.Gson"%>
 <%@page import="com.google.gson.JsonObject"%>
@@ -11,7 +11,7 @@
 
 <%
 Gson gson = new Gson();
-String json = gson.toJson((MemberDto)request.getAttribute("anDetail"));
+String json = gson.toJson((ArrayList<MdDto>)request.getAttribute("anSearchSelect"));
 
 out.println(json);
 %>

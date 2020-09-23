@@ -224,61 +224,44 @@ public class ANDao {
 		return adto;
 	} // anNickNameCheck()
 
-	public MdDto anDetail(String md_serial_number_in) {
-
-		MdDto mdDto = null;
-		Connection connection = null;
-		PreparedStatement prepareStatement = null;
-		ResultSet resultSet = null;
-
-		try {
-			connection = dataSource.getConnection();
-			String sql = "select * from tblmerchandise where md_serial_number ='" + md_serial_number_in + "'";
-			prepareStatement = connection.prepareStatement(sql);
-			resultSet = prepareStatement.executeQuery();
-
-			while (resultSet.next()) {
-				String md_name = resultSet.getString("md_name");
-				String md_category = resultSet.getString("md_category");
-				String md_price = resultSet.getString("md_price");
-				String md_rental_term = resultSet.getString("md_rental_term");
-				String md_deposit = resultSet.getString("md_deposit");
-				String md_detail_content = resultSet.getString("md_detail_content");
-				String md_photo_url = resultSet.getString("md_photo_url");
-				String member_id = resultSet.getString("member_id");
-				String md_fav_count = resultSet.getString("md_fav_count");
-				String md_registration_date = resultSet.getString("md_registration_date");
-				String md_serial_number = resultSet.getString("md_serial_number");
-				String md_rent_status = resultSet.getString("md_rent_status");
-				String md_hits = resultSet.getString("md_hits");
-
-				mdDto = new MdDto(md_name, md_category, md_price, md_rental_term, md_deposit, md_detail_content,
-						md_photo_url, member_id, md_fav_count, md_registration_date, md_serial_number,
-						md_rent_status, md_hits);
-			}
-			System.out.println("md_serial_number : " + mdDto.getMd_serial_number());
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} finally {
-			try {
-				if (resultSet != null) {
-					resultSet.close();
-				}
-				if (prepareStatement != null) {
-					prepareStatement.close();
-				}
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-
-			}
-		}
-		return mdDto;
-	}
+	/*
+	 * public MdDto anDetail(String md_serial_number_in) {
+	 * 
+	 * MdDto mdDto = null; Connection connection = null; PreparedStatement
+	 * prepareStatement = null; ResultSet resultSet = null;
+	 * 
+	 * try { connection = dataSource.getConnection(); String sql =
+	 * "select * from tblmerchandise where md_serial_number ='" +
+	 * md_serial_number_in + "'"; prepareStatement =
+	 * connection.prepareStatement(sql); resultSet =
+	 * prepareStatement.executeQuery();
+	 * 
+	 * while (resultSet.next()) { String md_name = resultSet.getString("md_name");
+	 * String md_category = resultSet.getString("md_category"); String md_price =
+	 * resultSet.getString("md_price"); String md_rental_term =
+	 * resultSet.getString("md_rental_term"); String md_deposit =
+	 * resultSet.getString("md_deposit"); String md_detail_content =
+	 * resultSet.getString("md_detail_content"); String md_photo_url =
+	 * resultSet.getString("md_photo_url"); String member_id =
+	 * resultSet.getString("member_id"); String md_fav_count =
+	 * resultSet.getString("md_fav_count"); String md_registration_date =
+	 * resultSet.getString("md_registration_date"); String md_serial_number =
+	 * resultSet.getString("md_serial_number"); String md_rent_status =
+	 * resultSet.getString("md_rent_status"); String md_hits =
+	 * resultSet.getString("md_hits");
+	 * 
+	 * mdDto = new MdDto(md_name, md_category, md_price, md_rental_term, md_deposit,
+	 * md_detail_content, md_photo_url, member_id, md_fav_count,
+	 * md_registration_date, md_serial_number, md_rent_status, md_hits); }
+	 * System.out.println("md_serial_number : " + mdDto.getMd_serial_number());
+	 * 
+	 * } catch (Exception e) { System.out.println(e.getMessage()); } finally { try {
+	 * if (resultSet != null) { resultSet.close(); } if (prepareStatement != null) {
+	 * prepareStatement.close(); } if (connection != null) { connection.close(); } }
+	 * catch (Exception e) { e.printStackTrace(); } finally {
+	 * 
+	 * } } return mdDto; }
+	 */
 
 	public int anInsert(String md_name, String md_photo_url, String md_category, String md_price,
 			String md_rental_term, String md_deposit, String md_detail_content, String member_id, String md_serial_number ) {
@@ -330,113 +313,141 @@ public class ANDao {
 
 	
 	
-	// 전체 상품정보 가져오기
-	public ArrayList<MdDto> anMainSelect() {
+	/*
+	 * // 전체 상품정보 가져오기 public ArrayList<MdDto> anMainSelect() {
+	 * 
+	 * ArrayList<MdDto> mdDtos = new ArrayList<MdDto>(); Connection connection =
+	 * null; PreparedStatement prepareStatement = null; ResultSet resultSet = null;
+	 * 
+	 * try { connection = dataSource.getConnection(); String sql =
+	 * "select * from tblmerchandise"; prepareStatement =
+	 * connection.prepareStatement(sql); resultSet =
+	 * prepareStatement.executeQuery();
+	 * 
+	 * while (resultSet.next()) { String md_name = resultSet.getString("md_name");
+	 * String md_category = resultSet.getString("md_category"); String md_price =
+	 * resultSet.getString("md_price"); String md_rental_term =
+	 * resultSet.getString("md_rental_term"); String md_deposit =
+	 * resultSet.getString("md_deposit"); String md_detail_content =
+	 * resultSet.getString("md_detail_content"); String md_photo_url =
+	 * resultSet.getString("md_photo_url"); String member_id =
+	 * resultSet.getString("member_id"); String md_fav_count =
+	 * resultSet.getString("md_fav_count"); String md_registration_date =
+	 * resultSet.getString("md_registration_date"); String md_serial_number =
+	 * resultSet.getString("md_serial_number"); String md_rent_status =
+	 * resultSet.getString("md_rent_status"); String md_hits =
+	 * resultSet.getString("md_hits");
+	 * 
+	 * 
+	 * mdDtos.add(new MdDto(md_name, md_category, md_price, md_rental_term,
+	 * md_deposit, md_detail_content, md_photo_url, member_id, md_fav_count,
+	 * md_registration_date, md_serial_number, md_rent_status, md_hits));
+	 * 
+	 * } System.out.println("mdDtos size : " + mdDtos.size());
+	 * 
+	 * } catch (Exception e) { System.out.println(e.getMessage()); } finally { try {
+	 * if (resultSet != null) { resultSet.close(); } if (prepareStatement != null) {
+	 * prepareStatement.close(); } if (connection != null) { connection.close(); } }
+	 * catch (Exception e) { e.printStackTrace(); } finally {
+	 * 
+	 * } } return mdDtos; }// anMainSelect()
+	 */
+	
+	
+	//검색페이지 상품 가져오기
+			public ArrayList<MdDto> anSearchSelect(String searchKeyword) {
 
-		ArrayList<MdDto> mdDtos = new ArrayList<MdDto>();
-		Connection connection = null;
-		PreparedStatement prepareStatement = null;
-		ResultSet resultSet = null;
+				ArrayList<MdDto> mdDtos = new ArrayList<MdDto>();
+				Connection connection = null;
+				PreparedStatement prepareStatement = null;
+				ResultSet resultSet = null;
 
-		try {
-			connection = dataSource.getConnection();
-			String sql = "select * from tblmerchandise";
-			prepareStatement = connection.prepareStatement(sql);
-			resultSet = prepareStatement.executeQuery();
+				try {
+					connection = dataSource.getConnection();
+					String sql = "select * from tblmerchandise";
+					if(searchKeyword != null) {
+						sql += " WHERE md_name LIKE '%"+searchKeyword+"%'";
+					}
+					
+					prepareStatement = connection.prepareStatement(sql);
+					resultSet = prepareStatement.executeQuery();
 
-			while (resultSet.next()) {
-				String md_name = resultSet.getString("md_name");
-				String md_category = resultSet.getString("md_category");
-				String md_price = resultSet.getString("md_price");
-				String md_rental_term = resultSet.getString("md_rental_term");
-				String md_deposit = resultSet.getString("md_deposit");
-				String md_detail_content = resultSet.getString("md_detail_content");
-				String md_photo_url = resultSet.getString("md_photo_url");
-				String member_id = resultSet.getString("member_id");
-				String md_fav_count = resultSet.getString("md_fav_count");
-				String md_registration_date = resultSet.getString("md_registration_date");
-				String md_serial_number = resultSet.getString("md_serial_number");
-				String md_rent_status = resultSet.getString("md_rent_status");
-				String md_hits = resultSet.getString("md_hits");
+					while (resultSet.next()) {
+						String md_name = resultSet.getString("md_name");
+						String md_category = resultSet.getString("md_category");
+						String md_price = resultSet.getString("md_price");
+						String md_rental_term = resultSet.getString("md_rental_term");
+						String md_deposit = resultSet.getString("md_deposit");
+						String md_detail_content = resultSet.getString("md_detail_content");
+						String md_photo_url = resultSet.getString("md_photo_url");
+						String member_id = resultSet.getString("member_id");
+						String md_fav_count = resultSet.getString("md_fav_count");
+						String md_registration_date = resultSet.getString("md_registration_date");
+						String md_serial_number = resultSet.getString("md_serial_number");
+						String md_rent_status = resultSet.getString("md_rent_status");
+						String md_hits = resultSet.getString("md_hits");
 
-				 
-				mdDtos.add(new MdDto(md_name, md_category, md_price, md_rental_term,
-						md_deposit, md_detail_content, md_photo_url, member_id,  md_fav_count, 
-						md_registration_date, md_serial_number, md_rent_status, md_hits));
-				 
-			}
-			System.out.println("mdDtos size : " + mdDtos.size());
+						 
+						mdDtos.add(new MdDto(md_name, md_category, md_price, md_rental_term,
+								md_deposit, md_detail_content, md_photo_url, member_id,  md_fav_count, 
+								md_registration_date, md_serial_number, md_rent_status, md_hits));
+						 
+					}
+					System.out.println("mdDtos size : " + mdDtos.size());
 
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} finally {
-			try {
-				if (resultSet != null) {
-					resultSet.close();
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				} finally {
+					try {
+						if (resultSet != null) {
+							resultSet.close();
+						}
+						if (prepareStatement != null) {
+							prepareStatement.close();
+						}
+						if (connection != null) {
+							connection.close();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+
+					}
 				}
-				if (prepareStatement != null) {
-					prepareStatement.close();
-				}
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
+				return mdDtos;
+			}// anSearchSelect()
+		
+	
 
-			}
-		}
-		return mdDtos;
-	}// anMainSelect()
-
-	// 전체 회원정보 가져오기
-	public ArrayList<MemberDto> anMember() {
-
-		ArrayList<MemberDto> memberDtos = new ArrayList<MemberDto>();
-		Connection connection = null;
-		PreparedStatement prepareStatement = null;
-		ResultSet resultSet = null;
-
-		try {
-			connection = dataSource.getConnection();
-			String sql = "select * " + " from tblmember ";
-			prepareStatement = connection.prepareStatement(sql);
-			resultSet = prepareStatement.executeQuery();
-
-			while (resultSet.next()) {
-				String member_id = resultSet.getString("member_id");
-				String member_pw = resultSet.getString("member_pw");
-				String member_nickname = resultSet.getString("member_nickname");
-				String member_tel = resultSet.getString("member_tel");
-				String member_addr = resultSet.getString("member_addr");
-				String member_latitude = resultSet.getString("member_latitude");
-				String member_longitude = resultSet.getString("member_longitude");
-				String member_grade = String.valueOf(resultSet.getInt("member_grade"));
-				String member_name = resultSet.getString("member_name");
-			}
-			System.out.println("memberDtos size : " + memberDtos.size());
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} finally {
-			try {
-				if (resultSet != null) {
-					resultSet.close();
-				}
-				if (prepareStatement != null) {
-					prepareStatement.close();
-				}
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-
-			}
-		}
-		return memberDtos;
-	}// anMember()
-
+			/*
+			 * // 전체 회원정보 가져오기 public ArrayList<MemberDto> anMember() {
+			 * 
+			 * ArrayList<MemberDto> memberDtos = new ArrayList<MemberDto>(); Connection
+			 * connection = null; PreparedStatement prepareStatement = null; ResultSet
+			 * resultSet = null;
+			 * 
+			 * try { connection = dataSource.getConnection(); String sql = "select * " +
+			 * " from tblmember "; prepareStatement = connection.prepareStatement(sql);
+			 * resultSet = prepareStatement.executeQuery();
+			 * 
+			 * while (resultSet.next()) { String member_id =
+			 * resultSet.getString("member_id"); String member_pw =
+			 * resultSet.getString("member_pw"); String member_nickname =
+			 * resultSet.getString("member_nickname"); String member_tel =
+			 * resultSet.getString("member_tel"); String member_addr =
+			 * resultSet.getString("member_addr"); String member_latitude =
+			 * resultSet.getString("member_latitude"); String member_longitude =
+			 * resultSet.getString("member_longitude"); String member_grade =
+			 * String.valueOf(resultSet.getInt("member_grade")); String member_name =
+			 * resultSet.getString("member_name"); } System.out.println("memberDtos size : "
+			 * + memberDtos.size()); } catch (Exception e) {
+			 * System.out.println(e.getMessage()); } finally { try { if (resultSet != null)
+			 * { resultSet.close(); } if (prepareStatement != null) {
+			 * prepareStatement.close(); } if (connection != null) { connection.close(); } }
+			 * catch (Exception e) { e.printStackTrace(); } finally {
+			 * 
+			 * } } return memberDtos; }// anMember()
+			 */
 
 
 	/*

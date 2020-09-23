@@ -14,12 +14,11 @@ public class MdDto {
 	String md_serial_number;
 	String md_rent_status;
 	String md_hits;
-	
-	public MdDto() {}
+
 	
 	public MdDto(String md_name, String md_category, String md_price, String md_rental_term, String md_deposit,
-			String md_detail_content, String md_photo_url, String member_id, String md_fav_count,
-			String md_registration_date, String md_serial_number, String md_rent_status, String md_hits) {
+	         String md_detail_content, String md_photo_url, String member_id, String md_fav_count,
+	         String md_registration_date, String md_serial_number, String md_rent_status, String md_hits) {
 		super();
 		this.md_name = md_name;
 		this.md_category = md_category;
@@ -35,6 +34,13 @@ public class MdDto {
 		this.md_rent_status = md_rent_status;
 		this.md_hits = md_hits;
 	}
+
+
+
+	public MdDto() {
+		// TODO Auto-generated constructor stub
+	}
+
 
 
 	public String getMd_name() {

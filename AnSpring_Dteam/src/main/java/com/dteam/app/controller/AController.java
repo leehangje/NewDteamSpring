@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 
@@ -30,6 +31,7 @@ import com.dteam.app.command.ALoginCommand;
 import com.dteam.app.command.AMdInsertCommand;
 import com.dteam.app.command.AMainSelectCommand;
 import com.dteam.app.command.ANickNameCheckCommand;
+import com.dteam.app.command.ASearchSelectCommand;
 
 @Controller
 public class AController {
@@ -149,46 +151,59 @@ public class AController {
 	} //anIdCheck()
 	
 	
-	@RequestMapping(value="/anMainSelect", method = {RequestMethod.GET, RequestMethod.POST} )
-	public String anMainSelect(HttpServletRequest request, Model model) {
-		System.out.println("anMainSelect()");
-		
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 	
-		
-		command = new AMainSelectCommand();
-		
-		command.execute(model);
-		
-		return "anMainSelect";
-	}
-
+	/*
+	 * @RequestMapping(value="/anMainSelect", method = {RequestMethod.GET,
+	 * RequestMethod.POST} ) public String anMainSelect(HttpServletRequest request,
+	 * Model model) { System.out.println("anMainSelect()");
+	 * 
+	 * try { request.setCharacterEncoding("UTF-8"); } catch
+	 * (UnsupportedEncodingException e) { e.printStackTrace(); }
+	 * 
+	 * command = new AMainSelectCommand();
+	 * 
+	 * command.execute(model);
+	 * 
+	 * return "anMainSelect"; }
+	 */
 	
-	@RequestMapping(value="/anDetail", method = {RequestMethod.GET, RequestMethod.POST} )
-	public String anDetail(HttpServletRequest request, Model model) {
-		System.out.println("anDetail()");
-		
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 		
-		
-		
-		String md_serial_number = (String)request.getParameter("md_serial_number");
-		
-		System.out.println(md_serial_number);
-		
-		model.addAttribute("md_serial_number", md_serial_number);
-		
-		command = new ADetailCommand();
-		command.execute(model);
-		
-		return "anDetail";
-	}
+
+	//ê²€ìƒ‰íŽ˜ì´ì§€ 
+		@RequestMapping(value="/SearchSelect", method = {RequestMethod.GET, RequestMethod.POST} )
+		public String SearchSelect(HttpServletRequest request, Model model, @RequestParam(required = false) String searchKeyword) {
+			
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} 	
+			
+			command = new ASearchSelectCommand(searchKeyword);
+			
+			command.execute(model);
+			
+			return "anSearchSelect";
+		}//SearchSelect
+
+
+		/*
+		 * @RequestMapping(value="/anDetail", method = {RequestMethod.GET,
+		 * RequestMethod.POST} ) public String anDetail(HttpServletRequest request,
+		 * Model model) { System.out.println("anDetail()");
+		 * 
+		 * try { request.setCharacterEncoding("UTF-8"); } catch
+		 * (UnsupportedEncodingException e) { e.printStackTrace(); }
+		 * 
+		 * 
+		 * String md_serial_number = (String)request.getParameter("md_serial_number");
+		 * 
+		 * System.out.println(md_serial_number);
+		 * 
+		 * model.addAttribute("md_serial_number", md_serial_number);
+		 * 
+		 * command = new ADetailCommand(); command.execute(model);
+		 * 
+		 * return "anDetail"; }
+		 */
 	
 	@RequestMapping(value="/anInsert", method = {RequestMethod.GET, RequestMethod.POST}  )
 	public String anInsert(HttpServletRequest request, Model model){
@@ -238,7 +253,7 @@ public class AController {
 			String fileName = file.getOriginalFilename();
 			System.out.println(fileName);
 			
-			// µð·ºÅä¸® Á¸ÀçÇÏÁö ¾ÊÀ¸¸é »ý¼º
+			// ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			makeDir(request);	
 				
 			if(file.getSize() > 0){			
@@ -249,14 +264,14 @@ public class AController {
 				System.out.println( "fileSize : " + file.getSize());					
 												
 			 	try {
-			 		// ÀÌ¹ÌÁöÆÄÀÏ ÀúÀå
+			 		// ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 					file.transferTo(new File(realImgPath, fileName));										
 				} catch (Exception e) {
 					e.printStackTrace();
 				} 
 									
 			}else{
-				// ÀÌ¹ÌÁöÆÄÀÏ ½ÇÆÐ½Ã
+				// ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ð½ï¿½
 				fileName = "FileFail.jpg";
 				String realImgPath = request.getSession().getServletContext()
 						.getRealPath("/resources/" + fileName);
