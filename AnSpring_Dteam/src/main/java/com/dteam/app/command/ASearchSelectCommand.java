@@ -12,8 +12,11 @@ public class ASearchSelectCommand implements ACommand {
 	
 	String searchKeyword;
 	
+	
 	public ASearchSelectCommand(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
+		
+		
 	}
 	
 	@Override
@@ -21,9 +24,12 @@ public class ASearchSelectCommand implements ACommand {
 		ANDao adao = new ANDao();	
 		
 		 
+		
 		ArrayList<MdDto> mdDtos = adao.anSearchSelect(searchKeyword);
 		
+		
 		model.addAttribute("anSearchSelect", mdDtos);
+		
 		
 	}
 
