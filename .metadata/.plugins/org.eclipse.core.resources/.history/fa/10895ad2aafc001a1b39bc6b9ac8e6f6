@@ -1,0 +1,9 @@
+<%@page import="com.google.gson.Gson"%>
+<%@page import="com.dteam.app.dto.MdDto"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%
+ArrayList<MdDto> list = (ArrayList<MdDto>) request.getAttribute("list");
+Gson gson = new Gson();
+out.println(gson.toJson(list));
+%>
