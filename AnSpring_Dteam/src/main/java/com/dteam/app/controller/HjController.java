@@ -14,9 +14,10 @@ public class HjController {
 
 
 	@RequestMapping ("/anMdpull")
-	public String anMdpull (String category, Model model) {
+	public String anMdpull (String category, String member_id, Model model) {
 		HjDao hjdao = new HjDao();
-		ArrayList<MdDto> list = hjdao.anMdpull(category);
+		//ArrayList<MdDto> list = hjdao.anMdpull(category, member_id);
+		ArrayList<MdDto> list = hjdao.anMdpull(category, member_id);
 		model.addAttribute("list", list);
 		return "anMdpull";
 	}
