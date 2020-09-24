@@ -169,21 +169,22 @@ public class AController {
 	
 
 	//검색페이지 
-		@RequestMapping(value="/SearchSelect", method = {RequestMethod.GET, RequestMethod.POST} )
-		public String SearchSelect(HttpServletRequest request, Model model, @RequestParam(required = false) String searchKeyword) {
-			
-			try {
-				request.setCharacterEncoding("UTF-8");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			} 	
-			
-			command = new ASearchSelectCommand(searchKeyword);
-			
-			command.execute(model);
-			
-			return "anSearchSelect";
-		}//SearchSelect
+	@RequestMapping(value="/SearchSelect", method = {RequestMethod.GET, RequestMethod.POST} )
+	public String SearchSelect(HttpServletRequest request, Model model, @RequestParam(required = false) String searchKeyword) {
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} 	
+		
+		command = new ASearchSelectCommand(searchKeyword);
+		
+		command.execute(model);
+		
+		return "anSearchSelect";
+	}
+
 
 
 		/*
