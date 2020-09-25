@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.dteam.app.command.ACommand;
 import com.dteam.app.command.ADarunSelectCommand;
 import com.dteam.app.command.ADetailCommand;
+import com.dteam.app.command.ADetailPhotoSelectCommand;
 import com.dteam.app.command.AMainSelectCommand;
 
 @Controller
@@ -84,8 +85,39 @@ public class JEController {
 			return "anDetail";
 		}
 	
-	
+		
+		//상세페이지 상품사진 불러오기
+		@RequestMapping(value="/anDetailPhoto", method = {RequestMethod.GET, RequestMethod.POST} )
+		public String anDetailPhoto(HttpServletRequest request, Model model) {
+			System.out.println("anDetailPhoto()");
+			
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} 		
+			
+			String md_serial_number = (String)request.getParameter("md_serial_number");
+			//String member_id = (String)request.getParameter("member_id");
+			//String md_photo_url = (String)request.getParameter("md_photo_url");
+			
+			System.out.println(md_serial_number);
+			//System.out.println(member_id);
+			//System.out.println(md_photo_url);
+			
+			model.addAttribute("md_serial_number", md_serial_number);
+			//model.addAttribute("member_id", member_id);
+			//model.addAttribute("md_photo_url", md_photo_url);
+			
+			command = new ADetailPhotoSelectCommand();
+			command.execute(model);
+			
+			return "anDetailPhoto";
+		}
+		
+		
+		
 	
 	
 
-}
+}//class
