@@ -12,6 +12,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.dteam.app.dto.MdDto;
+import com.dteam.app.dto.MemberDto;
 
 public class HjDao {
 
@@ -59,4 +60,30 @@ public class HjDao {
 		return list;
 	}
 
+	// 채팅리스트에 MemberDTO 가져오는 메소드
+	public ArrayList<MemberDto> anChatpull(String member_id) {
+		String sql = "select member_nickname, member_addr, member_profile "
+				   + "from tblmember "
+				   + "where member_id = ?";
+		ArrayList<MemberDto> list = new ArrayList<MemberDto>();
+		try {
+			conn = dataSource.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, member_id);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				MemberDto dto = new MemberDto();
+				dto.setMember_nickname(rs.getString("member_nickname"));
+				dto.setMember_addr(rs.getString("member_addr"));
+				dto.setMember_profile(rs.getString("member_profile"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	
 }

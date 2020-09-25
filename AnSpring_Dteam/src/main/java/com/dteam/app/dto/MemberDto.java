@@ -16,6 +16,8 @@ public class MemberDto {
     String member_logintype;
     String member_token;
 
+    public MemberDto() {}
+    
     // 일반 회원가입 시 데이터베이스에 멤버 정보를 추가할 때
     public MemberDto(String member_id, String member_pw, String member_nickname, String member_tel, String member_addr,
 			String member_latitude, String member_longitude, String member_grade, String member_name, String member_profile) {
@@ -87,6 +89,16 @@ public class MemberDto {
 		this.member_nickname = member_nickname;
 	}
 
+	
+	
+
+	public String getMember_profile() {
+		return member_profile;
+	}
+
+	public void setMember_profile(String member_profile) {
+		this.member_profile = member_profile;
+	}
 
 	public String getMember_id() {
         return member_id;
