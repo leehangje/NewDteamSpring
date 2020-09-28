@@ -1,6 +1,5 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=5b20ed33d0ea36d16ef898b1f2487ec74e316bd7
 eclipse.preferences.version=1
-<<<<<<< HEAD
-internalWebBrowserHistory=http\://localhost\:8989/app/WEB-INF/views/anLogin.jsp|*|http\://localhost\:8989/app/WEB-INF/classes/com/dteam/app/controller/AController.java|*|http\://localhost\:8989/app/WEB-INF/classes/com/dteam/app/command/ALoginCommand.java|*|file\:/D\:/DTeam_Spring/.metadata/.plugins/org.springsource.ide.eclipse.commons.gettingstarted/dashboard/1597643395329/index.html|*|file\:/D\:/\uAC1C\uBC1C\uC790\uD504\uB85C\uADF8\uB7A8/spring-tool-suite-4-4.7.0.RELEASE-e4.16.0-win32.win32.x86_64.self-extracting/sts-4.7.0.RELEASE/plugins/org.springsource.ide.eclipse.commons.gettingstarted_3.9.14.202007202144-CI-B521/resources/welcome/index.html|*|
-=======
-internalWebBrowserHistory=file\:///D\:/Dteam_Spring/WebSpring_Dteam/src/main/webapp/resources/image/logo.jpg|*|file\:/D\:/Dteam_Spring/WebSpring_Dteam/src/main/webapp/resources/image/logo.jpg|*|file\:/D\:/DTeam_Spring/.metadata/.plugins/org.springsource.ide.eclipse.commons.gettingstarted/dashboard/1597643395329/index.html|*|file\:/D\:/\uAC1C\uBC1C\uC790\uD504\uB85C\uADF8\uB7A8/spring-tool-suite-4-4.7.0.RELEASE-e4.16.0-win32.win32.x86_64.self-extracting/sts-4.7.0.RELEASE/plugins/org.springsource.ide.eclipse.commons.gettingstarted_3.9.14.202007202144-CI-B521/resources/welcome/index.html|*|
->>>>>>> 5b20ed33d0ea36d16ef898b1f2487ec74e316bd7
+internalWebBrowserHistory=http\://localhost\:8080/app/WEB-INF/classes/com/dteam/app/command/ADeleteMultiCommand.java|*|file\:///D\:/Dteam_Spring/WebSpring_Dteam/src/main/webapp/resources/image/logo.jpg|*|file\:/D\:/Dteam_Spring/WebSpring_Dteam/src/main/webapp/resources/image/logo.jpg|*|file\:/D\:/DTeam_Spring/.metadata/.plugins/org.springsource.ide.eclipse.commons.gettingstarted/dashboard/1597643395329/index.html|*|file\:/D\:/\uAC1C\uBC1C\uC790\uD504\uB85C\uADF8\uB7A8/spring-tool-suite-4-4.7.0.RELEASE-e4.16.0-win32.win32.x86_64.self-extracting/sts-4.7.0.RELEASE/plugins/org.springsource.ide.eclipse.commons.gettingstarted_3.9.14.202007202144-CI-B521/resources/welcome/index.html|*|
