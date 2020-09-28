@@ -30,6 +30,11 @@ public class JEController {
 				e.printStackTrace();
 			} 	
 			
+			String member_addr = (String)request.getParameter("member_addr");
+			System.out.println(member_addr);
+			model.addAttribute("member_addr", member_addr);
+			
+			
 			command = new AMainSelectCommand();
 			
 			command.execute(model);
