@@ -94,7 +94,7 @@ public class JEDao {
 	
 	
 	// 전체 상품정보 가져오기
-		public ArrayList<MdDto> anMainSelect() {
+		public ArrayList<MdDto> anMainSelect(String member_addr_in) {
 
 			ArrayList<MdDto> mdDtos = new ArrayList<MdDto>();
 			Connection connection = null;
@@ -103,7 +103,7 @@ public class JEDao {
 
 			try {
 				connection = dataSource.getConnection();
-				String sql = "select * from tblmerchandise";
+				String sql = "select md.* from tblmerchandise md where md.member_id in (select m.member_id from tblmember m where m.member_addr = '" + member_addr_in  + "')";
 				prepareStatement = connection.prepareStatement(sql);
 				resultSet = prepareStatement.executeQuery();
 

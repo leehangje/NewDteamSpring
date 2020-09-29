@@ -14,7 +14,11 @@ public class AMainSelectCommand implements ACommand{
 				
 		JEDao jeDao = new JEDao();
 		
-		ArrayList<MdDto> mdDtos = jeDao.anMainSelect();
+		String member_addr = (String) model.asMap().get("member_addr");
+		
+		System.out.println("member_addr : " + member_addr);
+		
+		ArrayList<MdDto> mdDtos = jeDao.anMainSelect(member_addr);
 		
 		model.addAttribute("anMainSelect", mdDtos);
 	}
