@@ -13,6 +13,7 @@ import com.dteam.app.dto.MemberDto;
 @Controller
 public class HjController {
 
+	
 	//상품을 카테고리 별로 가져오는 메소드
 	@RequestMapping ("/anMdpull")
 	public String anMdpull (String category, String member_id, Model model) {
@@ -31,6 +32,16 @@ public class HjController {
 		model.addAttribute("list", list);
 		
 		return "anChatpull";
+	}
+	
+	//리사이클러뷰 아이템 클릭 시 조회수 증가
+	@RequestMapping("/anReadcnt")
+	public String anReadcnt (String member_id, Model model) {
+		HjDao hjdao = new HjDao();
+		ArrayList<MdDto> list = hjdao.anReadcnt(member_id);
+		model.addAttribute("list", list);
+		
+		return "anReadcnt";
 	}
 	
 	

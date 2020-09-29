@@ -84,6 +84,27 @@ public class HjDao {
 		}
 		return list;
 	}
-
+ 
+	// 채팅리스트에 MemberDTO 가져오는 메소드
+		public ArrayList<MdDto> anReadcnt(String member_id) {
+			String sql = "update tblmerchandise set md_hits = md_hits + 1"
+					   + "where member_id = ?";
+			ArrayList<MdDto> list = new ArrayList<MdDto>();
+			try {
+				conn = dataSource.getConnection();
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, member_id);
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					MdDto dto = new MdDto();
+					dto.setMd_hits(rs.getString("Md_hits"));
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return list;
+		}
+	
 	
 }
