@@ -14,6 +14,8 @@ import com.dteam.app.command.ADarunSelectCommand;
 import com.dteam.app.command.ADetailCommand;
 import com.dteam.app.command.ADetailPhotoSelectCommand;
 import com.dteam.app.command.AMainSelectCommand;
+import com.dteam.app.command.anFavUpdateCommand;
+import com.dteam.app.command.anFavUpdateMinusCommand;
 
 @Controller
 public class JEController {
@@ -103,23 +105,64 @@ public class JEController {
 			} 		
 			
 			String md_serial_number = (String)request.getParameter("md_serial_number");
-			//String member_id = (String)request.getParameter("member_id");
-			//String md_photo_url = (String)request.getParameter("md_photo_url");
 			
 			System.out.println(md_serial_number);
-			//System.out.println(member_id);
-			//System.out.println(md_photo_url);
 			
 			model.addAttribute("md_serial_number", md_serial_number);
-			//model.addAttribute("member_id", member_id);
-			//model.addAttribute("md_photo_url", md_photo_url);
 			
 			command = new ADetailPhotoSelectCommand();
 			command.execute(model);
 			
 			return "anDetailPhoto";
-		}
+		}//anDetailPhoto()
 		
+		
+		//찜하기 버튼눌렀을 때 MD테이블의 md_fav_count가 1상승하게 하기
+		@RequestMapping(value="/anFavUpdate", method = {RequestMethod.GET, RequestMethod.POST} )
+		public String anFavUpdate(HttpServletRequest request, Model model) {
+			System.out.println("anFavUpdate()");
+			
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} 		
+			
+			String md_serial_number = (String)request.getParameter("md_serial_number");
+			
+			System.out.println("controll md_serial_number" + md_serial_number);
+			
+			model.addAttribute("md_serial_number", md_serial_number);
+			
+			command = new anFavUpdateCommand();
+			command.execute(model);
+			
+			return "anFavUpdate";
+		}//anFavUpdate()
+		
+		
+		//찜하기 버튼 다시 눌렀을 때 MD테이블의 md_fav_count가 1내려감
+		@RequestMapping(value="/anFavUpdateMinus", method = {RequestMethod.GET, RequestMethod.POST} )
+		public String anFavUpdateMinus(HttpServletRequest request, Model model) {
+			System.out.println("anFavUpdateMinus()");
+			
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} 		
+			
+			String md_serial_number = (String)request.getParameter("md_serial_number");
+			
+			System.out.println("controll md_serial_number" + md_serial_number);
+			
+			model.addAttribute("md_serial_number", md_serial_number);
+			
+			command = new anFavUpdateMinusCommand();
+			command.execute(model);
+			
+			return "anFavUpdateMinus";
+		}//anFavUpdateMinus()
 		
 		
 	

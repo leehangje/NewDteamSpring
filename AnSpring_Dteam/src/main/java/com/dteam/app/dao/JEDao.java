@@ -322,6 +322,84 @@ public class JEDao {
 	         return mdDto;
 	      }//anDetailPhoto()
 
+
+		 
+		//찜하기 버튼눌렀을 때 MD테이블의 md_fav_count가 1상승하게 하기 
+		public MdDto anFavUpdate(String md_serial_number) {
+	         Connection connection = null;
+	         PreparedStatement prepareStatement = null;
+	         ResultSet resultSet = null;
+
+	         try {
+	            connection = dataSource.getConnection();
+	            String sql = "update tblmerchandise set md_fav_count = md_fav_count+1 where md_serial_number = '" + md_serial_number + "' ";
+	            prepareStatement = connection.prepareStatement(sql);
+	            resultSet = prepareStatement.executeQuery();
+	            
+	            System.out.println("dao md_serial_number : " + md_serial_number);
+
+	         } catch (Exception e) {
+	            System.out.println(e.getMessage());
+	         } finally {
+	            try {
+	               if (resultSet != null) {
+	                  resultSet.close();
+	               }
+	               if (prepareStatement != null) {
+	                  prepareStatement.close();
+	               }
+	               if (connection != null) {
+	                  connection.close();
+	               }
+	            } catch (Exception e) {
+	               e.printStackTrace();
+	            } finally {
+
+	            }
+	         }
+	         return null;	
+		
+		}//anFavUpdate()
+
+
+		//찜하기 버튼 다시 눌렀을 때 MD테이블의 md_fav_count가 1내려감
+		public MdDto anFavUpdateMinus(String md_serial_number) {
+	         Connection connection = null;
+	         PreparedStatement prepareStatement = null;
+	         ResultSet resultSet = null;
+
+	         try {
+	            connection = dataSource.getConnection();
+	            String sql = "update tblmerchandise set md_fav_count = md_fav_count-1 where md_serial_number = '" + md_serial_number + "' ";
+	            prepareStatement = connection.prepareStatement(sql);
+	            resultSet = prepareStatement.executeQuery();
+	            
+	            System.out.println("dao md_serial_number : " + md_serial_number);
+
+	         } catch (Exception e) {
+	            System.out.println(e.getMessage());
+	         } finally {
+	            try {
+	               if (resultSet != null) {
+	                  resultSet.close();
+	               }
+	               if (prepareStatement != null) {
+	                  prepareStatement.close();
+	               }
+	               if (connection != null) {
+	                  connection.close();
+	               }
+	            } catch (Exception e) {
+	               e.printStackTrace();
+	            } finally {
+
+	            }
+	         }
+	         return null;
+		}//anFavUpdateMinus()
+
 	
+		
+		
 	
-}
+}//class
