@@ -14,6 +14,9 @@ import com.dteam.app.command.ADarunSelectCommand;
 import com.dteam.app.command.ADetailCommand;
 import com.dteam.app.command.ADetailPhotoSelectCommand;
 import com.dteam.app.command.AMainSelectCommand;
+import com.dteam.app.command.anFavDeleteCommand;
+import com.dteam.app.command.anFavInsertCommand;
+import com.dteam.app.command.anFavSelectCommand;
 import com.dteam.app.command.anFavUpdateCommand;
 import com.dteam.app.command.anFavUpdateMinusCommand;
 
@@ -165,6 +168,82 @@ public class JEController {
 		}//anFavUpdateMinus()
 		
 		
+		//찜하기 버튼 눌렀을 때 찜테이블에 로그인아이디&찜한상품의 시리얼넘버 등록
+		@RequestMapping(value="/anFavInsert", method = {RequestMethod.GET, RequestMethod.POST} )
+		public String anFavInsert(HttpServletRequest request, Model model) {
+			System.out.println("anFavInsert()");
+			
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} 		
+			
+			String member_id = (String)request.getParameter("member_id");
+			String md_serial_number = (String)request.getParameter("md_serial_number");
+			
+			System.out.println("controll : " + member_id + "&" + md_serial_number);
+			
+			model.addAttribute("member_id", member_id);
+			model.addAttribute("md_serial_number", md_serial_number);
+			
+			command = new anFavInsertCommand();
+			command.execute(model);
+			
+			return "anFavInsert";
+		}//anFavInsert()
+		
+		
+		//찜취소 했을 때 찜테이블에 담긴 데이터 삭제(로그인아이디&시리얼넘버 필요) 
+		@RequestMapping(value="/anFavDelete", method = {RequestMethod.GET, RequestMethod.POST} )
+		public String anFavDelete(HttpServletRequest request, Model model) {
+			System.out.println("anFavDelete()");
+			
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} 		
+			
+			String member_id = (String)request.getParameter("member_id");
+			String md_serial_number = (String)request.getParameter("md_serial_number");
+			
+			System.out.println("controll : " + member_id + "&" + md_serial_number);
+			
+			model.addAttribute("member_id", member_id);
+			model.addAttribute("md_serial_number", md_serial_number);
+			
+			command = new anFavDeleteCommand();
+			command.execute(model);
+			
+			return "anFavDelete";
+		}//anFavInsert()
+		
+		
+		//찜테이블 정보 가져오기 
+		@RequestMapping(value="/anFavSelect", method = {RequestMethod.GET, RequestMethod.POST} )
+		public String anFavSelect(HttpServletRequest request, Model model) {
+			System.out.println("anFavSelect()");
+			
+			try {
+				request.setCharacterEncoding("UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} 		
+			
+			String member_id = (String)request.getParameter("member_id");
+			String md_serial_number = (String)request.getParameter("md_serial_number");
+			
+			System.out.println("controll : " + member_id + "&" + md_serial_number);
+			
+			model.addAttribute("member_id", member_id);
+			model.addAttribute("md_serial_number", md_serial_number);
+			
+			command = new anFavSelectCommand();
+			command.execute(model);
+			
+			return "anFavSelect";
+		}//anFavInsert()
 	
 	
 
