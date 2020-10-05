@@ -7,24 +7,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <title>대여 안대여 비밀번호 재설정</title>
 
 <style type="text/css">
-#body_container {
-	width: 65%;
+.header {
+	width: 100%;
+	text-align: center;
+	background-color: #3e4ba9;
+	color: #ffffff;
+	height: 50px;
+	line-height: 50px;
+}
+
+.pwd_content {
+	width: 100%;
 	margin: 0 auto;
 	text-align: center;
 }
 
-.formElement_pwd>input {
+.info_pwd > p {
+	margin: 30px 0;
+}
+
+.formElement_pwd > input {
 	height: 30px;
 	margin-bottom: 10px;
-	width: 50%;
+	width: 80%;
 }
 
 #reset_pwd_submit {
-	width: 50%;
+	width: 80%;
 	height: 50px;
 	margin-top: 10px;
 	background-color: #3e4ba9;
@@ -46,8 +60,8 @@
 							class="standardBox rounded-corners trans_white">
 							<div class="info_pwd">
 								<p>
-									<em>8자리 이상 새로운 비밀번호를 입력해 주세요.</em><br />비밀번호는 대소문자, 숫자를 조합하여<br />설정하시는
-									것이 안전합니다.
+									8자리 이상 새로운 비밀번호를 입력해 주세요.<br />비밀번호는 알파벳 소문자, 숫자, 특수문자를<br /> 
+									조합하여 설정해주세요.
 								</p>
 							</div>
 							<div class="boxBody last">
@@ -81,10 +95,14 @@
 	<script type="text/javascript">
 	    var new_password1 = $('#new_password1');
 	    var new_password2 = $('#new_password2');
+	    var pwReg = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 	    
 	    $('#reset_pwd_submit').on('click', function () {
 	        if (new_password1.val().length < 8 || new_password2.val().length < 8) {
 	            alert('비밀번호는 8자리 이상 입력 해주세요.');
+	            return;
+	        } else if( !pwReg.test(new_password1.val()) || !pwReg.test(new_password2.val()) ) {
+	        	alert('비밀번호는 알파벳 소문자, 숫자, 특수문자를 조합하여 주세요.');
 	            return;
 	        } else if (new_password1.val() != new_password2.val()) {
 	        	alert('비밀번호가 서로 일치하지 않습니다.');
@@ -96,7 +114,7 @@
 	            	url: "anResetPw?member_id=<%=id%>",
 	            	data: {pw: new_password1.val()},
 	            	success: function(data) {			
-	            		alert("url 접근 성공");
+	            		//alert("url 접근 성공");
 	            	},
 	            	error : function(error) {
 	            		alert(text + ":" + req.status);

@@ -89,8 +89,16 @@ public class MemberDto {
 		this.member_nickname = member_nickname;
 	}
 
-	
-	
+	// 네이버(소셜)로 회원가입 & 로그인할 때
+	public MemberDto(String member_id, String member_nickname, String member_name, 
+					 String member_logintype, String member_token) {
+		super();
+		this.member_id = member_id;
+		this.member_nickname = member_nickname;
+		this.member_name = member_name;
+		this.member_logintype = member_logintype;
+		this.member_token = member_token;
+	}
 
 	public String getMember_profile() {
 		return member_profile;
