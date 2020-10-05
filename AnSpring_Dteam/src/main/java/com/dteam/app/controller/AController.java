@@ -31,7 +31,9 @@ import com.dteam.app.command.ALoginCommand;
 import com.dteam.app.command.AMdInsertCommand;
 import com.dteam.app.command.AMainSelectCommand;
 import com.dteam.app.command.ANickNameCheckCommand;
+import com.dteam.app.command.ARentStatusCommand;
 import com.dteam.app.command.ASearchSelectCommand;
+import com.dteam.app.command.anFavUpdateCommand;
 
 @Controller
 public class AController {
@@ -297,6 +299,32 @@ public class AController {
 		}	
 		
 	}
+	
+			@RequestMapping(value="/anMdRentStatus", method = {RequestMethod.GET, RequestMethod.POST} )
+			public String anFavUpdate(HttpServletRequest request, Model model) {
+				System.out.println("anMdRentStatus()");
+				
+				try {
+					request.setCharacterEncoding("UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				} 		
+				
+				String md_rent_status = (String)request.getParameter("md_rent_status");
+				String md_serial_number = (String) request.getParameter("md_serial_number");
+				
+				System.out.println("md_rent_status : " + md_rent_status);
+				System.out.println("md_serial_number : " + md_serial_number);
+				
+				model.addAttribute("md_rent_status", md_rent_status);
+				model.addAttribute("md_serial_number", md_serial_number);
+				
+				command = new ARentStatusCommand();
+				command.execute(model);
+				
+				return "anMdRentStatus";
+			}
+			
 	
 
 }

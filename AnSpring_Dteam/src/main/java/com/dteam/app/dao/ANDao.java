@@ -313,6 +313,57 @@ public class ANDao {
 
 	
 	
+	public int anMdRentStatus(String md_rent_status, String md_serial_number) {
+
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		ResultSet resultSet = null;
+
+		int state = -1;
+
+		try {
+		
+			connection = dataSource.getConnection();
+//          String sql = "update tblmerchandise set md_fav_count = md_fav_count+1 where md_serial_number = '" + md_serial_number + "' ";
+
+			String query = "update tblmerchandise set md_rent_status ='"+ md_rent_status +"' where md_serial_number = '"+ md_serial_number+  "' ";
+			prepareStatement = connection.prepareStatement(query);
+			state = prepareStatement.executeUpdate();
+
+			if (state > 0) {
+				System.out.println("수정1성공");
+
+			} else {
+				System.out.println("수정1실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
+			}
+		}
+
+		return state;
+
+	}
+
+	
+	
 	/*
 	 * // 전체 상품정보 가져오기 public ArrayList<MdDto> anMainSelect() {
 	 * 

@@ -20,8 +20,6 @@ public class AMdInsertCommand implements ACommand {
 		ANDao adao = new ANDao();
 		adao.anInsert(md_name, md_photo_url, md_category, md_price, md_rental_term, md_deposit
 				, md_detail_content, member_id, md_serial_number);
-		
-		
 	}
 	
 }
