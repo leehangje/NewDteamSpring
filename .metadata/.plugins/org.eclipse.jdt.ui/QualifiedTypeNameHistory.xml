@@ -7,4 +7,7 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.dteam.app.dto.MdDto"/>
 <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+<fullyQualifiedTypeName name="com.dteam.app.command.ACommand"/>
+<fullyQualifiedTypeName name="com.dteam.app.dao.ANDao"/>
+<fullyQualifiedTypeName name="com.dteam.app.command.AMdInsert_statusCommand"/>
 </qualifiedTypeNameHistroy>
