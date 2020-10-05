@@ -26,6 +26,7 @@ public class SEDao {
 		}
 	}
 
+	// 일반 회원 로그인
 	public MemberDto anLogin(String id, String pw) {
 
 		MemberDto adto = null;
@@ -83,9 +84,128 @@ public class SEDao {
 		}
 
 		return adto;
+	} // anLogin()
 
-	}
+	// 네이버 로그인
+	public MemberDto anNaverLogin(String member_id, String member_loginType) {
+		MemberDto adto = null;
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		ResultSet resultSet = null;
 
+		try {
+			connection = dataSource.getConnection();
+			String sql = "select * " + " from tblmember" + " where member_id = '" + member_id
+					+ "' and member_loginType = '" + member_loginType + "' ";
+
+			prepareStatement = connection.prepareStatement(sql);
+			resultSet = prepareStatement.executeQuery();
+
+			while (resultSet.next()) {
+				member_id = resultSet.getString("member_id");
+				String member_nickname = resultSet.getString("member_nickname");
+				String member_tel = resultSet.getString("member_tel");
+				String member_addr = resultSet.getString("member_addr");
+				String member_latitude = resultSet.getString("member_latitude");
+				String member_longitude = resultSet.getString("member_longitude");
+				String member_grade = resultSet.getString("member_grade");
+				String member_name = resultSet.getString("member_name");
+				String member_profile = resultSet.getString("member_profile");
+				member_loginType = resultSet.getString("member_loginType");
+				String member_token = resultSet.getString("member_token");
+
+				adto = new MemberDto(member_id, member_nickname, member_tel, member_addr, member_latitude,
+						member_longitude, member_grade, member_name, member_profile, member_loginType, member_token);
+			}
+			System.out.println("MemberDTO id : " + adto.getMember_id());
+
+		} catch (Exception e) {
+
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
+			}
+		}
+
+		return adto;
+	} // anNaverLogin()
+
+	public MemberDto anKakaoLogin(String member_id, String member_loginType) {
+		MemberDto adto = null;
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String sql = "select * " + " from tblmember" + " where member_id = '" + member_id
+					+ "' and member_loginType = '" + member_loginType + "' ";
+
+			prepareStatement = connection.prepareStatement(sql);
+			resultSet = prepareStatement.executeQuery();
+
+			while (resultSet.next()) {
+				member_id = resultSet.getString("member_id");
+				String member_nickname = resultSet.getString("member_nickname");
+				String member_tel = resultSet.getString("member_tel");
+				String member_addr = resultSet.getString("member_addr");
+				String member_latitude = resultSet.getString("member_latitude");
+				String member_longitude = resultSet.getString("member_longitude");
+				String member_grade = resultSet.getString("member_grade");
+				String member_name = resultSet.getString("member_name");
+				String member_profile = resultSet.getString("member_profile");
+				member_loginType = resultSet.getString("member_loginType");
+				String member_token = resultSet.getString("member_token");
+
+				adto = new MemberDto(member_id, member_nickname, member_tel, member_addr, member_latitude,
+						member_longitude, member_grade, member_name, member_profile, member_loginType, member_token);
+			}
+			System.out.println("MemberDTO id : " + adto.getMember_id());
+
+		} catch (Exception e) {
+
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
+			}
+		}
+
+		return adto;
+	} // anKakaoLogin()
+
+	// *************************************************************************
+
+	// 일반 회원가입할 때
 	public int anJoin(String member_id, String member_pw, String member_nickname, String member_tel, String member_addr,
 			String member_latitude, String member_longitude, String member_name) {
 
@@ -127,8 +247,136 @@ public class SEDao {
 		}
 
 		return state;
-	}
+	} // anJoin()
 
+	public int anNaverJoin(String member_id, String member_nickname, String member_name, String member_loginType,
+			String member_token) {
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		int state = -100;
+
+		try {
+			connection = dataSource.getConnection();
+			String sql = "insert into tblmember(member_id, member_nickname, member_name, member_loginType, member_token)"
+					+ "values('" + member_id + "', '" + member_nickname + "', '" + member_name + "', '"
+					+ member_loginType + "', '" + member_token + "' )";
+			prepareStatement = connection.prepareStatement(sql);
+			state = prepareStatement.executeUpdate();
+
+			if (state > 0) {
+				System.out.println(state + "삽입성공");
+			} else {
+				System.out.println(state + "삽입실패");
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
+			}
+		}
+
+		return state;
+	} // anNaverJoin()
+
+	public int anKakaoJoin(String member_id, String member_nickname, String member_name, String member_loginType,
+			String member_token) {
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		int state = -100;
+
+		try {
+			connection = dataSource.getConnection();
+			String sql = "insert into tblmember(member_id, member_nickname, member_name, member_loginType, member_token)"
+					+ "values('" + member_id + "', '" + member_nickname + "', '" + member_name + "', '"
+					+ member_loginType + "', '" + member_token + "' )";
+			prepareStatement = connection.prepareStatement(sql);
+			state = prepareStatement.executeUpdate();
+
+			if (state > 0) {
+				System.out.println(state + "삽입성공");
+			} else {
+				System.out.println(state + "삽입실패");
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
+			}
+		}
+
+		return state;
+	} // anKakaoJoin()
+
+	// *************************************************************************
+	// 소셜 로그인한 사람의 위치 지정
+	public int anUpdateLocation(String id, String loginType, String addr, String latitude, String longitude) {
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		ResultSet resultSet = null;
+		int succ = 0;
+
+		try {
+			connection = dataSource.getConnection();
+			String sql = "update tblmember set member_addr = '" + addr + "', member_latitude = '" + latitude + "', member_longitude = '" + longitude + "'" + 
+						 "where member_id = '" + id + "' and member_loginType = '" + loginType + "'";
+			prepareStatement = connection.prepareStatement(sql);
+			succ = prepareStatement.executeUpdate();
+
+			if (succ > 0) {
+				System.out.println("위치 지정(소셜 로그인) 완료!");
+			} else {
+				System.out.println("위치 지정(소셜 로그인) 실패!");
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
+			}
+		}
+
+		return succ;
+	} // anUpdateLocation()
+	
+	
+	// *************************************************************************
 	public MemberDto anIdCheck(String member_id) {
 		MemberDto adto = null;
 		Connection connection = null;
@@ -263,17 +511,19 @@ public class SEDao {
 		return id;
 	} // anSearchId()
 
-	public void sendEmail(String member_id, String member_name, HttpSession session) {
+	public int sendEmail(String member_id, String member_name) {
+		int state = -100;
+
 		HtmlEmail mail = new HtmlEmail();
 		mail.setHostName("smtp.naver.com");
 		mail.setCharset("utf-8");
 		mail.setDebug(true);
 
-		mail.setAuthentication("tjdms5322", "rla2684!");
+		mail.setAuthentication("hanul0420", "hanul-0420");
 		mail.setSSLOnConnect(true);
 
 		try {
-			mail.setFrom("tjdms5322@naver.com", "한울관리자");
+			mail.setFrom("hanul0420@naver.com", "한울관리자");
 			mail.addTo(member_id, member_name);
 
 			mail.setSubject("[대여 안대여] 비밀번호 재설정 안내 메일");
@@ -283,7 +533,8 @@ public class SEDao {
 			msg.append("<hr>");
 			msg.append("<h1>비밀번호 재설정 안내</h1>");
 			msg.append("<p>아래 링크를 누르시고 새로운 비밀번호를 입력하시면 비밀번호가 변경됩니다.</p>");
-			msg.append("<a href='localhost:8080/app/anResetPwView?member_id=" + member_id + "'>비밀번호 재설정 하기</a>");
+			msg.append("<a href='http://192.168.0.178:8080/app/anResetPwView?member_id=" + member_id
+					+ "'>비밀번호 재설정 하기</a>");
 			// 안드로이드에서는 localhost로 접근이 x, 서버를 돌리고 있는 ip주소를 입력해야 접근이 가능함
 
 			msg.append("</body>");
@@ -295,11 +546,11 @@ public class SEDao {
 			 * "/images/hanul.logo.png"); mail.attach(file);
 			 */
 			mail.send();
-
+			state = 1;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-
+		return state;
 	} // sendEmail()
 
 	// 비밀번호 재설정

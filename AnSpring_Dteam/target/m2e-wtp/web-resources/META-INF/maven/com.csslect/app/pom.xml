@@ -184,6 +184,15 @@
 		    <artifactId>commons-email</artifactId>
 		    <version>1.5</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client 
+			spring security > 카카오 로그인
+		-->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-oauth2-client</artifactId>
+		    <version>5.4.0</version>
+		</dependency>
 
 	</dependencies>
 	<repositories>
