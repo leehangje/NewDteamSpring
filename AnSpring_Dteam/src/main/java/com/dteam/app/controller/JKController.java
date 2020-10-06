@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartRequest;
 
 import com.dteam.app.command.ACommand;
 import com.dteam.app.command.ADeleteMultiCommand;
+import com.dteam.app.command.AProfileDeleteMultiCommand;
 import com.dteam.app.command.AProfileInsertCommand;
 import com.dteam.app.command.ASubUpdateMultiCommand;
 import com.dteam.app.command.AUpdateMultiCommand;
@@ -61,7 +62,7 @@ public class JKController {
 				String fileName = file.getOriginalFilename();
 				System.out.println(fileName);
 				
-				// 占쎈탵占쎌젂占쎈꽅�뵳占� 鈺곕똻�삺占쎈릭筌욑옙 占쎈륫占쎌몵筌롳옙 占쎄문占쎄쉐
+				// �뜝�럥�꺏�뜝�럩�쟼�뜝�럥苑낉옙逾녑뜝占� �댖怨뺣샍占쎌궨�뜝�럥由�嶺뚯쉻�삕 �뜝�럥瑜ュ뜝�럩紐든춯濡녹삕 �뜝�럡臾멨뜝�럡�뎽
 				makeDir(req);	
 					
 				if(file.getSize() > 0){			
@@ -72,14 +73,14 @@ public class JKController {
 					System.out.println( "fileSize : " + file.getSize());					
 													
 				 	try {
-				 		// 占쎌뵠沃섎챷占쏙옙�솁占쎌뵬 占쏙옙占쎌삢
+				 		// �뜝�럩逾졿쾬�꼶梨룟뜝�룞�삕占쎌냱�뜝�럩逾� �뜝�룞�삕�뜝�럩�궋
 						file.transferTo(new File(realImgPath, fileName));										
 					} catch (Exception e) {
 						e.printStackTrace();
 					} 
 										
 				}else{
-					// 占쎌뵠沃섎챷占쏙옙�솁占쎌뵬 占쎈뼄占쎈솭占쎈뻻
+					// �뜝�럩逾졿쾬�꼶梨룟뜝�룞�삕占쎌냱�뜝�럩逾� �뜝�럥堉꾢뜝�럥�넮�뜝�럥六�
 					fileName = "FileFail.jpg";
 					String realImgPath = req.getSession().getServletContext()
 							.getRealPath("/resources/" + fileName);
@@ -125,7 +126,7 @@ public class JKController {
 			model.addAttribute("id", id);
 			model.addAttribute("dbImgPath", dbImgPath);
 
-			// �뜝�떛諭꾩삕�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕 �뜝�떗怨ㅼ삕 �뜝�뙐紐뚯삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�뜝�떛諭꾩삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
+			// 占쎈쐻占쎈뼓獄�袁⑹굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈뼏�ⓦ끉�굲 占쎈쐻占쎈솏筌뤿슣�굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈뼓獄�袁⑹굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲
 			if(dbImgPath.equals(pDbImgPath)){			
 				
 				String pFileName = req.getParameter("pDbImgPath").split("/")[req.getParameter("pDbImgPath").split("/").length -1];
@@ -153,7 +154,7 @@ public class JKController {
 				String fileName = file.getOriginalFilename();
 				System.out.println(fileName);
 				
-				// �뜝�룞�삕�뜝�뜲由� �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
+				// 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈쑓�뵳占� 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲
 				makeDir(req);	
 					
 				if(file.getSize() > 0){			
@@ -164,7 +165,7 @@ public class JKController {
 					System.out.println( "fileSize : " + file.getSize());					
 													
 				 	try {
-				 		// �뜝�떛諭꾩삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
+				 		// 占쎈쐻占쎈뼓獄�袁⑹굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲
 						file.transferTo(new File(realImgPath, fileName));						
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -230,7 +231,7 @@ public class JKController {
 			String pFileName = req.getParameter("delDbImgPath").split("/")[req.getParameter("delDbImgPath").split("/").length -1];
 			String delDbImgPath = req.getSession().getServletContext().getRealPath("/resources/" + pFileName);		
 			
-			// 占쎌뵠沃섎챷占� 占쎈솁占쎌뵬筌욑옙占쎌뒭疫뀐옙
+			// �뜝�럩逾졿쾬�꼶梨룟뜝占� �뜝�럥�냱�뜝�럩逾х춯�쉻�삕�뜝�럩�뮡�뼨�먯삕
 			File delfile = new File(delDbImgPath);
 			System.out.println(delfile.getAbsolutePath());
 			
@@ -243,6 +244,22 @@ public class JKController {
 	        }	
 			
 			command = new ADeleteMultiCommand();
+			command.execute(model);	
+			
+		}
+		
+		@RequestMapping(value="/anProfileDeleteMulti", method = {RequestMethod.GET, RequestMethod.POST})
+		public void anProfileDeleteMulti(HttpServletRequest req, Model model){
+			System.out.println("anProfileDeleteMulti()");		
+			
+			model.addAttribute("id", req.getParameter("id"));
+			model.addAttribute("image", req.getParameter("image"));
+					
+			System.out.println((String)req.getParameter("id"));
+			System.out.println((String)req.getParameter("image"));
+			
+			
+			command = new AProfileDeleteMultiCommand();
 			command.execute(model);	
 			
 		}
