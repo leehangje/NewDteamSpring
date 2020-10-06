@@ -32,6 +32,7 @@ import com.dteam.app.command.AMdInsertCommand;
 import com.dteam.app.command.AMainSelectCommand;
 import com.dteam.app.command.ANickNameCheckCommand;
 import com.dteam.app.command.ARentStatusCommand;
+import com.dteam.app.command.AReviewInsertCommand;
 import com.dteam.app.command.ASearchSelectCommand;
 import com.dteam.app.command.anFavUpdateCommand;
 
@@ -39,135 +40,6 @@ import com.dteam.app.command.anFavUpdateCommand;
 public class AController {
 	
 	ACommand command;
-	
-	/*
-	@RequestMapping(value="/anLogin", method = {RequestMethod.GET, RequestMethod.POST}  )
-	public String anLogin(HttpServletRequest request, Model model){
-		System.out.println("anLogin()");
-		
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 		
-		
-		String member_id = (String) request.getParameter("member_id");
-		String member_pw = (String) request.getParameter("member_pw");
-		
-		System.out.println(member_id);
-		System.out.println(member_pw);
-		
-		model.addAttribute("member_id", member_id);
-		model.addAttribute("member_pw", member_pw);
-		
-		command = new ALoginCommand();
-		command.execute(model);
-		
-		return "anLogin";
-	}
-
-	@RequestMapping(value="/anJoin", method = {RequestMethod.GET, RequestMethod.POST}  )
-	public String anJoin(HttpServletRequest request, Model model){
-		System.out.println("anJoin()");
-		
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 		
-		
-		String member_id = (String) request.getParameter("member_id");
-		String member_pw = (String) request.getParameter("member_pw");
-		String member_nickname = (String) request.getParameter("member_nickname");
-		String member_tel = (String) request.getParameter("member_tel");
-		String member_addr = (String) request.getParameter("member_addr");
-		String member_latitude = (String) request.getParameter("member_latitude");
-		String member_longitude = (String) request.getParameter("member_longitude");
-		String member_name = (String) request.getParameter("member_name");
-		
-		System.out.println(member_id);
-		System.out.println(member_pw);
-		System.out.println(member_nickname);
-		System.out.println(member_tel);
-		System.out.println(member_addr);
-		System.out.println(member_latitude);
-		System.out.println(member_longitude);
-		System.out.println(member_name);
-		
-		model.addAttribute("member_id", member_id);
-		model.addAttribute("member_pw", member_pw);
-		model.addAttribute("member_nickname", member_nickname);
-		model.addAttribute("member_tel", member_tel);
-		model.addAttribute("member_addr", member_addr);
-		model.addAttribute("member_latitude", member_latitude);
-		model.addAttribute("member_longitude", member_longitude);
-		model.addAttribute("member_name", member_name);
-		
-		command = new AJoinCommand();
-		command.execute(model);
-		
-		return "anJoin";
-	}
-	
-	@RequestMapping(value="/anIdCheck", method = {RequestMethod.GET, RequestMethod.POST}  )
-	public String anIdCheck(HttpServletRequest request, Model model) {
-		System.out.println("anIdCheck()");
-		
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 		
-		
-		String member_id = (String) request.getParameter("member_id");
-		
-		System.out.println(member_id);
-		
-		model.addAttribute("member_id", member_id);
-		
-		command = new AIdCheckCommand();
-		command.execute(model);
-		
-		return "anIdCheck";
-	} //anIdCheck()
-	
-	@RequestMapping(value="/anNickNameCheck", method = {RequestMethod.GET, RequestMethod.POST}  )
-	public String anNickNameCheck(HttpServletRequest request, Model model) {
-		System.out.println("anNickNameCheck()");
-		
-		try {
-			request.setCharacterEncoding("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 		
-		
-		String member_nickname = (String) request.getParameter("member_nickname");
-		
-		System.out.println(member_nickname);
-		
-		model.addAttribute("member_nickname", member_nickname);
-		
-		command = new ANickNameCheckCommand();
-		command.execute(model);
-		
-		return "anNickNameCheck";
-	} //anIdCheck()
-	*/
-	
-	/*
-	 * @RequestMapping(value="/anMainSelect", method = {RequestMethod.GET,
-	 * RequestMethod.POST} ) public String anMainSelect(HttpServletRequest request,
-	 * Model model) { System.out.println("anMainSelect()");
-	 * 
-	 * try { request.setCharacterEncoding("UTF-8"); } catch
-	 * (UnsupportedEncodingException e) { e.printStackTrace(); }
-	 * 
-	 * command = new AMainSelectCommand();
-	 * 
-	 * command.execute(model);
-	 * 
-	 * return "anMainSelect"; }
-	 */
 	
 
 	//검색페이지 
@@ -187,28 +59,7 @@ public class AController {
 		return "anSearchSelect";
 	}
 
-
-
-		/*
-		 * @RequestMapping(value="/anDetail", method = {RequestMethod.GET,
-		 * RequestMethod.POST} ) public String anDetail(HttpServletRequest request,
-		 * Model model) { System.out.println("anDetail()");
-		 * 
-		 * try { request.setCharacterEncoding("UTF-8"); } catch
-		 * (UnsupportedEncodingException e) { e.printStackTrace(); }
-		 * 
-		 * 
-		 * String md_serial_number = (String)request.getParameter("md_serial_number");
-		 * 
-		 * System.out.println(md_serial_number);
-		 * 
-		 * model.addAttribute("md_serial_number", md_serial_number);
-		 * 
-		 * command = new ADetailCommand(); command.execute(model);
-		 * 
-		 * return "anDetail"; }
-		 */
-	
+	//상품등록
 	@RequestMapping(value="/anInsert", method = {RequestMethod.GET, RequestMethod.POST}  )
 	public String anInsert(HttpServletRequest request, Model model){
 		System.out.println("anInsert()");
@@ -257,7 +108,6 @@ public class AController {
 			String fileName = file.getOriginalFilename();
 			System.out.println(fileName);
 			
-			// ���丮 �������� ������ ����
 			makeDir(request);	
 				
 			if(file.getSize() > 0){			
@@ -268,14 +118,12 @@ public class AController {
 				System.out.println( "fileSize : " + file.getSize());					
 												
 			 	try {
-			 		// �̹������� ����
 					file.transferTo(new File(realImgPath, fileName));										
 				} catch (Exception e) {
 					e.printStackTrace();
 				} 
 									
 			}else{
-				// �̹������� ���н�
 				fileName = "FileFail.jpg";
 				String realImgPath = request.getSession().getServletContext()
 						.getRealPath("/resources/" + fileName);
@@ -300,7 +148,8 @@ public class AController {
 		
 	}
 	
-			@RequestMapping(value="/anMdRentStatus", method = {RequestMethod.GET, RequestMethod.POST} )
+	//상품 대여상태
+	@RequestMapping(value="/anMdRentStatus", method = {RequestMethod.GET, RequestMethod.POST} )
 			public String anFavUpdate(HttpServletRequest request, Model model) {
 				System.out.println("anMdRentStatus()");
 				
@@ -323,6 +172,41 @@ public class AController {
 				command.execute(model);
 				
 				return "anMdRentStatus";
+			}
+			
+	//리뷰 등록
+			@RequestMapping(value="/anReviewInsert", method = {RequestMethod.GET, RequestMethod.POST} )
+			public String anReviewInsert(HttpServletRequest request, Model model) {
+				System.out.println("anReviewInsert()");
+				
+				try {
+					request.setCharacterEncoding("UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				} 		
+				
+				String member_id = (String) request.getParameter("member_id");
+				String member_nickname = (String) request.getParameter("member_nickname");
+				String md_serial_number = (String) request.getParameter("md_serial_number");
+				String review_scope = (String) request.getParameter("review_scope");
+				String review_content = (String) request.getParameter("review_content");
+				
+				System.out.println("member_id : " + member_id);
+				System.out.println("member_nickname : " + member_nickname);
+				System.out.println("md_serial_number : " + md_serial_number);
+				System.out.println("review_scope : " + review_scope);
+				System.out.println("review_content : " + review_content);
+				
+				model.addAttribute("member_id", member_id);
+				model.addAttribute("member_nickname", member_nickname);
+				model.addAttribute("md_serial_number", md_serial_number);
+				model.addAttribute("review_scope", review_scope);
+				model.addAttribute("review_content", review_content);
+				
+				command = new AReviewInsertCommand();
+				command.execute(model);
+				
+				return "anReviewInsert";
 			}
 			
 	

@@ -8,8 +8,9 @@
 <fullyQualifiedTypeName name="com.dteam.app.dto.MdDto"/>
 <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
 <fullyQualifiedTypeName name="com.dteam.app.command.AMdInsert_statusCommand"/>
-<fullyQualifiedTypeName name="com.dteam.app.command.ACommand"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.dteam.app.dao.ANDao"/>
 <fullyQualifiedTypeName name="com.dteam.app.command.ARentStatusCommand"/>
+<fullyQualifiedTypeName name="com.dteam.app.command.ACommand"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.dteam.app.command.AReviewInsertCommand"/>
 </qualifiedTypeNameHistroy>
