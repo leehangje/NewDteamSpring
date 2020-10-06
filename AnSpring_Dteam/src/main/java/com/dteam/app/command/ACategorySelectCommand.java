@@ -5,17 +5,23 @@ import java.util.ArrayList;
 import org.springframework.ui.Model;
 
 import com.dteam.app.dao.ANDao;
+import com.dteam.app.dao.CHDao;
 import com.dteam.app.dto.MdDto;
 
 
 
 public class ACategorySelectCommand implements ACommand{
-
+	String category;
+	
+	public ACategorySelectCommand(String category) {
+		this.category = category;
+	}
+	
 	@Override
 	public void execute(Model model) {
-		ANDao adao = new ANDao();
+		CHDao adao = new CHDao();
 
-		String category = (String)model.asMap().get("category");
+		
 		
 		System.out.println("category" + category);
 		
