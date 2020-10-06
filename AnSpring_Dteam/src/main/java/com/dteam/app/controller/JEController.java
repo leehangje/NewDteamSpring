@@ -20,6 +20,7 @@ import com.dteam.app.command.anFavSelectCommand;
 import com.dteam.app.command.anFavSelectListCommand;
 import com.dteam.app.command.anFavUpdateCommand;
 import com.dteam.app.command.anFavUpdateMinusCommand;
+import com.dteam.app.command.anReviewSelectCommand;
 
 @Controller
 public class JEController {
@@ -267,7 +268,32 @@ public class JEController {
 		command.execute(model);
 		
 		return "anFavSelectList";
-	}//anFavInsert()
+	}//anFavSelectList()
+	
+	
+	//상세페이지에서 해당상품의 리뷰보기
+	@RequestMapping(value="/anReviewSelect", method = {RequestMethod.GET, RequestMethod.POST} )
+	public String anReviewSelect(HttpServletRequest request, Model model) {
+		System.out.println("anReviewSelect()");
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} 		
+		
+		String md_serial_number = (String)request.getParameter("md_serial_number");
+		
+		System.out.println("ctrl md_serial_number: " + md_serial_number);
+		
+		model.addAttribute("md_serial_number", md_serial_number);
+		
+		command = new anReviewSelectCommand();
+		command.execute(model);
+		
+		return "anReviewSelect";
+	}//anReviewSelect()
+	
 
 	
 
