@@ -9,6 +9,10 @@
 <link rel="lcon" type="image/x-icon" href="img/logo.jsp">
 <link rel="stylesheet" type="text/css" 
      href="css/common.css?v=<%=new java.util.Date().getTime()%>">
+     <link href="css/basic.css" rel="stylesheet" type="text/css">
+<link href="css/default.css" rel="stylesheet" type="text/css">
+<link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
+<link href="css/sub.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>

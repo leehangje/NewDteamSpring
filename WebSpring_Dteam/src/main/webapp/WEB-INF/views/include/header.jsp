@@ -8,7 +8,7 @@
 			<div class="member_menu">
 				<a href="#" class="login">로그인</a>
 				<a href="#">회원가입</a>
-				<a href="#">마이페이지</a>
+				<a href="mypage">마이페이지</a>  
 			</div>
 		</div>
 	</div>
