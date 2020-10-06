@@ -124,6 +124,8 @@ public class HjDao {
 					dto.setReview_scope(rs.getString("review_scope"));
 					dto.setReview_content(rs.getString("review_content"));
 					dto.setMember_nickname(rs.getString("member_nickname"));
+					dto.setMd_member_id(rs.getString("md_member_id"));
+					dto.setMd_serial_number(rs.getString("md_serial_number"));
 					list.add(dto);
 				}
 			} catch (SQLException e) {

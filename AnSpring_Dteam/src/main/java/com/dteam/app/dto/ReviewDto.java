@@ -5,19 +5,41 @@ public class ReviewDto {
 	String review_scope;
 	String review_content;
 	String member_nickname;
+	String md_member_id;
+	String md_serial_number;
 	
 	public ReviewDto() {}
 	
-	public ReviewDto(String member_id, String review_scope, String review_content, String member_nickname) {
+	public ReviewDto(String member_id, String review_scope, String review_content
+			, String member_nickname, String md_member_id, String md_serial_number) {
 		super();
 		this.member_id = member_id;
 		this.review_scope = review_scope;
 		this.review_content = review_content;
 		this.member_nickname = member_nickname;
+		this.md_member_id = md_member_id;
+		this.md_serial_number = md_serial_number;
+		
 	}
 	
+
 	
 	
+	public String getMd_serial_number() {
+		return md_serial_number;
+	}
+
+	public void setMd_serial_number(String md_serial_number) {
+		this.md_serial_number = md_serial_number;
+	}
+
+	public String getMd_member_id() {
+		return md_member_id;
+	}
+
+	public void setMd_member_id(String md_member_id) {
+		this.md_member_id = md_member_id;
+	}
 
 	public String getMember_nickname() {
 		return member_nickname;
