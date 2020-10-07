@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 import com.dteam.app.dto.MdDto;
 import com.dteam.app.dto.MemberDto;
+import com.dteam.app.dto.ReviewDto;
 
 public class HjDao {
 
@@ -98,6 +99,33 @@ public class HjDao {
 				while (rs.next()) {
 					MdDto dto = new MdDto();
 					dto.setMd_hits(rs.getString("Md_hits"));
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return list;
+		}
+		
+
+		
+		public ArrayList<ReviewDto> anReviewPull(String member_id) {
+			String sql = "select * from tblreview where member_id = ? ";
+					   
+			ArrayList<ReviewDto> list = new ArrayList<ReviewDto>();
+			try {
+				conn = dataSource.getConnection();
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, member_id);
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					ReviewDto dto = new ReviewDto();
+					dto.setMember_id(rs.getString("member_id"));
+					dto.setReview_scope(rs.getString("review_scope"));
+					dto.setReview_content(rs.getString("review_content"));
+					dto.setMember_nickname(rs.getString("member_nickname"));
+					dto.setMd_member_id(rs.getString("md_member_id"));
+					dto.setMd_serial_number(rs.getString("md_serial_number"));
 					list.add(dto);
 				}
 			} catch (SQLException e) {

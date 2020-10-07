@@ -13,6 +13,7 @@
 <!-- 	<property value="5242880" name="maxInMemorySize"/> -->
 <!-- 	</bean> -->
 	
-	<context:component-scan base-package="com.hanul.dteam" />	
+	<context:component-scan base-package="com.hanul.dteam" />	 
+	
 	
 </beans>

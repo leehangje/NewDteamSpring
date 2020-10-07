@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.dteam.app.dao.HjDao;
 import com.dteam.app.dto.MdDto;
 import com.dteam.app.dto.MemberDto;
+import com.dteam.app.dto.ReviewDto;
 
 @Controller
 public class HjController {
@@ -42,6 +43,15 @@ public class HjController {
 		model.addAttribute("list", list);
 		
 		return "anReadcnt";
+	}
+	
+	//리뷰 어뎁터 
+	@RequestMapping ("/anReviewPull")
+	public String anReviewPull (String member_id, Model model) {
+		HjDao hjdao = new HjDao();
+		ArrayList<ReviewDto> list = hjdao.anReviewPull(member_id);
+		model.addAttribute("list", list);
+		return "anReviewPull";
 	}
 	
 	

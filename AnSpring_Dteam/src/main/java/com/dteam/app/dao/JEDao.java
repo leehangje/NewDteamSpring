@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 import com.dteam.app.dto.FavDto;
 import com.dteam.app.dto.MdDto;
 import com.dteam.app.dto.MemberDto;
+import com.dteam.app.dto.ReviewDto;
 
 public class JEDao {
 
@@ -255,6 +256,7 @@ public class JEDao {
 		}
 		return mdDtos;
 	}//anDarunSelect()
+	
 
 	//상품상세사진(md_photo_url) 가져오기
 	 public MdDto anDetailPhoto(String md_serial_number) {
@@ -585,6 +587,56 @@ public class JEDao {
 		}
 		return mdDtos;
 	}//anFavSelectList()
+
+
+	//상세페이지에서 해당상품의 리뷰보기
+	public ArrayList<ReviewDto> anReviewSelect(String md_serial_number_in) {
+		ArrayList<ReviewDto> reviews = new ArrayList<ReviewDto>();
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String sql = "select * from tblreview where md_serial_number = '" + md_serial_number_in + "' ";
+			prepareStatement = connection.prepareStatement(sql);
+			resultSet = prepareStatement.executeQuery();
+
+			while (resultSet.next()) {
+				String member_id = resultSet.getString("member_id");
+				String review_scope = resultSet.getString("review_scope");
+				String review_content = resultSet.getString("review_content");
+				String member_nickname = resultSet.getString("member_nickname");
+				String md_member_id = resultSet.getString("md_member_id");
+				String md_serial_number = resultSet.getString("md_serial_number");
+				 
+				reviews.add(new ReviewDto(member_id,  review_scope,  review_content,
+		                member_nickname,  md_member_id, md_serial_number));
+				 
+			}
+			System.out.println("reviews size : " + reviews.size());
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
+			}
+		}
+		return reviews;
+	}//anReviewSelect()
 		
 	
 	

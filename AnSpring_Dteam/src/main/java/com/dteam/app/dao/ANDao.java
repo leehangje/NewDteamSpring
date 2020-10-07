@@ -388,9 +388,9 @@ public class ANDao {
 		}// anSearchSelect()
 
 		
-		//상품등록
-		public int anReviewInsert(String member_id, String member_nickname, String md_serial_number,
-				String review_scope, String review_content) {
+		//리뷰등록
+		public int anReviewInsert(String member_id, String review_scope, String review_content
+				, String member_nickname, String md_member_id, String md_serial_number) {
 			
 			Connection connection = null;
 			PreparedStatement prepareStatement = null;
@@ -400,9 +400,7 @@ public class ANDao {
 
 			try {
 				connection = dataSource.getConnection(); 
-				String sql = "insert into tblreview(member_id, member_nickname, md_serial_number, review_scope, review_content) "
-						+ "values('" + member_id + "', '" + member_nickname + "', '"   
-									+ md_serial_number + "', '" + review_scope + "', '" + review_content + "')";
+				String sql = "insert into tblreview (member_id, review_scope, review_content, member_nickname, md_member_id, md_serial_number) values('" + member_id + "', '" + review_scope + "', '" + review_content + "', '" + member_nickname + "', '" + md_member_id + "', '" + md_serial_number + "')";
 				prepareStatement = connection.prepareStatement(sql);
 				state = prepareStatement.executeUpdate();
 
