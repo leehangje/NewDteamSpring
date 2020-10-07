@@ -14,8 +14,10 @@ public class AReviewInsertCommand implements ACommand {
 		String member_nickname = (String) model.asMap().get("member_nickname");
 		String md_member_id = (String) model.asMap().get("md_member_id");
 		String md_serial_number = (String) model.asMap().get("md_serial_number");
+		String member_profile = (String) model.asMap().get("member_profile");
+		
 		ANDao adao = new ANDao();
-		adao.anReviewInsert(member_id, review_scope, review_content, member_nickname, md_member_id, md_serial_number);
+		adao.anReviewInsert(member_id, review_scope, review_content, member_nickname, md_member_id, md_serial_number, member_profile);
 	}
 
 }

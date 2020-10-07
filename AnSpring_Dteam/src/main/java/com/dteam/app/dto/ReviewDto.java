@@ -7,11 +7,12 @@ public class ReviewDto {
 	String member_nickname;
 	String md_member_id;
 	String md_serial_number;
+	String member_profile;
 	
 	public ReviewDto() {}
 	
 	public ReviewDto(String member_id, String review_scope, String review_content
-			, String member_nickname, String md_member_id, String md_serial_number) {
+			, String member_nickname, String md_member_id, String md_serial_number, String member_profile) {
 		super();
 		this.member_id = member_id;
 		this.review_scope = review_scope;
@@ -19,12 +20,21 @@ public class ReviewDto {
 		this.member_nickname = member_nickname;
 		this.md_member_id = md_member_id;
 		this.md_serial_number = md_serial_number;
+		this.member_profile = member_profile;
 		
 	}
 	
 
 	
 	
+	public String getMember_profile() {
+		return member_profile;
+	}
+
+	public void setMember_profile(String member_profile) {
+		this.member_profile = member_profile;
+	}
+
 	public String getMd_serial_number() {
 		return md_serial_number;
 	}

@@ -191,6 +191,7 @@ public class AController {
 				String member_nickname = (String) request.getParameter("member_nickname");
 				String md_member_id = (String) request.getParameter("md_member_id");
 				String md_serial_number = (String) request.getParameter("md_serial_number");
+				String member_profile = (String) request.getParameter("member_profile");
 				
 				System.out.println("member_id : " + member_id);
 				System.out.println("review_scope : " + review_scope);
@@ -198,6 +199,7 @@ public class AController {
 				System.out.println("member_nickname : " + member_nickname);
 				System.out.println("md_member_id : " + md_member_id);
 				System.out.println("md_serial_number : " + md_serial_number);
+				System.out.println("member_profile : " + member_profile);
 				
 				model.addAttribute("member_id", member_id);
 				model.addAttribute("review_scope", review_scope);
@@ -205,6 +207,7 @@ public class AController {
 				model.addAttribute("member_nickname", member_nickname);
 				model.addAttribute("md_member_id", md_member_id);
 				model.addAttribute("md_serial_number", md_serial_number);
+				model.addAttribute("member_profile", member_profile);
 				
 				command = new AReviewInsertCommand();
 				command.execute(model);
