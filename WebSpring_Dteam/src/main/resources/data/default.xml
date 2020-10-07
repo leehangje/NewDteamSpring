@@ -7,13 +7,16 @@
 
 <context:property-placeholder location="classpath:data/db.properties"/>
 
-<!-- db연결객체 -->
-<bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource">
-	<property name="driverClassName" value="${db.driver}" />
-	<property name="url" value="${db.url}"/>
-	<property name="username" value="${db.username}"/>
-	<property name="password" value="${db.password}"/>
-</bean>
+<!-- db.properties 파일 가져오기 -->
+   <context:property-placeholder location="classpath:data/db.properties" />
+   
+   <!-- DB 연결 -->
+   <bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource">
+      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+      <property name="url" value="jdbc:oracle:thin:@192.168.0.200:1521:xe" />
+      <property name="username" value="dteam" />
+      <property name="password" value="dteam" />
+   </bean>
 
 <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	<property name="dataSource" ref="dbcp"/>
