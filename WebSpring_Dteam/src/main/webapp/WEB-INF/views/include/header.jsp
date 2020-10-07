@@ -6,14 +6,33 @@
 			<a href='<c:url value="/"/>'><img src="img/logo3.jpg" alt="홈으로"/></a>
 			<input type="text" size="40" id="search" placeholder="동네이름, 물품명 등을 검색해보세요!"/>
 			<div class="member_menu">
-				<a href="#" class="login">로그인</a>
-				<a href="#">회원가입</a>
-				<a href="mypage">마이페이지</a>  
+			<c:if test="${empty login_info }">
+				<a href="login_view" class="login">로그인</a>
+				<a href="member">회원가입</a> 
+			</c:if>
+			<c:if test="${!empty login_info }">
+				<span>${login_info.member_name } [${login_info.member_id }]</span>
+				<a onclick="go_logout()">로그아웃</a>
+				<a href="mypage">마이페이지</a>
+			</c:if>
+			
 			</div>
 		</div>
 	</div>
 </header>
-
+<script type="text/javascript">
+	function go_logout() {
+		$.ajax({
+			url: "logout",
+			success: function() {
+				location.reload();
+			},
+			error : function() {
+				alert(text + ":" + req.status);
+			}
+		});
+	} //go_logout()
+</script>
 <style type="text/css">
 header ul, header ul li {
 	margin: 0;
@@ -42,7 +61,7 @@ header div.category li a:hover, header div.category li a.active{font-weight: bol
 
 .member_menu{
 	display: inline;
-	margin-left: 700px;
+	margin-left: 600px;
 }
 
 .login{
