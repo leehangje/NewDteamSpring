@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>대여안대여</title>
-
 </head>
 <body>
 <section id="content_area">
@@ -18,17 +17,32 @@
 					<li>마이페이지</li>
 				</ul>
 			</div>
-			<div class="contents">
-					<div class="comment_box">
-						<div class="profile_img">
-							<img src='img/pro_img.png' alt='프로필 이미지' />  
+				<div class="contents">
+					<div class="profile_box">
+						<div class="profile_img" style="float: left; width: 200px; height: 200px; margin-right: 20px;">
+							<img src="<c:url value='/' />${vo.member_profile}" class="file-img"/></a>
 						</div>
-						<div class="prifile_text">
-							<ul>
-								<li><img src="img/nickname.png" alt="닉네임" />&nbsp;&nbsp;닉네임</li>
-								<li><img src="img/level.png" alt="등급" />&nbsp;&nbsp;등급</li>
-								<li><img src="img/setting.png" alt="회원정보수정" />&nbsp;&nbsp;<a href="modify.cu?id=${vo.id}">회원정보수정</a></li>
-							</ul>
+						<div class="user_info" style="float: left; width: 830px;">
+						<table class="t_style03" >
+							<colgroup>
+								<col width="50%">
+								<col width="50%">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th style="height: ">닉네임</th>
+									<td>${vo.member_nickname}</td>
+								</tr>
+
+								<tr>
+									<th>등급</th>
+									<td>${vo.member_grade}</td>
+								</tr>
+								<tr>
+									<th colspan="2">${vo.member_id}<a href="#">회원정보수정</a></th>
+								</tr>
+							</tbody>
+						</table>
 						</div>
 					</div>
 					<ul class="tab" id="tab">
@@ -38,12 +52,18 @@
 					</ul>
 
 					<div class="tab_con" id="tab_con">
-						<div>빌려준 상품 내역</div>
-						<div>빌린 상품 내역</div>
-						<div>찜 목록</div>
+						<div>
+							<%@ include file="/WEB-INF/views/md/lend_list.jsp"%>
+						</div>
+						<div>
+							<%@ include file="/WEB-INF/views/md/borrow_list.jsp"%>
+						</div>
+						<div>
+							<%@ include file="/WEB-INF/views/md/like_list.jsp"%>
+						</div>
 					</div>
 				</div>
-		</div>
+			</div>
 	</div>
 </section>
 <script type="text/javascript">

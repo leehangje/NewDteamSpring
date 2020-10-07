@@ -23,21 +23,30 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+	public boolean member_delete(String member_id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean member_id_check(String member_id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
 	public boolean member_update(MemberVO vo) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean member_delete(String userid) {
-		// TODO Auto-generated method stub
-		return false;
+	public MemberVO member_detail(String member_id) {
+		
+		return dao.member_detail(member_id);
 	}
 
-	@Override
-	public boolean member_id_check(String userid) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
+
 	
 }
