@@ -23,12 +23,15 @@
     border-bottom: 2px solid #3E4BA9;
 }
 
+.jetab_con { clear:both; margin-top:5px; border:1px solid #ddd; }
+.jetab_con div { display:block; background:#fff; line-height:100px; text-align:center; padding: 0 15px; }
+
 .notice {border: 1ps solid red; border-bottom:0px solid #ddd; margin:1em 0; }
 .notice .noticeHeader{position:relative;zoom:1}
 .notice .noticeHeader .showAll{position:absolute;bottom:0;right:0;border:0;padding:0;overflow:visible;background:none;cursor:pointer}
 .notice .noticeBody{margin:0;padding:0}
 .notice .noticeBody .article{list-style:none}
-.notice .q{margin:}
+.notice .q {margin:}
 .notice .q a:hover, .notice .q a:active, .notice .q a:focus{}
 .notice .q a {
     display: block;
@@ -40,7 +43,7 @@
     font-weight: bold;
     line-height: 27px;
     cursor: pointer;
-    margin: 15px 0;
+    margin: 15px 0 5px 10px;
 }
 .notice .a {
     /* background: #f8f8f8 url(https://happyjung.diskn.com/data/lecture/icon_jquery_faq_20170221_2.png) no-repeat 40px 10px; */
@@ -53,7 +56,7 @@
     margin: 5px 0 0 0;
     text-align: left;
 }
-.time { color: #8f8d8d; font-weight: 600; font-size: 14px;}
+.time { color: #8f8d8d; font-weight: 500; font-size: 14px;}
 
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
@@ -80,7 +83,7 @@
 					<li onclick="location.href='list.qn'">1:1 문의하기</li>
 				</ul>
 		
-				<!-- <div class="tab_con" id="tab_con"> -->
+				<div class="jetab_con" id="tab_con">
 					<div class="notice">
 					    <div class="noticeHeader">
 					        <!--button type="button" class="showAll">답변 모두 여닫기</button-->
@@ -336,16 +339,8 @@
 					        <hr>
 					    </ul>
 					</div>
-					
-					<!-- <div>
-						자주 묻는 질문
-					</div>
-					
-					<div>
-						1:1 문의하기
-					</div>
-				</div>
-		 -->
+				</div>	
+				
 		
 <!------------------------------------------------------------------------------------------------->					
 			</div>

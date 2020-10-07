@@ -22,6 +22,10 @@
     border-bottom: 2px solid #3E4BA9;
 }
 
+.jetab_con { clear:both; margin-top:5px; border:1px solid #ddd; }
+.jetab_con div { display:block; background:#fff; line-height:100px; text-align:center; }
+
+
 </style>
 </head>
 <body>
@@ -45,9 +49,7 @@
 					<li>1:1 문의하기</li>
 				</ul>
 		
-				<div class="tab_con" id="tab_con">
-					<div>공지사항</div>
-					<div>자주 묻는 질문</div>
+				<div class="jetab_con" id="tab_con">
 					<div>
 						1:1 문의하기
 					</div>
