@@ -9,8 +9,9 @@
 				<li><a href="list.bo" ${category eq 'bo' ? 'class="active"' : ''}>메뉴2</a></li>
 				<li><a href="list.da" ${category eq 'da' ? 'class="active"' : ''}>메뉴3</a></li> --%>
 				<li><a href="#">서비스 소개</a></li>
-				<li><a href="#">공지사항</a></li>
-				<li><a href="#">자주묻는 질문</a></li>
+				<li><a href="list.no" ${category eq 'no' ? 'class="active"' : ''}>공지사항</a></li>
+				<li><a href="list.fa" ${category eq 'fa' ? 'class="active"' : ''}>자주묻는 질문</a></li>
+				<li><a href="list.qn" ${category eq 'qn' ? 'class="active"' : ''}>1:1문의하기</a></li>
 				<li><a href="#">이용약관</a></li>
 				<li><a href="#">개인정보처리방침</a></li>
 				<li><a href="#">위치기반서비스 이용약관</a></li>

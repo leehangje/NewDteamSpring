@@ -606,12 +606,14 @@ public class JEDao {
 				String member_id = resultSet.getString("member_id");
 				String review_scope = resultSet.getString("review_scope");
 				String review_content = resultSet.getString("review_content");
+				String review_num = resultSet.getString("review_num");
 				String member_nickname = resultSet.getString("member_nickname");
 				String md_member_id = resultSet.getString("md_member_id");
 				String md_serial_number = resultSet.getString("md_serial_number");
+				String member_profile = resultSet.getString("member_profile");
 				 
-				reviews.add(new ReviewDto(member_id,  review_scope,  review_content,
-		                member_nickname,  md_member_id, md_serial_number));
+				reviews.add(new ReviewDto(member_id,  review_scope,  review_content, review_num,
+		                member_nickname,  md_member_id, md_serial_number, member_profile));
 				 
 			}
 			System.out.println("reviews size : " + reviews.size());

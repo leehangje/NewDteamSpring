@@ -20,7 +20,7 @@ import com.dteam.app.command.anFavSelectCommand;
 import com.dteam.app.command.anFavSelectListCommand;
 import com.dteam.app.command.anFavUpdateCommand;
 import com.dteam.app.command.anFavUpdateMinusCommand;
-import com.dteam.app.command.anReviewSelectCommand;
+import com.dteam.app.command.AReviewSelectCommand;
 
 @Controller
 public class JEController {
@@ -288,7 +288,7 @@ public class JEController {
 		
 		model.addAttribute("md_serial_number", md_serial_number);
 		
-		command = new anReviewSelectCommand();
+		command = new AReviewSelectCommand();
 		command.execute(model);
 		
 		return "anReviewSelect";
