@@ -391,7 +391,7 @@ public class ANDao {
 		//리뷰등록
 		public int anReviewInsert(String member_id, String review_scope, String review_content
 				, String member_nickname, String md_member_id, String md_serial_number
-				, String member_profile) {
+				, String member_profile, String review_num) {
 			
 			Connection connection = null;
 			PreparedStatement prepareStatement = null;
@@ -401,7 +401,8 @@ public class ANDao {
 
 			try {
 				connection = dataSource.getConnection(); 
-				String sql = "insert into tblreview (member_id, review_scope, review_content, member_nickname, md_member_id, md_serial_number, member_profile) values('" + member_id + "', '" + review_scope + "', '" + review_content + "', '" + member_nickname + "', '" + md_member_id + "', '" + md_serial_number + "', '" + member_profile + "')";
+				String sql = "insert into tblreview (member_id, review_scope, review_content, member_nickname, md_member_id, md_serial_number, member_profile, review_num) "
+						+ "values('" + member_id + "', '" + review_scope + "', '" + review_content + "', '" + member_nickname + "', '" + md_member_id + "', '" + md_serial_number + "', '" + member_profile + "', seq_review.nextval)";
 				prepareStatement = connection.prepareStatement(sql);
 				state = prepareStatement.executeUpdate();
 
@@ -492,10 +493,12 @@ public class ANDao {
 			Connection connection = null;
 			PreparedStatement prepareStatement = null;
 			ResultSet resultSet = null;
+		
 			int state = -1;
 
 			try {
 				connection = dataSource.getConnection(); 
+				// delete from tblmerchandise where md_serial_number ='8';
 				String sql = "delete from tblmerchandise where md_serial_number = '" + md_serial_number + "' ";
 				prepareStatement = connection.prepareStatement(sql);
 				state = prepareStatement.executeUpdate();
@@ -528,4 +531,48 @@ public class ANDao {
 			return state;
 		}
 
+		
+		
+		public int anReviewDelete(String review_num) {
+			
+			Connection connection = null;
+			PreparedStatement prepareStatement = null;
+			ResultSet resultSet = null;
+		
+			int state = -1;
+
+			try {
+				connection = dataSource.getConnection(); 
+				String sql = "delete from tblreview where review_num = '" + review_num + "' ";
+				prepareStatement = connection.prepareStatement(sql);
+				state = prepareStatement.executeUpdate();
+
+				if (state > 0) {
+					System.out.println(state + "삭제성공");
+				} else {
+					System.out.println(state + "삭제실패");
+				}
+
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			} finally {
+				try {
+					if (resultSet != null) {
+						resultSet.close();
+					}
+					if (prepareStatement != null) {
+						prepareStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+
+				}
+			}
+			return state;
+		}
+		
 }

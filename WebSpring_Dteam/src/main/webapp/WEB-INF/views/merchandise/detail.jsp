@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 상세페이지</title>
+<style type="text/css">
+
+</style>
 <script type="text/javascript">
 $(function () {	
 	tab('#tab',0);	
@@ -86,7 +89,7 @@ function tab(e, num){
 					<li>상품문의</li>
 				</ul>
 
-				<div class="tab_con" id="tab_con">
+				<div class="md_tab_con" id="tab_con">
 					<div>상품리뷰</div>
 					<div>상품문의</div>
 				</div>

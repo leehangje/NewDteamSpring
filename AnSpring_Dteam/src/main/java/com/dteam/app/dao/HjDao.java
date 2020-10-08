@@ -126,6 +126,7 @@ public class HjDao {
 					dto.setMember_nickname(rs.getString("member_nickname"));
 					dto.setMd_member_id(rs.getString("md_member_id"));
 					dto.setMd_serial_number(rs.getString("md_serial_number"));
+					dto.setReview_num(rs.getString("review_num"));
 					list.add(dto);
 				}
 			} catch (SQLException e) {

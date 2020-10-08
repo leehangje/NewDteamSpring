@@ -31,8 +31,10 @@ import com.dteam.app.command.ALoginCommand;
 import com.dteam.app.command.AMdInsertCommand;
 import com.dteam.app.command.AMdUpdateCommand;
 import com.dteam.app.command.AMainSelectCommand;
+import com.dteam.app.command.AMdDeleteCommand;
 import com.dteam.app.command.ANickNameCheckCommand;
 import com.dteam.app.command.ARentStatusCommand;
+import com.dteam.app.command.AReviewDeleteCommand;
 import com.dteam.app.command.AReviewInsertCommand;
 import com.dteam.app.command.ASearchSelectCommand;
 import com.dteam.app.command.anFavUpdateCommand;
@@ -193,6 +195,7 @@ public class AController {
 				String md_member_id = (String) request.getParameter("md_member_id");
 				String md_serial_number = (String) request.getParameter("md_serial_number");
 				String member_profile = (String) request.getParameter("member_profile");
+				String review_num = (String) request.getParameter("review_num");
 				
 				System.out.println("member_id : " + member_id);
 				System.out.println("review_scope : " + review_scope);
@@ -201,6 +204,7 @@ public class AController {
 				System.out.println("md_member_id : " + md_member_id);
 				System.out.println("md_serial_number : " + md_serial_number);
 				System.out.println("member_profile : " + member_profile);
+				System.out.println("review_num : " + review_num);
 				
 				model.addAttribute("member_id", member_id);
 				model.addAttribute("review_scope", review_scope);
@@ -209,6 +213,7 @@ public class AController {
 				model.addAttribute("md_member_id", md_member_id);
 				model.addAttribute("md_serial_number", md_serial_number);
 				model.addAttribute("member_profile", member_profile);
+				model.addAttribute("review_num", review_num);
 				
 				command = new AReviewInsertCommand();
 				command.execute(model);
@@ -265,6 +270,7 @@ public class AController {
 			}
 
 			
+			
 			//md 삭제
 			@RequestMapping(value="/anMdDelete", method = {RequestMethod.GET, RequestMethod.POST}  )
 			public String anMdDelete(HttpServletRequest request, Model model){
@@ -280,12 +286,33 @@ public class AController {
 				System.out.println(md_serial_number);
 				model.addAttribute("md_serial_number", md_serial_number);
 						
-				command = new AMdUpdateCommand();
+				command = new AMdDeleteCommand();
 				command.execute(model);
 				
 				return "anMdDelete";
 			}
 	
+			//리뷰 삭제
+			@RequestMapping(value="/anReviewDelete", method = {RequestMethod.GET, RequestMethod.POST}  )
+			public String anReviewDelete(HttpServletRequest request, Model model){
+				System.out.println("anReviewDelete()");
+				
+				try {
+					request.setCharacterEncoding("UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				} 		
+				
+				String review_num = (String) request.getParameter("review_num");
+				System.out.println(review_num);
+				model.addAttribute("review_num", review_num);
+						
+				command = new AReviewDeleteCommand();
+				command.execute(model);
+				
+				return "anReviewDelete";
+			}
+			
 			
 			
 

@@ -10,6 +10,7 @@ public class ReviewDto {
 	String md_serial_number;
 	String member_profile;
 	
+	
 	public ReviewDto() {}
 	
 	public ReviewDto(String member_id, String review_scope, String review_content, String review_num
