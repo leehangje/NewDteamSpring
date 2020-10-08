@@ -434,4 +434,98 @@ public class ANDao {
 			
 		}
 
+		
+		//md 수정
+		public int anMdUpdate(String md_name, String md_category, String md_price,
+				String md_rental_term, String md_deposit, String md_detail_content, String member_id,
+				String md_serial_number) {
+		
+			Connection connection = null;
+			PreparedStatement prepareStatement = null;
+			ResultSet resultSet = null;
+
+			int state = -1;
+
+			try {
+				connection = dataSource.getConnection(); 
+				String sql = "update tblmerchandise "
+						+ "set md_name = '" + md_name + "', "
+						+ "md_category = '" + md_category + "', "
+						+ "md_price = '" + md_price + "'"
+						+ ", md_rental_term = '" + md_rental_term + "'"
+						+ " , md_deposit = '" + md_deposit + "'"
+						+ ", md_detail_content = '" + md_detail_content + "', "
+						+ "member_id = '" + member_id + "' "
+						+ "where md_serial_number = '" + md_serial_number + "' ";
+				prepareStatement = connection.prepareStatement(sql);
+				state = prepareStatement.executeUpdate();
+
+				if (state > 0) {
+					System.out.println(state + "수정성공");
+				} else {
+					System.out.println(state + "수정실패");
+				}
+
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			} finally {
+				try {
+					if (resultSet != null) {
+						resultSet.close();
+					}
+					if (prepareStatement != null) {
+						prepareStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+
+				}
+			}
+			return state;
+		}
+
+		public int anMdDelete(String md_serial_number) {
+			Connection connection = null;
+			PreparedStatement prepareStatement = null;
+			ResultSet resultSet = null;
+			int state = -1;
+
+			try {
+				connection = dataSource.getConnection(); 
+				String sql = "delete from tblmerchandise where md_serial_number = '" + md_serial_number + "' ";
+				prepareStatement = connection.prepareStatement(sql);
+				state = prepareStatement.executeUpdate();
+
+				if (state > 0) {
+					System.out.println(state + "삭제성공");
+				} else {
+					System.out.println(state + "삭제실패");
+				}
+
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			} finally {
+				try {
+					if (resultSet != null) {
+						resultSet.close();
+					}
+					if (prepareStatement != null) {
+						prepareStatement.close();
+					}
+					if (connection != null) {
+						connection.close();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+
+				}
+			}
+			return state;
+		}
+
 }

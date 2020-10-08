@@ -24,8 +24,14 @@ public class HjController {
 		return "anMdpull";
 	}
 	
-	//MemberDto에서 값 가져오는 메소드
+	@RequestMapping("/anMdDetail")
+	public String anMdDetail(String num, Model model) {
+		HjDao hjdao = new HjDao();
+		model.addAttribute("dto", hjdao.anMdDetail(num));
+		return "anMdDetail";
+	}
 	
+	//MemberDto에서 값 가져오는 메소드
 	@RequestMapping("/anChatpull")
 	public String anChatpull (String member_id, Model model) {
 		HjDao hjDao = new HjDao();
@@ -53,8 +59,6 @@ public class HjController {
 		model.addAttribute("list", list);
 		return "anReviewPull";
 	}
-	
-	
 	
 	
 	

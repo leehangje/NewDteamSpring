@@ -29,6 +29,7 @@ import com.dteam.app.command.AIdCheckCommand;
 import com.dteam.app.command.AJoinCommand;
 import com.dteam.app.command.ALoginCommand;
 import com.dteam.app.command.AMdInsertCommand;
+import com.dteam.app.command.AMdUpdateCommand;
 import com.dteam.app.command.AMainSelectCommand;
 import com.dteam.app.command.ANickNameCheckCommand;
 import com.dteam.app.command.ARentStatusCommand;
@@ -215,6 +216,77 @@ public class AController {
 				return "anReviewInsert";
 			}
 			
+			
+			
+			//상품등록
+			@RequestMapping(value="/anMdUpdate", method = {RequestMethod.GET, RequestMethod.POST}  )
+			public String anMdUpdate(HttpServletRequest request, Model model){
+				System.out.println("anMdUpdate()");
+				
+				try {
+					request.setCharacterEncoding("UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				} 		
+				
+				String md_name = (String) request.getParameter("md_name");
+				String md_category = (String) request.getParameter("md_category");
+				String md_price = (String) request.getParameter("md_price");
+				String md_rental_term = (String) request.getParameter("md_rental_term");
+				String md_deposit = (String) request.getParameter("md_deposit");
+				String md_detail_content = (String) request.getParameter("md_detail_content");
+				String member_id = (String) request.getParameter("member_id");
+				String md_serial_number = (String) request.getParameter("md_serial_number");
+				
+				System.out.println(md_name);
+				System.out.println(md_category);
+				System.out.println(md_price);
+				System.out.println(md_rental_term);
+				System.out.println(md_deposit);
+				System.out.println(md_detail_content);
+				System.out.println(member_id);
+				System.out.println(md_serial_number);
+				
+				model.addAttribute("md_name", md_name);
+				model.addAttribute("md_category", md_category);
+				model.addAttribute("md_price", md_price);
+				model.addAttribute("md_rental_term", md_rental_term);
+				model.addAttribute("md_deposit", md_deposit);
+				model.addAttribute("md_detail_content", md_detail_content);
+				model.addAttribute("member_id", member_id);
+				model.addAttribute("md_serial_number", md_serial_number);
+				
+
+						
+				command = new AMdUpdateCommand();
+				command.execute(model);
+				
+				return "anMdUpdate";
+			}
+
+			
+			//md 삭제
+			@RequestMapping(value="/anMdDelete", method = {RequestMethod.GET, RequestMethod.POST}  )
+			public String anMdDelete(HttpServletRequest request, Model model){
+				System.out.println("anMdDelete()");
+				
+				try {
+					request.setCharacterEncoding("UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				} 		
+				
+				String md_serial_number = (String) request.getParameter("md_serial_number");
+				System.out.println(md_serial_number);
+				model.addAttribute("md_serial_number", md_serial_number);
+						
+				command = new AMdUpdateCommand();
+				command.execute(model);
+				
+				return "anMdDelete";
+			}
 	
+			
+			
 
 }
