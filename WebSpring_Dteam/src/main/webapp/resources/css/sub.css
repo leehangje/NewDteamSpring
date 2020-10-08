@@ -47,7 +47,6 @@
  .contents{ padding:30px 0px 30px 0px;}
   
 .comment_box { width: 1060px; height:250px; background-color: #e9e8e8; margin-bottom: 80px;  }     
-.md_content_box { width: 1060px; height:250px; margin-bottom: 80px;  }     
 
 /*마이페이지 */   
 .profile_img { width: 240px; height: 240px; float: left; padding: 70px;}
@@ -55,8 +54,6 @@
 .prifile_text ul li { padding: 20px; }  
 .prifile_text ul li:first-child { padding-top: 0px; }  
 .prifile_text ul li img {vertical-align: text-top;}
-
-
 
 /* 마이페이지 TAB 메뉴 단축키  */
 ul,li { list-style:none; }
@@ -67,17 +64,5 @@ a { text-decoration:none; color:#000; }
 .tab li.on { background-color:#eee; color:#f00; }
 .tab_con { clear:both; margin-top:5px; border:1px solid #ddd; }
 .tab_con div { display:none; height:100px; background:#fff; line-height:100px; text-align:center; }
-
-/*상세페이지 */
-.md_img { width: 500px; height: 500px; float: left; padding: 70px;}
-.md_text { width: 500px; height: 150px; margin-right:30px;  float: right; text-align: left; margin-top:50px;}
-
-.md_tab { border:1px solid #ddd; border-left:none; background:#fff; overflow:hidden; padding-left: 0px; margin-top: 200px;}
-.md_tab li { float:left; width:50%; border-left:1px solid #ddd; text-align:center; box-sizing:border-box; }
-.md_tab li { display:inline-block; padding:20px; cursor:pointer; }
-.md_tab li.on { background-color:#eee; color:#f00; }
-
-
-
 
 
