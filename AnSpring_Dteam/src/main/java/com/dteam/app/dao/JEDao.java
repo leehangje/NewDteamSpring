@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -91,8 +92,7 @@ public class JEDao {
 	
 	
 	// 전체 상품정보 가져오기
-	public ArrayList<MdDto> anMainSelect(String member_addr_in) {
-
+	public ArrayList<MdDto> anMainSelect(String member_addr_in) {	
 		ArrayList<MdDto> mdDtos = new ArrayList<MdDto>();
 		Connection connection = null;
 		PreparedStatement prepareStatement = null;
@@ -100,7 +100,7 @@ public class JEDao {
 
 		try {
 			connection = dataSource.getConnection();
-			String sql = "select md.* from tblmerchandise md where md.member_id in (select m.member_id from tblmember m where m.member_addr = '" + member_addr_in  + "')";
+			String sql = "select md.* from tblmerchandise md where md.member_id in (select m.member_id from tblmember m where m.member_addr like '%" + member_addr_in  + "%')";
 			prepareStatement = connection.prepareStatement(sql);
 			resultSet = prepareStatement.executeQuery();
 
