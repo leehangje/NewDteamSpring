@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"><!--xml을 mapper로 사용하기위해 추가 -->
+<mapper namespace="main.mapper">
+	<select id="list" resultType="main.MainVO"> 
+		select rownum no, c.* from (select * from tblmerchandise order by md_name) c 
+	</select>
+</mapper>
