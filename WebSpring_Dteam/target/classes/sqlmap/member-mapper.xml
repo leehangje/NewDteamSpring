@@ -9,8 +9,27 @@
 		select * from tblmember where member_id=#{id} and member_pw=#{pw}
 	</select>
 	
-	<select id="detail" resultType="member.MemberVO">
+	<!-- 네이버 로그인(DB 저장 OX) -->
+	<select id="naverLogin" resultType="member.MemberVO">
 		select * from tblmember where member_id=#{member_id}
 	</select>
-
+	
+	<select id="join">
+		insert into tblmember(member_id, member_pw, member_nickname, member_tel, member_addr,
+							  member_latitude, member_longitude, member_grade, member_name, 
+							  member_profile, member_loginType, member_token)
+		values ( #{member_id}, #{member_pw}, #{member_nickname}, #{member_tel}, #{member_addr}, 
+				 #{member_latitude}, #{member_longitude}, #{member_grade}, #{member_name},
+				 #{member_profile}, #{member_loginType}, #{member_token} )
+	</select>
+	<select id="naver_join">
+		insert into tblmember(member_id, member_nickname, member_name, member_loginType, member_token)
+		values ( #{member_id}, #{member_nickname}, #{member_name}, #{member_loginType}, #{member_token} )
+	</select>
+	
+	<update id="update_token">
+		update tblmember set member_token = #{member_token}
+		where member_id = #{member_id}
+	</update>
+	
 </mapper>

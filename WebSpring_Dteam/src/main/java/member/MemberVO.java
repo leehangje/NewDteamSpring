@@ -19,6 +19,38 @@ public class MemberVO {
 	private String member_id, member_pw, member_nickname, member_tel, member_addr,
 			member_latitude, member_longitude, member_grade, member_name, 
 			member_profile, member_loginType, member_token;
+	
+	public MemberVO() {}
+
+	// 기본 생성자(모든 멤버변수가 다 들어가 있음)
+	public MemberVO(String member_id, String member_pw, String member_nickname, String member_tel, String member_addr,
+			String member_latitude, String member_longitude, String member_grade, String member_name,
+			String member_profile, String member_loginType, String member_token) {
+		super();
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_nickname = member_nickname;
+		this.member_tel = member_tel;
+		this.member_addr = member_addr;
+		this.member_latitude = member_latitude;
+		this.member_longitude = member_longitude;
+		this.member_grade = member_grade;
+		this.member_name = member_name;
+		this.member_profile = member_profile;
+		this.member_loginType = member_loginType;
+		this.member_token = member_token;
+	}
+	
+	// 소셜 로그인할 때
+	public MemberVO(String member_id, String member_nickname, String member_name, String member_loginType,
+			String member_token) {
+		super();
+		this.member_id = member_id;
+		this.member_nickname = member_nickname;
+		this.member_name = member_name;
+		this.member_loginType = member_loginType;
+		this.member_token = member_token;
+	}
 
 	public String getMember_id() {
 		return member_id;

@@ -20,7 +20,7 @@
 		box-sizing: border-box;
 	}
 	
-	#login_form > li > a {
+	#member_login {
 		display: block; 
 		background-color: #858585; 
 		color: #ffffff; 
@@ -55,6 +55,10 @@
 		color: #ffffff;
 		cursor: pointer;
 	}
+	
+	#kakao_login {
+		height: 60px;
+	}
 </style>
 <script type="text/javascript">
 	function go_login() {
@@ -86,6 +90,25 @@
 			}
 		});
 	} //go_login()
+	
+	function go_kakao_login() {
+		$.ajax({
+			url: "kakao_login",		//Controller
+			data: { userId:$("#userId").val(), userPw:$("#userPw").val()  },
+			success: function(data) {
+				if (data) {
+					alert("카카오 로그인 성공!" + "${login_info.member_id}");
+					//history.go(-1);
+					location.href = "/dteam";
+				} else {
+					alert("아이디나 비밀번호가 일치하지 않습니다!");
+				}
+			},
+			error: function(req, text) {
+				alert(text + ":" + req.status);
+			}
+		});
+	}
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>	
 </head>
@@ -109,13 +132,17 @@
 						<input type="password" id="userPw" onkeypress="if( event.keyCode==13 ){ go_login(); }" placeholder="비밀번호" />
 					</li>
 					<li class="mb40">
-						<a onclick="go_login();">로그인</a>
+						<a id="member_login" onclick="go_login();">로그인</a>
 					</li>
 					<li id="naver_login" class="mb10">
 						 <img src="img/naver_logo.PNG">
-						<div>네이버 로그인</div>
+						<div onclick="javascript:location.href='naver_login'">네이버 로그인</div>
 					</li>
-					<li><img alt="카카오 로그인" src="img/kakao_login_large_wide.png" style="height: 60px;"></li>
+					<li>
+						<a id="kakao_login" href="https://kauth.kakao.com/oauth/authorize?client_id=8f9058216b087187fa01c4f671353a08&redirect_uri=http://www.localhost:8080/dteam/kakao_login&response_type=code">
+							<img alt="카카오 로그인" src="img/kakao_login_large_wide.png" style="height: 60px;" />
+						</a>
+					</li>
 				</ul>
 			</div>
 

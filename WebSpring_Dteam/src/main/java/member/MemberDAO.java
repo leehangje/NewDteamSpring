@@ -12,8 +12,7 @@ public class MemberDAO implements MemberService{
 
 	@Override
 	public boolean member_insert(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+		return sql.insert("member.mapper.join", vo) > 0 ? true : false;
 	}
 
 	@Override
@@ -41,15 +40,17 @@ public class MemberDAO implements MemberService{
 	}
 
 	@Override
-	public MemberVO member_detail(String member_id) {
-		
-		return sql.selectOne("member.mapper.detail", member_id);
+	public MemberVO naver_login(String member_id) {
+		return sql.selectOne("member.mapper.naverLogin", member_id);
 	}
 
-	
+	@Override
+	public boolean naver_insert(MemberVO vo) {
+		return sql.insert("member.mapper.naver_join", vo) > 0 ? true : false;
+	}
 
-
-	
-	
-	
+	@Override
+	public int update_token(MemberVO vo) {
+		return sql.update("member.mapper.update_token", vo);
+	}
 }
