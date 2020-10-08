@@ -8,5 +8,9 @@
 	<select id="login" resultType="member.MemberVO">
 		select * from tblmember where member_id=#{id} and member_pw=#{pw}
 	</select>
+	
+	<select id="detail" resultType="member.MemberVO">
+		select * from tblmember where member_id=#{member_id}
+	</select>
 
 </mapper>

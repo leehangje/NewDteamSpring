@@ -9,4 +9,5 @@ public interface MemberService {
 	boolean member_update(MemberVO vo);		//마이페이지에서 회원정보 수정
 	boolean member_delete(String userid);	//회원탈퇴처리
 	boolean member_id_check(String userid);	//아이디 중복확인
+	MemberVO member_detail(String member_id);
 }

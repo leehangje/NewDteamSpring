@@ -13,7 +13,7 @@
 			<c:if test="${!empty login_info }">
 				<span>${login_info.member_name } [${login_info.member_id }]</span>
 				<a onclick="go_logout()">로그아웃</a>
-				<a href="mypage">마이페이지</a>
+				<a id="mypage" href="mypage?member_id=${login_info.member_id }">마이페이지</a>
 			</c:if>
 			
 			</div>

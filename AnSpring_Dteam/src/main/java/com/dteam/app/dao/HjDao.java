@@ -133,6 +133,37 @@ public class HjDao {
 			}
 			return list;
 		}
-	
+
+		public MdDto anMdDetail(String num) {
+			String sql = "select * from tblmerchandise where md_serial_number = ?";
+			MdDto dto = new MdDto();
+			try {
+				conn = dataSource.getConnection();
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, num);
+				rs = ps.executeQuery();
+				if (rs.next()) {
+					dto.setMd_name(rs.getString("md_name"));
+					dto.setMd_category(rs.getNString("md_category"));
+					dto.setMd_price(rs.getString("md_price"));
+					dto.setMd_rental_term(rs.getString("md_rental_term"));
+					dto.setMd_deposit(rs.getString("md_deposit"));
+					dto.setMd_detail_content(rs.getString("Md_detail_content"));
+					dto.setMd_photo_url(rs.getString("md_photo_url"));
+					dto.setMember_id(rs.getString("member_id"));
+					dto.setMd_fav_count(rs.getString("md_fav_count"));
+					dto.setMd_registration_date(rs.getString("md_registration_date"));
+					dto.setMd_serial_number(rs.getString("md_serial_number"));
+					dto.setMd_rent_status(rs.getString("md_rent_status"));
+					dto.setMd_hits(rs.getString("md_hits"));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return dto;
+		}
+		
+
 	
 }
