@@ -41,13 +41,22 @@ public class MemberVO {
 		this.member_token = member_token;
 	}
 	
-	// 소셜 로그인할 때
+	// 네이버 소셜 로그인할 때
 	public MemberVO(String member_id, String member_nickname, String member_name, String member_loginType,
 			String member_token) {
 		super();
 		this.member_id = member_id;
 		this.member_nickname = member_nickname;
 		this.member_name = member_name;
+		this.member_loginType = member_loginType;
+		this.member_token = member_token;
+	}
+	
+	// 카카오 소셜 로그인할 때
+	public MemberVO(String member_id, String member_nickname, String member_loginType, String member_token) {
+		super();
+		this.member_id = member_id;
+		this.member_nickname = member_nickname;
 		this.member_loginType = member_loginType;
 		this.member_token = member_token;
 	}

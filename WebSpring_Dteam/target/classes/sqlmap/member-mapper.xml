@@ -10,7 +10,7 @@
 	</select>
 	
 	<!-- 네이버 로그인(DB 저장 OX) -->
-	<select id="naverLogin" resultType="member.MemberVO">
+	<select id="socialLogin" resultType="member.MemberVO">
 		select * from tblmember where member_id=#{member_id}
 	</select>
 	
@@ -31,5 +31,10 @@
 		update tblmember set member_token = #{member_token}
 		where member_id = #{member_id}
 	</update>
+	
+	<select id="kakao_join">
+		insert into tblmember(member_id, member_nickname, member_loginType, member_token)
+		values ( #{member_id}, #{member_nickname}, #{member_loginType}, #{member_token} )	
+	</select>
 	
 </mapper>

@@ -6,52 +6,52 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-/* 	table tr td { text-align: left; }
-	table tr td input[name=tel], table tr td input[name=post] { 
-		width: 50px; 
-		text-align: center; 
-	} */
-	
 	#frmJoin {
-		width: 80%;
+		width: 40%;
 		margin: 0 auto;
+	}
+	
+	#frmJoin > p {
+		border: 2px solid black;
+		height: 55px;
+		margin-bottom: 10px;
+	}
+	
+	#frmJoin > p > span {
+		height: 53px;
 		display: block;
-		padding: 6px 12px; 
-		font-family: 'Noto Sans KR', sans-serif; 
-		font-size: 12px; 
-		vertical-align: middle; 
-		line-height: 1.42857143; 
-		color: #555; 
-		background-color: #fff; 
-		background-image: none; 
-		border: 1px solid #ccc; 
-		border-radius: 4px; 
-		-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075); 
-		box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075); 
-		-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s; 
-		-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; 
-		transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; }
+		float: left;
+		padding: 14px 0 0 0;
+		border-right: 2px solid black;
 	}
 	
-	.basic_table th {
-		font-size: 15px;
+	.valid {
+		font-size: 13px;
+		margin-bottom: 15px;
+		color: red;
 	}
 	
-	input {border: none;}
-	
-	input[name=addr] { width: calc(100% - 14px) }
-	/* td를 기준으로 너비 100% 대신 양옆의 7px의 여백을 남겨두고  */
-	
-	.valid, .invalid {
-		font-size:  13px; 
-		font-weight: bold;
+	#frmJoin > p > span > i {
+		width: 50px;
+		font-size: 25px;
 	}
 	
-	.valid { color: green; }
-	.invalid { color: red; }
+	#frmJoin input {
+		width: 368px;
+		height: 50px;
+		box-sizing: border-box;
+		border: none;
+	}
+	
+	.btn-fill-s {
+		color: #ffffff;
+		background-color: #3e4ba9;
+	}
+
 	
 </style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 <section id="content_area">
@@ -68,11 +68,42 @@
 					<p class="w-pct60 right" 
 					   style=" margin: 0 auto; padding-bottom: 5px; font-size: 13px; ">* 은 필수입력항목입니다.</p>
 					<form action="join" method="post" id='frmJoin'>
-						<table class="basic_table" id="signUpForm">
+							<p>
+								<span><i class="far fa-envelope"></i></span>
+								<input type="text" name="id" class="chk" placeholder="아이디(이메일)" />
+								<div class="valid">아이디를 입력하세요(이메일 형식으로 입력해주세요)</div>
+							
+							<p>
+								<span><i class="far fa-user"></i></span>
+								<input type="text" name="name" placeholder="이름" />
+							</p>
+							<p>
+								<span><i class="fas fa-unlock-alt"></i></span>
+								<input type="password" name="pw" class="chk" placeholder="비밀번호" />
+								<div class="valid">비밀번호를 입력하세요(영문대.소문자, 숫자를 모두 포함)</div>
+							<p>
+								<span><i class="fas fa-unlock"></i></span>
+								<input type="password" name="pw_ck" class="chk" placeholder="비밀번호 확인" />
+								<div class="valid">비밀번호를 다시 입력하세요</div>
+							<p>
+								<span><i class="far fa-user-circle"></i></span>
+								<input type="text" name="nickname" placeholder="닉네임" />
+							</p>
+							<p>
+								<span><i class="fas fa-phone-square"></i></span>
+								<input type="text" name="nickname" placeholder="휴대 전화번호" />
+							</p>
+							
+							<p>
+								<span><i class="fas fa-map-marker-alt"></i></span>
+								<input type="text" name="addr" style="width: 292px;" placeholder="위치 찾기 버튼을 눌러주세요" />
+								<a class="btn-fill-s" onclick="search_location()">위치 찾기</a>
+							</p>
+						<!-- <table id="signUpForm">
 							<tr>
-								<th>* 아이디</th>
+								<th><i class="far fa-envelope"></i></th>
 								<td>
-									<input type="text" name="id" class="chk" /><a class="btn-fill-s" id="btn-id">아이디 중복확인</a><br/>
+									<input type="text" name="id" class="chk" /><br/>
 									<div class="valid">아이디를 입력하세요(이메일 형식으로 입력해주세요)</div>
 								</td>
 							</tr>
@@ -101,17 +132,7 @@
 								</td>
 							</tr>
 							<tr>
-								<th>생년월일</th>
-								<td>
-									<input type="text" name="birth" readonly />
-									<span id="delete" style="color:red; position: relative; right: 25px; display: none" >
-										<i class="fas fa-times font-img"></i>
-									</span>
-									<!-- 출처 : https://fontawesome.com/icons/times?style=solid -->
-								</td>
-							</tr>
-							<tr>
-								<th>전화번호</th>
+								<th>핸드폰 번호</th>
 								<td>
 									<input type="text" name="tel" maxlength="3" />
 									 - <input type="text" name="tel" maxlength="4" />
@@ -121,24 +142,23 @@
 							<tr>
 								<th>주소</th>
 								<td>
-									<a class="btn-fill-s" onclick="daum_post()">우편번호 찾기</a>
+									<a class="btn-fill-s" onclick="search_location()">우편번호 찾기</a>
 									<input type="text" name="post" readonly /><br/>
 									<input type="text" name="addr" readonly />
 									<input type="text" name="addr" />
 								</td>
 							</tr>
-						</table>
+						</table> -->					
 					</form>
 					<div class="btnSet">
-		<a class="btn-fill" onclick="go_join()">회원가입</a>
-		<a class="btn-empty" onclick="history.go(-1)">취소</a>
-	</div>
+						<a class="btn-fill" onclick="go_join()">회원가입</a>
+						<a class="btn-empty" onclick="history.go(-1)">취소</a>
+					</div>
 			</div>
-
-		</div>
-	</div>
+		</div> <!-- .content_wrap -->
+	</div> <!-- .container -->
 </section>
-
+	
 	<script type="text/javascript" src="js/join_check.js?v=<%=new java.util.Date().getTime()%>"></script>
 	
 	<!-- datepicker 사용하기 위해 : stylesheet도 설정해야 함(위에 link 태그 참조)  -->
@@ -146,6 +166,10 @@
 	 
 	<!-- 다음 우편번호 api -->
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	<!-- google map을 위한 js -->
+	<script type="text/javascript" 
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsrerDHJrp9Wu09Ij7MUELxCTPiYfxfBI" ></script>
 	
 	<script type="text/javascript">
 		function go_join() {
@@ -183,7 +207,7 @@
 			
 			
 			$("form").submit();
-		}
+		} //go_join()
 
 		function item_check( item ) {
 			var data = join.tag_status( item );
@@ -272,7 +296,29 @@
 			, changeYear: true
 			, maxDate: endDay	
 		});
-		
+
+		function search_location() {
+			navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
+
+			function geo_success(position) { 
+				var latitude = position.coords.latitude;
+				var longitude =  position.coords.longitude;
+				alert("현재 위치는 : " + latitude + ", " + longitude);
+			}
+			
+			function geo_error() { 
+				alert("위치 정보를 사용할 수 없습니다."); 
+			}
+
+			var geo_options = { 
+				enableHighAccuracy: true, // 불리언 
+				maximumAge : 30000, // 천분의 1초 단위 
+				timeout : 27000 // 천분의 1초 단위 
+			};
+
+		} //search_location()
+
+		/*
 		function daum_post() {
 			new daum.Postcode({
 				oncomplete: function(data) {
@@ -287,6 +333,7 @@
 				}
 			}).open();
 		} //daum_post()
+		*/
 	</script>
 </body>
 </html>

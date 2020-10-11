@@ -11,7 +11,7 @@
 				<a href="member">회원가입</a> 
 			</c:if>
 			<c:if test="${!empty login_info }">
-				<span>${login_info.member_name } [${login_info.member_id }]</span>
+				<span>${login_info.member_nickname } [${login_info.member_id }]</span>
 				<a onclick="go_logout()">로그아웃</a>
 				<a id="mypage" href="mypage?member_id=${login_info.member_id }">마이페이지</a>
 			</c:if>
@@ -20,6 +20,7 @@
 		</div>
 	</div>
 </header>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
 <script type="text/javascript">
 	function go_logout() {
 		$.ajax({

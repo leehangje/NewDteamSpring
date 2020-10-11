@@ -50,9 +50,15 @@ public class NaverLoginBO {
     public OAuth2AccessToken getAccessToken(HttpSession session, String code, String state) throws IOException{
  
         /* Callback으로 전달받은 세선검증용 난수값과 세션에 저장되어있는 값이 일치하는지 확인 */
+    	System.out.println("getAccessToken에 들어옴");
         String sessionState = getSession(session);
+        
+        System.out.println("getAccessToken 1 : sessionState = " + sessionState);
+        System.out.println("getAccessToken 1 : state = " + state);
+        
         if(StringUtils.pathEquals(sessionState, state)){
  
+        	System.out.println("getAccessToken 2");
             OAuth20Service oauthService = new ServiceBuilder()
                     .apiKey(CLIENT_ID)
                     .apiSecret(CLIENT_SECRET)
@@ -60,10 +66,13 @@ public class NaverLoginBO {
                     .state(state)
                     .build(NaverLoginApi.instance());
  
+            System.out.println("getAccessToken 3");
             /* Scribe에서 제공하는 AccessToken 획득 기능으로 네아로 Access Token을 획득 */
             OAuth2AccessToken accessToken = oauthService.getAccessToken(code);
+            System.out.println("getAccessToken 4");
             return accessToken;
         }
+        System.out.println("getAccessToken 5");
         return null;
     }
  

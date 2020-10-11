@@ -40,9 +40,9 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public MemberVO naver_login(String member_id) {
+	public MemberVO social_login(String member_id) {
 		
-		return dao.naver_login(member_id);
+		return dao.social_login(member_id);
 	}
 
 	@Override
@@ -53,6 +53,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int update_token(MemberVO vo) {
 		return dao.update_token(vo);
+	}
+
+	@Override
+	public boolean kakao_insert(MemberVO vo) {
+		return dao.kakao_insert(vo);
 	}
 
 }
