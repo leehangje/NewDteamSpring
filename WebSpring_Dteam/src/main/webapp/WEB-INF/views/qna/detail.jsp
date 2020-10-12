@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,44 +56,58 @@
 				<div class="jetab_con" id="tab_con">
 					<div class="qna">
 					<!------------------------------------------------------------------------------------------------->
-						<h3>문의하기 글목록</h3>
-						<!-- <form method="post" action="list.qn"> -->
-						<!-- <input type="hidden" name="curPage" value="1" /> -->
-						<div id="list-top">
-							<a class="btn-fill" href="new.qn">문의하기</a>
-						</div>
-						<!-- </form> -->
-						
-						<table>
-							<tr><th class="w-px60">번호</th>
-								<th>제목</th>
-								<th class="w-px100">작성자</th>
-								<th class="w-px120">작성일자</th>
-							</tr>
-							<c:forEach items="${list }" var="vo">
-							<tr>
-								<td>${vo.id} </td>
-								<td class='left'>
-									<%-- <c:forEach var="i" begin="1" end="${vo.indent }">
-									&nbsp;&nbsp;
-										<c:if test="${i eq vo.indent }">
-											<img src="img/re.gif">
-												${ vo.indent gt 0 ? '<img src="img/re.gif" />' : '' }
-										</c:if>
-									</c:forEach> --%>
-									
-					<!-- !!!!!작성자 또는 관리자만 상세페이지로 들어갈 수 있게 변경해야 함 !!!!!-->
-									<a href='detail.qn?id=${vo.id}'>${vo.title} </a>
-								</td>
-								<td>${vo.writer} </td>
-								<td>${vo.writedate} </td>
-							</tr>
-							</c:forEach>
-						</table>
+					<h3>1:1문의글 상세보기</h3>
 					
-						<%-- <div class="btnSet">
-							<jsp:include page="/WEB-INF/views/include/page.jsp" />
-						</div> --%>
+					<table class="left">
+						<tr><th class="w-px160">제목</th>
+							<td colspan="4">${vo.title }</td>
+						</tr>
+						<tr><th>작성자</th>
+							 <td>${vo.writer }</td>
+							 <th class="w-px120">작성일자</th>
+							 <td class="w-px120" >${vo.writedate }</td>
+						</tr>
+						<tr><th>내용</th>
+							<td colspan="4">${fn:replace(vo.content, crlf, '<br>') }</td>
+						</tr>
+						<tr><th>첨부파일</th>
+							<td colspan="5">${vo.filename}
+							<c:if test="${!empty vo.filename }">
+								<a href="download.qn?id=${vo.id }"><i class="fas fa-download"></i></a>
+							</c:if>
+							</td>
+						</tr>
+					</table>
+					
+					<div class="btnSet">
+						<!-- <a class="btn-fill" href="list.qn">목록으로</a> -->
+						<a class="btn-fill" href="javascript:$('form').submit()">목록으로</a>
+						
+						<!-- 관리자로 로그인한 경우만 수정/삭제가능 -->
+						<%-- <c:if test="${login_info.admin eq 'Y'}">
+							<a class="btn-fill" href="modify.qn?id=${vo.id }">수정</a>
+							<a class="btn-fill" onclick="if( confirm('정말 삭제하시겠습니까?') ){ href='delete.qn?id=${vo.id }' }">삭제</a>
+						</c:if> --%>
+						
+							<a class="btn-fill" href="modify.qn?id=${vo.id }">수정</a>
+							<a class="btn-fill" onclick="if( confirm('정말 삭제하시겠습니까?') ){ href='delete.qn?id=${vo.id }' }">삭제</a>
+						
+						
+						<!-- 관리자로 로그인한 경우만 답변 작성 가능-->
+						<%-- <c:if test="${login_info.admin eq 'Y'}">
+						   <a class="btn-fill" href="reply.qn?id=${vo.id }">답변하기</a>
+						</c:if> --%>
+						
+						   <a class="btn-fill" href="reply.qn?id=${vo.id }">답변하기</a>
+						
+					</div>
+					
+					<form action="list.qn" method="post">
+					<%-- <input type="hidden" name="curPage" value="${page.curPage }"/> 
+					<input type="hidden" name="search" value="${page.search }"/> 
+					<input type="hidden" name="keyword" value="${page.keyword }"/> --%> 
+					</form>
+					
 					<!------------------------------------------------------------------------------------------------->
 					<!-- 탭메뉴 닫는태그 -->
 					</div>
@@ -134,5 +149,6 @@ function tab(e, num){
 }    
 
 </script>
+
 </body>
 </html>
