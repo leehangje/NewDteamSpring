@@ -7,13 +7,24 @@
 <meta charset="UTF-8">
 <title>상품 상세페이지</title>
 <style type="text/css">
-.basic_table{
-	margin-bottom: 50px;
+.md_basic_table {width:50%; border-collapse:collapse; border-style: none;}
+.md_basic_table tr:hover { background-color: #F7F7F7; }
+.md_basic_table tr th:last-child,.basic_table tr td:last-child{ border-right:0}
+.md_basic_table th { font-size:0.85em;  background-color:#f5f5f5; }
+.md_basic_table td { font-size:0.75em;  line-height:150%; text-align:center}
+.md_basic_table td:second-child { font-size:50px;  line-height:150%; text-align:center}
+.md_basic_table td a{ text-decoration:none; color:#454545}
+.md_basic_table .no_border { border-right-style: none; }  
+.md_basic_table .td_center { text-align:center }
+.md_basic_table .td_right { text-align:right }
+.md_basic_table .td_left { text-align:left }
+.md_border_none{ border-right:none;}
+
+.md_img{
+width:50%;
+float: left;
 }
-.md_name{
-	font-size: 150px;
-	font-weight: bold;
-}
+
 
 </style>
 <script type="text/javascript">
@@ -60,34 +71,32 @@ function tab(e, num){
 			</div>
 			<div class="contents">
 				<form action="">
-					<table class="basic_table">
+				
+					<a class="md_img"><img src='${vo.md_photo_url}'></a>
+					<table class="md_basic_table">
 					<colgroup>
 						<col width="50%">
 						<col width="25%">
 						<col width="25%">
 					</colgroup>
-							<tbody class="tbody">
 								<tr>
-									<td rowspan="5"><a><img src='${vo.md_photo_url}'></a>이미지</td>
-									<td class="md_name"><a>${vo.md_name }</a>상품이름</td>
-									<td><a>10</a></td>
+									<td></td>
+									<td class="md_name">${vo.md_name }</td>
 								</tr>
 								<tr>
-									<td><a>${vo.md_price }</a>가격</td>
-									<td>20</td>
+									<td>${vo.md_price }</td>
 								</tr>
 								<tr>
-									<td>좋아요</td>
-									<td>조회수</td>
+									<td>좋아요 수 : ${vo.md_fav_count }</td>
+									<td>조회수 : ${vo.md_hits} </td>
 								</tr>
 								<tr>
-									<td>닉네임</td>
-									<td>동네</td>
+									<td>member_nickname</td>
+									<td>member_addr</td>
 								</tr>
 								<tr>
-									<td colspan="2">상품설명</td>
+									<td colspan="2">${vo.md_detail_content}</td>
 								</tr>
-							</tbody>
 						</table>
 				</form>
 				

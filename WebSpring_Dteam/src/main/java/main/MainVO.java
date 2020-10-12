@@ -3,11 +3,27 @@ package main;
 public class MainVO {
 
 	private String md_name, md_category, md_price, md_rental_term, md_deposit, md_detail_content,
-	 			md_photo_url, md_registration_date, md_serial_number, md_rent_status, member_id;
+	 			md_photo_url, md_registration_date, md_serial_number, md_rent_status, member_id, md_fav_count, md_hits;
 	private int no;
 
 	
 	
+	public String getMd_fav_count() {
+		return md_fav_count;
+	}
+
+	public void setMd_fav_count(String md_fav_count) {
+		this.md_fav_count = md_fav_count;
+	}
+
+	public String getMd_hits() {
+		return md_hits;
+	}
+
+	public void setMd_hits(String md_hits) {
+		this.md_hits = md_hits;
+	}
+
 	public String getMember_id() {
 		return member_id;
 	}

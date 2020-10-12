@@ -14,6 +14,11 @@ public class MainServiceImpl implements MainService{
 	public List<MainVO> main_list() {
 		return dao.main_list();
 	}
+
+	@Override
+	public MainVO main_detail(String md_serial_number) {
+		return dao.main_detail(md_serial_number);
+	}
 	
 	
 	

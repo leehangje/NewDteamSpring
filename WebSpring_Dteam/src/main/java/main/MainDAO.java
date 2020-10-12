@@ -14,6 +14,11 @@ public class MainDAO implements MainService{
 	public List<MainVO> main_list() {
 		return sql.selectList("main.mapper.list");
 	}
+
+	@Override
+	public MainVO main_detail(String md_serial_number) {
+		return sql.selectOne("main.mapper.detail", md_serial_number);
+	}
 	
 	
 	

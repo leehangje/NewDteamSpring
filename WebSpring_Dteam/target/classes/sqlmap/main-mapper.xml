@@ -6,7 +6,9 @@
 	</select>
 	
 	<select id="detail" resultType="main.MainVO">
-		select * from tblmerchandise where md_serial_number = #{md_serial_number , jdbcType=VARCHAR}
+		<!-- select * from tblmerchandise where md_serial_number = #{md_serial_number , jdbcType=VARCHAR} -->
+		select * from tblmerchandise where md_serial_number = #{md_serial_number}
+		
 	</select>
 	
 </mapper>
