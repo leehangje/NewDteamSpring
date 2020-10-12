@@ -41,10 +41,13 @@ public class MemberController {
 		this.naverLoginBO = naverLoginBO;
 	}
 
-	@RequestMapping("/mypage")
-	public String mypage() {
-		return "member/mypage";
-	}
+	// 마이페이지 화면 요청
+		@RequestMapping("/mypage")
+		public String mypage(Model model, String member_id, HttpSession session) {
+			session.setAttribute("header_menu", "mypage");
+			model.addAttribute("vo",service.member_detail(member_id));
+			return "member/mypage";
+		}
 
 	/****************************************
 	 ** 로그인

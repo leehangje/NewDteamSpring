@@ -4,6 +4,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member.mapper">
+
+	<!--  마이페이지  -->
+	<select resultType="member.MemberVO" id="detail">
+		select * from tblmemberwhere member_id = #{member_id} 
+	</select>
 	<!-- 로그인 -->
 	<select id="login" resultType="member.MemberVO">
 		select * from tblmember where member_id=#{id} and member_pw=#{pw}

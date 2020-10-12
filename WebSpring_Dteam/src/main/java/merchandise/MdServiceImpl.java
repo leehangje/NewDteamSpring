@@ -2,17 +2,18 @@ package merchandise;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MdServiceImpl implements MdService{
+	@Autowired private MdDAO dao;
 
 
-	@Override
-	public List<MdVO> md_list() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	@Override 
+	public List<MdVO> md_list(String id) {
+		return dao.md_list(id); 
+		}
 
 	@Override
 	public MdVO md_detail(String md_serial_number) {

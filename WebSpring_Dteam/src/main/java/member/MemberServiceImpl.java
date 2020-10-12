@@ -60,4 +60,9 @@ public class MemberServiceImpl implements MemberService{
 		return dao.kakao_insert(vo);
 	}
 
+	@Override
+	public MemberVO member_detail(String member_id) {
+		
+		return dao.member_detail(member_id);
+	}
 }

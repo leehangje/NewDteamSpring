@@ -13,10 +13,9 @@ public class MdDAO implements MdService{
 	
 	
 
-	@Override
-	public List<MdVO> md_list() {
-		// TODO Auto-generated method stub
-		return null;
+	  @Override 
+	 public List<MdVO> md_list(String id) { 
+		  return sql.selectList("merchandise.mapper.list",id); 
 	}
 
 	@Override
@@ -36,5 +35,7 @@ public class MdDAO implements MdService{
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 }

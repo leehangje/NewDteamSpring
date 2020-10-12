@@ -58,4 +58,10 @@ public class MemberDAO implements MemberService{
 	public boolean kakao_insert(MemberVO vo) {
 		return sql.insert("member.mapper.kakao_join", vo) > 0 ? true : false;
 	}
+
+	@Override
+	public MemberVO member_detail(String member_id) {
+		
+		return sql.selectOne("member.mapper.detail", member_id);
+	}
 }

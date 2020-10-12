@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>대여안대여</title>
+<title>대여안대여</title> 
+<style type="text/css">
+ iframe { height: 500px;}   
+</style>
 </head>
 <body>
 <section id="content_area">
@@ -20,7 +23,7 @@
 				<div class="contents">
 					<div class="profile_box">
 						<div class="profile_img" style="float: left; width: 200px; height: 200px; margin-right: 20px;">
-							<img src="<c:url value='/' />${vo.member_profile}" class="file-img"/></a>
+							 <img src="<c:url value='/' />${vo.member_profile}" class="file-img"/></a> 
 						</div>
 						<div class="user_info" style="float: left; width: 830px;">
 						<table class="t_style03" >
@@ -46,22 +49,16 @@
 						</div>
 					</div>
 					<ul class="tab" id="tab">
-						<li>빌려준 상품 내역</li>
-						<li>빌린 상품 내역</li>
-						<li>찜 목록</li>
-					</ul>
+    <li><a href="list.bo" ${category eq 'bo' ? 'class="active"' : ''} target="lend">등록한 상품 내역</a></li>
+    <li><a href="list.vo" ${category eq 'vo' ? 'class="active"' : ''} target="fav">찜 목록</a></li>
+	
+</ul>
 
-					<div class="tab_con" id="tab_con">
-						<div>
-							<%@ include file="/WEB-INF/views/md/lend_list.jsp"%>
-						</div>
-						<div>
-							<%@ include file="/WEB-INF/views/md/borrow_list.jsp"%>
-						</div>
-						<div>
-							<%@ include file="/WEB-INF/views/md/like_list.jsp"%>
-						</div>
-					</div>
+<div class="tab_con" id="tab_con">
+    <div><iframe src="list.bo" name="lend" width="100%";></iframe></div>	
+    <div><iframe src="list.vo" name="fav" width="100%";></iframe></div>
+ 
+</div>
 				</div>
 			</div>
 	</div>

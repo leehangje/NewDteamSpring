@@ -26,4 +26,18 @@ public class MdController {
 	
 	
 	
+	//내가 등록한 상품화면 요청
+	@RequestMapping("/list.bo")
+	public String list(Model model, HttpSession session) {
+		 MemberVO member = (MemberVO) session.getAttribute("login_info"); 
+		 
+		// session.setAttribute("category", "bo");
+		 String id = member.getMember_id(); 
+		 model.addAttribute("page", service.md_list(id));
+		 
+		return "lend/list";
+	}
+	
+	
+	
 }
