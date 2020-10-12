@@ -40,8 +40,8 @@ public class MemberDAO implements MemberService{
 	}
 
 	@Override
-	public MemberVO naver_login(String member_id) {
-		return sql.selectOne("member.mapper.naverLogin", member_id);
+	public MemberVO social_login(String member_id) {
+		return sql.selectOne("member.mapper.socialLogin", member_id);
 	}
 
 	@Override
@@ -52,5 +52,10 @@ public class MemberDAO implements MemberService{
 	@Override
 	public int update_token(MemberVO vo) {
 		return sql.update("member.mapper.update_token", vo);
+	}
+
+	@Override
+	public boolean kakao_insert(MemberVO vo) {
+		return sql.insert("member.mapper.kakao_join", vo) > 0 ? true : false;
 	}
 }

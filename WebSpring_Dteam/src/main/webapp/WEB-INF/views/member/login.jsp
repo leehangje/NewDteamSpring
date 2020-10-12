@@ -11,6 +11,10 @@
 		margin: 0 auto;
 	}
 	
+	#login_form > li {
+		width: 100%;
+	}
+	
 	#login_form input {
 		width: 100%; 
 		height: 50px;
@@ -26,39 +30,45 @@
 		color: #ffffff; 
 		height: 60px; 
 		line-height: 60px;
-		border-radius: 5px;
 		font-weight: 70;
 		cursor: pointer;
 	}
 	
-	#naver_login {
-		width: 400px;
-		margin: 0 auto;
-		height: 60px; 
+	#login_form > li:last-child {
 		overflow: hidden;
-		background-color: #1EC800; 
+	}
+	
+	#login_form > li:last-child > a {
+		width: 50%;
+		float: left;
+	}
+	
+	#naver_login {
+		display: block;
+		height: 50px; 
+		overflow: hidden;
 		border-radius: 5px;
 	}
 	
 	#naver_login > img {
 		display: block; 
-		float:left; 
-		height: 60px;
+		float: left; 
+		height: 45px;
 		cursor: pointer;
 	}
 	
 	#naver_login > div {
-		line-height: 60px;
+		width: 205px;
+		line-height: 45px;
 		font-weight: 600; 
-		font-size: 20px;
+		font-size: 17px;
 		letter-spacing: -1px; 
 		color: #ffffff;
 		cursor: pointer;
+		border-radius: 5px;
+		background-color: #1EC800; 
 	}
-	
-	#kakao_login {
-		height: 60px;
-	}
+
 </style>
 <script type="text/javascript">
 	function go_login() {
@@ -90,27 +100,65 @@
 			}
 		});
 	} //go_login()
-	
-	function go_kakao_login() {
-		$.ajax({
-			url: "kakao_login",		//Controller
-			data: { userId:$("#userId").val(), userPw:$("#userPw").val()  },
-			success: function(data) {
-				if (data) {
-					alert("카카오 로그인 성공!" + "${login_info.member_id}");
-					//history.go(-1);
-					location.href = "/dteam";
-				} else {
-					alert("아이디나 비밀번호가 일치하지 않습니다!");
-				}
+
+	$(function() {
+		var member_id, member_nickname, member_token;
+		
+		Kakao.init("6e8cea8ed374fbb8c481538c7b83775d");
+		Kakao.isInitialized();
+
+		Kakao.Auth.createLoginButton({
+			container: '#kakao_login',
+			success: function(response) {
+				member_token = Kakao.Auth.getAccessToken();
+				
+				Kakao.API.request({
+					url: '/v2/user/me',
+					success: function(response) {
+						member_id = response.kakao_account.email;
+						member_nickname = response.properties.nickname;
+						
+						console.log("member_id : ", member_id);
+						console.log("member_nickname : ", member_nickname);
+						console.log("member_token : ", member_token);
+
+						$.ajax({
+							url: "kakao_login",		//Controller
+							data: { member_id:member_id, member_nickname:member_nickname, member_token:member_token },
+							success: function(data) {
+								if (data) {
+									alert("카카오 소셜 로그인 성공!" + "${login_info.member_id}");
+									//history.go(-1);
+									location.href = "/dteam";
+									
+								} else {
+									alert("아이디나 비밀번호가 일치하지 않습니다!");
+								}
+							},
+							error: function(req, text) {
+								alert(text + ":" + req.status);
+							}
+						});
+						
+					},
+					fail: function(error) {
+						console.log("request fail", error);
+					}
+				}); //Kakao.API.request()
+				
 			},
-			error: function(req, text) {
-				alert(text + ":" + req.status);
-			}
-		});
-	}
+			fail: function(error) {
+				console.log("fail", error);
+			},
+		}); //Kakao.Auth.createLoginButton()
+
+	});
+	
 </script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>	
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+<!-- 카카오톡 API -->
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>	
 </head>
 <body>
 <section id="content_area">
@@ -134,12 +182,13 @@
 					<li class="mb40">
 						<a id="member_login" onclick="go_login();">로그인</a>
 					</li>
-					<li id="naver_login" class="mb10">
-						 <img src="img/naver_logo.PNG">
-						<div onclick="javascript:location.href='naver_login'">네이버 로그인</div>
-					</li>
-					<li>
-						<a id="kakao_login" href="https://kauth.kakao.com/oauth/authorize?client_id=8f9058216b087187fa01c4f671353a08&redirect_uri=http://www.localhost:8080/dteam/kakao_login&response_type=code">
+					<li class="mb10">
+						<a id="naver_login" href="naver_login">
+							<img src="img/naver_logo.PNG">
+							<div>네이버 로그인</div>
+						</a>
+						<!-- <a id="kakao_login" href="https://kauth.kakao.com/oauth/authorize?client_id=8f9058216b087187fa01c4f671353a08&redirect_uri=http://www.localhost:8080/dteam/kakao_login&response_type=code"> -->
+						<a id="kakao_login">
 							<img alt="카카오 로그인" src="img/kakao_login_large_wide.png" style="height: 60px;" />
 						</a>
 					</li>
