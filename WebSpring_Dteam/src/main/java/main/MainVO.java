@@ -3,7 +3,7 @@ package main;
 public class MainVO {
 
 	private String md_name, md_category, md_price, md_rental_term, md_deposit, md_detail_content,
-	 			md_photo_url, md_registration_date, md_serial_number, md_rent_status, member_id, md_fav_count, md_hits;
+	 			md_photo_url, md_registration_date, md_serial_number, md_rent_status, member_id, md_fav_count, md_hits, mamber_id;
 	private int no;
 
 	

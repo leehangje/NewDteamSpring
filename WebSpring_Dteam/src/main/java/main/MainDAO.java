@@ -11,8 +11,11 @@ public class MainDAO implements MainService{
 	@Autowired private SqlSession sql;
 
 	@Override
-	public List<MainVO> main_list() {
-		return sql.selectList("main.mapper.list");
+	public MainPage main_list(MainPage page) {
+		page.setTotalList( 
+				(Integer)sql.selectOne("main.mapper.total", page) );
+		page.setList( sql.selectList("main.mapper.list", page) );
+		return page;
 	}
 
 	@Override
