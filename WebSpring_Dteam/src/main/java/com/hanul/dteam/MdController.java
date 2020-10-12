@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import common.CommonService;
+import member.MemberVO;
 import merchandise.MdServiceImpl;
 
 @Controller
