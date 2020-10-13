@@ -47,4 +47,16 @@ public class MainController {
 	public String company() {
 		return "company";
 	}
+	
+	// 이용약관 화면 요청
+		@RequestMapping("/service")
+		public String service() {
+			return "terms/service";
+		}
+		
+	// 개인정보처리방침 화면 요청
+			@RequestMapping("/privacy")
+			public String privacy() {
+				return "terms/privacy";
+	}
 }

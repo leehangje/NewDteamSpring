@@ -11,9 +11,9 @@
 		<a href="list.no" ${category eq 'no' ? 'class="active"' : ''}>공지사항</a>
 		<a href="list.fa" ${category eq 'fa' ? 'class="active"' : ''}>자주묻는 질문</a>
 		<a href="list.qn" ${category eq 'qn' ? 'class="active"' : ''}>1:1문의하기</a>
-		<a href="#">이용약관</a>
-		<a href="#">개인정보처리방침</a>
-		<a href="#">위치기반서비스 이용약관</a>
+		<a href="service">이용약관</a>
+		<a href="privacy">개인정보처리방침</a>
+		<!-- <a href="#">위치기반서비스 이용약관</a> -->
 
 		<p class="address mt30">[61945] 광주광역시 서구 경열로 3(한울직업전문학교)       대표전화 062)362-7797</p>
 		<p class="copyright">Copyright(C) 2020 Hanul Project Dteam All Rights Reserved.</p>

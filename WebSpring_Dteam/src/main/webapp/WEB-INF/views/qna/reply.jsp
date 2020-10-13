@@ -35,7 +35,7 @@ table {
 }
 
 table th, table td{
-	border: 1px solid;
+	border: 1px solid #ddd;
 	padding: 5px 10px;
 }
 
