@@ -21,7 +21,7 @@
     color: #333333;
     font-weight: bold;
     font-size: 1.1em;
-    border-bottom: 2px solid #3E4BA9;
+    border-bottom: 3px solid #3E4BA9;
 }
 
 .tab_con div { background:#fff; line-height:100px; text-align:center; }  
@@ -60,7 +60,7 @@
 					
 					<table class="left">
 						<tr><th class="w-px160">제목</th>
-							<td colspan="4">${vo.title }</td>
+							<td colspan="5">${vo.title }</td>
 						</tr>
 						<tr><th>작성자</th>
 							 <td>${vo.writer }</td>
@@ -68,7 +68,7 @@
 							 <td class="w-px120" >${vo.writedate }</td>
 						</tr>
 						<tr><th>내용</th>
-							<td colspan="4">${fn:replace(vo.content, crlf, '<br>') }</td>
+							<td colspan="5">${fn:replace(vo.content, crlf, '<br>') }</td>
 						</tr>
 						<tr><th>첨부파일</th>
 							<td colspan="5">${vo.filename}
@@ -84,21 +84,16 @@
 						<a class="btn-fill" href="javascript:$('form').submit()">목록으로</a>
 						
 						<!-- 관리자로 로그인한 경우만 수정/삭제가능 -->
-						<%-- <c:if test="${login_info.admin eq 'Y'}">
+						<c:if test="${login_info.member_id eq 'admin'}">
 							<a class="btn-fill" href="modify.qn?id=${vo.id }">수정</a>
 							<a class="btn-fill" onclick="if( confirm('정말 삭제하시겠습니까?') ){ href='delete.qn?id=${vo.id }' }">삭제</a>
-						</c:if> --%>
-						
-							<a class="btn-fill" href="modify.qn?id=${vo.id }">수정</a>
-							<a class="btn-fill" onclick="if( confirm('정말 삭제하시겠습니까?') ){ href='delete.qn?id=${vo.id }' }">삭제</a>
+						</c:if>
 						
 						
 						<!-- 관리자로 로그인한 경우만 답변 작성 가능-->
-						<%-- <c:if test="${login_info.admin eq 'Y'}">
+						<c:if test="${login_info.member_id eq 'admin'}">
 						   <a class="btn-fill" href="reply.qn?id=${vo.id }">답변하기</a>
-						</c:if> --%>
-						
-						   <a class="btn-fill" href="reply.qn?id=${vo.id }">답변하기</a>
+						</c:if>
 						
 					</div>
 					

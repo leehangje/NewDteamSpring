@@ -48,7 +48,7 @@ public class CommonService {
 		
 		//업로드해 둘 폴더 지정
 		String upload =  resources + "/upload";
-		//upload/notice/2020/09/18/1234_abc.txt
+		//upload/qna/2020/10/12/1234_abc.txt
 		//폴더 만들기
 		String folder = upload + "/" + category + "/" + new SimpleDateFormat("yyyy/MM/dd").format(new Date());
 		

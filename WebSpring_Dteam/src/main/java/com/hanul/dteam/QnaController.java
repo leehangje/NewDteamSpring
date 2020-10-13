@@ -196,13 +196,13 @@ public class QnaController {
 
 		session.setAttribute("category", "qn");
 
-		//page.setCurPage(curPage);
-		//page.setSearch(search);
-		//page.setKeyword(keyword);
+		page.setCurPage(curPage);
+		page.setSearch(search);
+		page.setKeyword(keyword);
 		
 		//DB에서 문의글 목록을 조회해와 목록화면에 출력한다.
-		model.addAttribute("list", service.qna_list());
-		//model.addAttribute("page", service.qna_list(page));
+		//model.addAttribute("list", service.qna_list());
+		model.addAttribute("page", service.qna_list(page));
 		
 		return "qna/list";
 		

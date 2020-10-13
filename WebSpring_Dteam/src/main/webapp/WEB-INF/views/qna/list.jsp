@@ -20,7 +20,7 @@
     color: #333333;
     font-weight: bold;
     font-size: 1.1em;
-    border-bottom: 2px solid #3E4BA9;
+    border-bottom: 3px solid #3E4BA9;
 }
 
 .tab_con div { background:#fff; line-height:100px; text-align:center; }  
@@ -28,6 +28,9 @@
 .jetab_con { clear:both; margin-top:5px; border:1px solid #ddd; padding: 15px 0;}
 .jetab_con div { display:block; background:#fff; line-height:30px; text-align:center; padding: 0 15px;}
 
+#list-top{overflow: hidden;}
+
+#btn_qna { float: right;}
 
 </style>
 </head>
@@ -56,12 +59,12 @@
 					<div class="qna">
 					<!------------------------------------------------------------------------------------------------->
 						<h3>문의하기 글목록</h3>
-						<!-- <form method="post" action="list.qn"> -->
-						<!-- <input type="hidden" name="curPage" value="1" /> -->
+						<form method="post" action="list.qn">
+						<input type="hidden" name="curPage" value="1" />
 						<div id="list-top">
-							<a class="btn-fill" href="new.qn">문의하기</a>
+							<a class="btn-fill" id="btn_qna" href="new.qn">문의하기</a>
 						</div>
-						<!-- </form> -->
+						</form>
 						
 						<table>
 							<tr><th class="w-px60">번호</th>
@@ -69,30 +72,33 @@
 								<th class="w-px100">작성자</th>
 								<th class="w-px120">작성일자</th>
 							</tr>
-							<c:forEach items="${list }" var="vo">
+							<c:forEach items="${page.list }" var="vo">
 							<tr>
-								<td>${vo.id} </td>
+								<td>${vo.no} </td>
 								<td class='left'>
-									<%-- <c:forEach var="i" begin="1" end="${vo.indent }">
+									<c:forEach var="i" begin="1" end="${vo.indent }">
 									&nbsp;&nbsp;
 										<c:if test="${i eq vo.indent }">
 											<img src="img/re.gif">
-												${ vo.indent gt 0 ? '<img src="img/re.gif" />' : '' }
+												<%-- ${ vo.indent gt 0 ? '<img src="img/re.gif" />' : '' } --%>
 										</c:if>
-									</c:forEach> --%>
+									</c:forEach>
 									
 					<!-- !!!!!작성자 또는 관리자만 상세페이지로 들어갈 수 있게 변경해야 함 !!!!!-->
-									<a href='detail.qn?id=${vo.id}'>${vo.title} </a>
+									<%-- <c:if test="${login_info.member_id eq 'admin' }"> --%>
+										<a href='detail.qn?id=${vo.id}'>${vo.title} </a>
+									<%-- </c:if> --%>
+									
 								</td>
-								<td>${vo.writer} </td>
+								<td>${vo.name} </td>
 								<td>${vo.writedate} </td>
 							</tr>
 							</c:forEach>
 						</table>
 					
-						<%-- <div class="btnSet">
+						<div class="btnSet">
 							<jsp:include page="/WEB-INF/views/include/page.jsp" />
-						</div> --%>
+						</div>
 					<!------------------------------------------------------------------------------------------------->
 					<!-- 탭메뉴 닫는태그 -->
 					</div>

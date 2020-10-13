@@ -27,8 +27,8 @@
 	<constructor-arg name="sqlSessionFactory" ref="factory"/>
 </bean>
 
-<!-- <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"> -->
-<!-- 	<property value="utf-8" name="defaultEncoding"/> -->
-<!-- </bean> -->
+<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+	<property value="utf-8" name="defaultEncoding"/>
+</bean>
 
 </beans>

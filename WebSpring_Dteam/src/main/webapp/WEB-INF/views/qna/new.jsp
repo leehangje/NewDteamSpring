@@ -19,7 +19,7 @@
     color: #333333;
     font-weight: bold;
     font-size: 1.1em;
-    border-bottom: 2px solid #3E4BA9;
+    border-bottom: 3px solid #3E4BA9;
 }
 
 .tab_con div { background:#fff; line-height:100px; text-align:center; }  
@@ -82,12 +82,10 @@
 					</form>
 					
 					<div class="btnSet">
-					<!-- <a class="btn-fill" onclick="if( necessary() ){ $('form').submit() }">저장</a> -->
-					<!-- <a class="btn-fill" href="javascript:$('form').submit();">저장</a> -->
-					<a class="btn-fill" onclick="$('form').submit()">저장</a>
+					<!-- <a class="btn-fill" onclick="if( necessary() ){ console.log( $('[name=title]').val() ); $('form').submit() }">저장</a> -->
+					<a class="btn-fill" onclick="if( necessary() ){ $('form').submit() }">저장</a>
 					<a class="btn-empty" href="list.qn">취소</a>
 					</div>
-					
 					<!------------------------------------------------------------------------------------------------->
 					<!-- 탭메뉴 닫는태그 -->
 					</div>
@@ -130,8 +128,6 @@ function tab(e, num){
         con.eq(i).show();
 	});
 }    
-
 </script>
-
 </body>
 </html>

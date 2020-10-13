@@ -26,22 +26,25 @@
 
 
 	<select id="detail" resultType="qna.QnaVO">
-		select qna.*, (select member_name from tblmember where writer=tblmember.member_id) member_name
+		select qna.*, (select member_name from tblmember where writer=tblmember.member_id) name
 		from qna where id=#{id}
 	</select>
 
 
 
 	<select id="list" resultType="qna.QnaVO">
-		<!-- select n.* from
+		select n.* from
 		(select rownum no, n.*
-			, (select name from tblmember where writer=tblmember.member_id) name from
-		(select * from qna <include refid="search_where" /> order by root, step desc) n
+			, (select member_name from tblmember where writer=member_id) name from
+		(select * from qna order by root, step desc) n
 		order by no desc) n
-		where no between #{beginList} and #{endList} -->
-		select id, writer, title, writedate, filename from qna
+		where no between #{beginList} and #{endList}
 	</select>
 	
+	
+	<select id="total" resultType="integer">
+		select count(*) from qna
+	</select>
 	
 	<insert id="reply">
 		{
