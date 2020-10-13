@@ -58,7 +58,7 @@ table th, table td{
 	padding: 5px 10px;
 }
 
-a { font-weight: bold;}
+table a { font-weight: bold;}
 </style>
 </head>
 <body>
@@ -114,7 +114,7 @@ a { font-weight: bold;}
 									
 										<c:if test="${1 eq vo.indent }">
 											<%-- <c:if test="${login_info.member_id eq 'admin'}"> --%>
-												<a href='detail.qn?id=${vo.id}' style="color: blue;">${vo.title}</a>
+												<a href='detail.qn?id=${vo.id}' style="color: #3043b0;">${vo.title}</a>
 											<%-- </c:if> --%>
 										</c:if>
 										

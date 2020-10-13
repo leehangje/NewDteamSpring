@@ -35,7 +35,7 @@
 .notice .q a {
     display: block;
     text-align: left;
-    background: url(https://happyjung.diskn.com/data/lecture/icon_jquery_faq_20170221_1.png) no-repeat 0 0;
+    background: url(img/notice_icon.png) no-repeat 0 0;
     padding: 0 0 0 35px;
     font-size: 15px;
     color: #2b2b2b;
