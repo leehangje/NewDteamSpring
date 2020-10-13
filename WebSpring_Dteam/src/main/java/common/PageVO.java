@@ -21,9 +21,18 @@ public class PageVO {
 	
 	private String search, keyword; //검색조건, 검색어
 	private String viewType = "list";
+	private String category;
 
 	
 	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	public int getPageList() {
 		return pageList;
 	}

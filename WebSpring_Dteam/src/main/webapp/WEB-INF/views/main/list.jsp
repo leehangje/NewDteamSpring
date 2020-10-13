@@ -53,58 +53,55 @@ table tr td { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 	width: 200px;
 	margin: 0 auto;
 }
+.input {
+  background-position:top right; 
+  background-repeat:no-repeat;
+  background-color: white;
+  background-size: 57px;
+  text-indent: 150px;
+  border-radius: 10px;
+ 	width: 60px; height: 60px;
+ }
+ .div{
+ 	overflow: hidden;
+ 	width: 680px;
+ 	margin: 0 auto;
+ 	margin-top: 20px;
+ 	margin-bottom: 40px;
 
+ }
+.divsub{
+	width:60px; float: left; margin-left: 6px;
+}
+.a{
+	font-size: 11px;
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
 <div id="contents">
 <h3>최신상품</h3>
 </div>
-<div id='list-top'>
 <form method='post' action='list.ma'>
-<input type='hidden' name='curPage' value='1' />
-<input type='hidden' name='id' />
-<div id="content">
-	<ul class="con">
-		<li>
-			<select name='search' class='w-px80'>
-			<option value='all' ${page.search eq 'all' ? 'selected' : ''}>전체</option>
-			<option value='title' ${page.search eq 'title' ? 'selected' : ''}>제목</option>
-			<option value='content' ${page.search eq 'content' ? 'selected' : ''}>내용</option>
-			<option value='writer' ${page.search eq 'writer' ? 'selected' : ''}>작성자</option>
-			</select>
-		</li>
-		<li><input type='text' name='keyword' value='${page.keyword}' class='w-px300' /></li>
-		<li><a class='btn-fill'>검색</a></li>
-	</ul>
-	<ul class="con">
-		<li>
-			<select name='pageList' class='w-px80' 
-				onchange='$("[name=curPage]").val(1); $("form").submit()'>
-			<option value='10' ${page.pageList eq 10 ? 'selected' : ''}>10개씩</option>
-			<option value='15' ${page.pageList eq 15 ? 'selected' : ''}>15개씩</option>
-			<option value='20' ${page.pageList eq 20 ? 'selected' : ''}>20개씩</option>
-			</select>
-		</li>
-		<li>
-
-		</li>
-	<!-- 로그인 되어 있는 경우 글쓰기 가능 -->
-	<c:if test='${not empty login_info}'>
-		<li>
-			<a href='new.bo' class='btn-fill'>글쓰기</a>
-		</li>
-		</c:if>
-	</ul>
-	
-</div>
+	<div class="div">
+		<div class="divsub"><input type="submit" name="category" value="가전" class="input" style=" background-image : url('img/camera.png'); "><br/><a class="a">디지털/가전</a></div>
+		<div class="divsub"><input type="submit" name="category" value="아동" class="input" style="background-image : url('img/baby.png');"><br/><a class="a">유/아동</a></div>
+		<div class="divsub"><input type="submit" name="category" value="생활" class="input" style="background-image : url('img/cup.png');"><br/><a class="a">생활 용품</a></div>
+		<div class="divsub"><input type="submit" name="category" value="스포츠" class="input" style="background-image : url('img/cycle.png');"><br/><a class="a">스포츠/레져</a></div>
+		<div class="divsub"><input type="submit" name="category" value="의류" class="input" style="background-image : url('img/closet.png');"><br/><a class="a">의류/잡화</a></div>
+		<div class="divsub"><input type="submit" name="category" value="게임" class="input" style="background-image : url('img/game.png');"><br/><a class="a">게임/취미</a></div>
+		<div class="divsub"><input type="submit" name="category" value="뷰티" class="input" style="background-image : url('img/beauty.png');"><br/><a class="a">뷰티/미용</a></div>
+		<div class="divsub"><input type="submit" name="category" value="동물" class="input" style="background-image : url('img/pet.png');"><br/><a class="a">애견용품</a></div>
+		<div class="divsub"><input type="submit" name="category" value="기타" class="input" style="background-image : url('img/etc.png');"><br/><a class="a">기타 물품</a></div>
+		<div class="divsub"><input type="submit" name="category" value="무료" class="input" style="background-image : url('img/free.png');"><br/><a class="a">무료 나눔</a></div>
+	</div>
 </form>
-</div>
 
 <div id='data-list'>
 <ul class='grid' style='padding:0; margin: 0 auto; width: 1010px; border: 1px solid black; background-color: white; border-radius: 20px;'>
 <c:forEach items="${page.list}" var="vo">
-	<li  class='mom' style="height: 270px; margin-top: 20px;"><div><a href='javascript:go_detail(${vo.member_id})'>
+	<li  class='mom' style="height: 270px; margin-top: 20px;"><div><a href='detail.ma?md_serial_number=${vo.md_serial_number }'>
 		<img src='${vo.md_photo_url}' onerror="this.src='img/pro_img.png'" style='width: 150px; height: 200px; border-radius: 10px; background-color: gray;'></a></div>
 		<div>${vo.md_name}</div>
 		<div>${vo.md_price}
@@ -118,11 +115,6 @@ table tr td { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 </div>
 </div>
 <script type="text/javascript">
-function go_detail(member_id){
-	$('[name=id]').val(member_id);
-	$('form').attr('action', 'detail.ma');
-	$('form').submit();
-}
 $(function(){
 	$('#data-list ul').css('height', 
 		( ($('.grid li').length%5 > 0 ? 1 : 0) + Math.floor($('.grid li').length/5)  )*$('.grid li').outerHeight(true)-20  

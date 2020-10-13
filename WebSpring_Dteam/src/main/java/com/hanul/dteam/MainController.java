@@ -20,17 +20,19 @@ public class MainController {
 	//메인 목록화면 요청
 	@RequestMapping("/list.ma")
 	public String list(Model model, HttpSession session
-			, String search, String keyword
+			, String keyword, String category
 			, @RequestParam(defaultValue = "list") String viewType 
 			, @RequestParam(defaultValue = "10") int pageList
 			, @RequestParam(defaultValue = "1") int curPage) {
 		
 		//DB에서 방명록 정보를 조회해와 목록화면에 출력
 		page.setCurPage(curPage);
-		page.setSearch(search);
 		page.setKeyword(keyword);
 		page.setPageList(pageList);
 		page.setViewType(viewType);
+		page.setCategory(category);
+		System.out.println("keyword = " + keyword);
+		System.out.println("categoty = " + category);
 		model.addAttribute("page", service.main_list(page));
 		return "main/list";
 	}
