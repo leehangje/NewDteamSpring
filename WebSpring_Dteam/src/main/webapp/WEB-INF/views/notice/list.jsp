@@ -20,7 +20,7 @@
     color: #333333;
     font-weight: bold;
     font-size: 1.1em;
-    border-bottom: 3px solid #3E4BA9;
+    border-bottom: 2px solid #3E4BA9;
 }
 
 .jetab_con { clear:both; margin-top:5px; border:1px solid #ddd; }
