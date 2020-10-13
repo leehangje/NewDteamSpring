@@ -6,7 +6,7 @@ body{
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-table {
+/* table {
 	width: 100%; 
 	margin: 0 auto;
 	border: 1px solid;
@@ -16,7 +16,7 @@ table {
 table th, table td{
 	border: 1px solid;
 	padding: 5px 10px;
-}
+} */
 
 input{
 	height: 22px;

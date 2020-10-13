@@ -40,4 +40,11 @@ public class MainController {
 		model.addAttribute("vo", service.main_detail(md_serial_number));
 		return "main/detail";
 	}
+	
+	
+	// 회사 소개 화면 요청
+	@RequestMapping("/company")
+	public String company() {
+		return "company";
+	}
 }

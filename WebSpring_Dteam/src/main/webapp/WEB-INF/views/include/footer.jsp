@@ -7,7 +7,7 @@
 <footer id="footer">
 	<div class="container">
 	
-		<a href="#" class="no_margin">회사소개</a>
+		<a href="company" class="no_margin">회사소개</a>
 		<a href="list.no" ${category eq 'no' ? 'class="active"' : ''}>공지사항</a>
 		<a href="list.fa" ${category eq 'fa' ? 'class="active"' : ''}>자주묻는 질문</a>
 		<a href="list.qn" ${category eq 'qn' ? 'class="active"' : ''}>1:1문의하기</a>
