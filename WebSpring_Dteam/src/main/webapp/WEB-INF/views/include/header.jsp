@@ -12,7 +12,7 @@
 					<div id="content">
 						<ul class="con">
 							<li><input type='text' name='keyword'
-								value='${page.keyword}' class='w-px300' /></li>
+								value='${page.keyword}' class='w-px300' placeholder="동네이름, 물품명 등을 검색해보세요!"/></li>
 						</ul>
 					</div>
 					<div class="member_menu">

@@ -7,15 +7,6 @@
 <title>main/list</title>
 <style type="text/css">
 
-ul { list-style:none; }
-#list-top { padding:20px 10%;} 
-#list-top div { width:100%; height:32px; }
-#list-top div ul { margin:0; display:flex; padding:0  }
-#list-top div ul:first-child { float:left; }
-#list-top div ul:last-child { float:right; }
-#list-top div ul li * { vertical-align:middle; } 
-#list-top div ul li:not(:first-child) { margin-left:2px; } 
-
 a.btn-fill {
 	background-color: #3367d6;
 	color: #fff;
@@ -36,13 +27,8 @@ a.btn-fill-s, a.btn-empty-s {
 a.btn-fill-s { background-color:#b1cdfa; }
 a.btn-empty-s { background-color:#fff; }
 
-.grid li div span { float:right; }
-/* 제목이 지나치게 길어도 여러줄로 보이지 않게 말줄임처리 */
-table { table-layout:fixed; }
-table tr td { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-
 .grid li div:nth-child(1) {
-	overflow:hidden;  display:-webkit-box;
+	 display:-webkit-box;
 	-webkit-line-clamp:3;  /*보이게할 줄 수*/
 	-webkit-box-orient:vertical; 
 	word-wrap: break-word;  /* 영문인 경우 */
@@ -77,12 +63,13 @@ table tr td { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 	font-size: 11px;
 	font-weight: bold;
 }
+.img{
+	width: 150px; height: 170px; border-radius: 10px; border: 1px solid black; background-color: gray;
+}
 </style>
 </head>
 <body>
-<div id="contents">
-<h3>최신상품</h3>
-</div>
+<h3 style=" margin-top: 10px;">최신상품</h3>
 <form method='post' action='list.ma'>
 	<div class="div">
 		<div class="divsub"><input type="submit" name="category" value="가전" class="input" style=" background-image : url('img/camera.png'); "><br/><a class="a">디지털/가전</a></div>
@@ -98,19 +85,18 @@ table tr td { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 	</div>
 </form>
 
-<div id='data-list'>
-<ul class='grid' style='padding:0; margin: 0 auto; width: 1010px; border: 1px solid black; background-color: white; border-radius: 20px;'>
+<div id='data-list' style=" width: 1000px; margin: 0 auto; margin-bottom: 20px; ">
+<ul class='grid' style="width:860px; margin:0 auto; margin-bottom: 50px; border: 1px solid gray; border-radius: 10px; ">
 <c:forEach items="${page.list}" var="vo">
-	<li  class='mom' style="height: 270px; margin-top: 20px;"><div><a href='detail.ma?md_serial_number=${vo.md_serial_number }'>
-		<img src='${vo.md_photo_url}' onerror="this.src='img/pro_img.png'" style='width: 150px; height: 200px; border-radius: 10px; background-color: gray;'></a></div>
-		<div>${vo.md_name}</div>
-		<div>${vo.md_price}
-			<%-- <span>${empty vo.filename ? '' : '<img class="file-img" src="img/attach.png"/>'}</span> --%>
-		</div>
+	<li  class='gride_li' style=" border: 0px; width: 150px; height: 220px;  margin: 30px 10px">
+		<a href='detail.ma?md_serial_number=${vo.md_serial_number }'>
+		<img src='${vo.md_photo_url}' onerror="this.src='img/pro_img.png'" class="img"></a>
+		<div style="padding:0px;">${vo.md_name}</div>
+		<div style="padding:0px;">${vo.md_price}원</div>
 	</li>
 </c:forEach>
 </ul>
-<div style="width:100px; margin: 0 auto;">
+<div style="width:100px; margin: 0 auto; padding-bottom: 20px;">
 <a href='javascript:increases(${page.curPage})'>더보기</a>
 </div>
 </div>
@@ -121,15 +107,6 @@ $(function(){
 			);	
 	
 });
-function increases(curPage){
-	
-	i = curPage;	
-	while (i < 5) { // 0, 1, 2가 출력됩니다.
-		  alert( i );
-		  i++;
-	}
-}
-
 </script>
 </body>
 </html>
