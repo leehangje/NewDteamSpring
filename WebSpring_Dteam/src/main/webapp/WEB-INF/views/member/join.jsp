@@ -6,18 +6,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
 	#frmJoin {
 		width: 40%;
-		margin: 0 auto;
+		margin: 0 auto 30px;
 	}
 	
-	#frmJoin > p {
+	#frmJoin > div {
 		border: 2px solid black;
 		height: 55px;
-		margin-bottom: 10px;
+		margin-bottom: 20px;
 	}
 	
-	#frmJoin > p > span {
+	#frmJoin > div > span {
 		height: 53px;
 		display: block;
 		float: left;
@@ -25,13 +26,15 @@
 		border-right: 2px solid black;
 	}
 	
-	.valid {
-		font-size: 13px;
-		margin-bottom: 15px;
-		color: red;
+	.valid, .invalid {
+ 		font-size: 13px;
+ 		height: 10px;
+ 		line-height: 25px;
+ 		text-align: left;
 	}
 	
-	#frmJoin > p > span > i {
+	
+	#frmJoin > div > span > i {
 		width: 50px;
 		font-size: 25px;
 	}
@@ -43,9 +46,50 @@
 		border: none;
 	}
 	
-	.btn-fill-s {
+	.common { display: none; }
+	.valid { color: green; display: block; }
+	.invalid { color: red; display: block;}
+	
+	.btn-check {
 		color: #ffffff;
-		background-color: #3e4ba9;
+		background-color: #111111;
+		padding: 10px 5px 14px 5px;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	
+/* 	#map { 
+		position:absolute; 
+		width:700px; height:500px;
+		left:50%; top:65%;	
+		transform:translate(-50%, -50%);
+		border:2px solid #666;		
+		display:none;      
+	 }
+	 */
+	 .btnSet {
+	 	width: 40%;
+	 	margin: 0 auto;
+	 	overflow: hidden;
+	 }
+	 
+	 #btn-submit, #btn-reset {
+	 	width: 49%;
+		display: block; 
+		height: 50px; 
+		line-height: 50px;
+		font-weight: 70;
+		cursor: pointer;
+		float: left;
+	 }
+	 
+	#btn-submit { background-color: #000000; color: #ffffff; font-weight: 900; margin-left: 3px; }
+	
+	#btn-reset { 
+		background-color: #ffffff; 
+		color: #000000; 
+		font-weight: 600;
+		border: 2px solid #000000;
 	}
 
 	
@@ -65,101 +109,59 @@
 				</ul>
 			</div>
 			<div class="contents">
-					<p class="w-pct60 right" 
-					   style=" margin: 0 auto; padding-bottom: 5px; font-size: 13px; ">* 은 필수입력항목입니다.</p>
-					<form action="join" method="post" id='frmJoin'>
-							<p>
+				<form action="join" method="post" id='frmJoin'>
+							<div>
 								<span><i class="far fa-envelope"></i></span>
-								<input type="text" name="id" class="chk" placeholder="아이디(이메일)" />
-								<div class="valid">아이디를 입력하세요(이메일 형식으로 입력해주세요)</div>
-							
-							<p>
+								<input type="text" name="id" class="chk" placeholder="아이디(이메일)" style="width: 280px;" />
+								<a class="btn-check" id="btn-id">중복 확인</a>
+								<div class="common">아이디를 입력하세요(이메일 형식으로 입력해주세요)</div>
+							</div>	
+							<div>
 								<span><i class="far fa-user"></i></span>
 								<input type="text" name="name" placeholder="이름" />
-							</p>
-							<p>
+							</div>
+							<div>
 								<span><i class="fas fa-unlock-alt"></i></span>
 								<input type="password" name="pw" class="chk" placeholder="비밀번호" />
-								<div class="valid">비밀번호를 입력하세요(영문대.소문자, 숫자를 모두 포함)</div>
-							<p>
+								<div class="common">비밀번호를 입력하세요(영문대.소문자, 숫자를 모두 포함)</div>
+							</div>	
+							<div>
 								<span><i class="fas fa-unlock"></i></span>
 								<input type="password" name="pw_ck" class="chk" placeholder="비밀번호 확인" />
-								<div class="valid">비밀번호를 다시 입력하세요</div>
-							<p>
+								<div class="common">비밀번호를 다시 입력하세요</div>
+							</div>	
+							<div>
 								<span><i class="far fa-user-circle"></i></span>
-								<input type="text" name="nickname" placeholder="닉네임" />
-							</p>
-							<p>
+								<input type="text" name="nickname" class="chk" placeholder="닉네임" style="width: 280px;" />
+								<a class="btn-check" id="btn-nickname">중복 확인</a>
+								<div class="common">닉네임을 입력하세요</div>
+							</div>
+							<div>
 								<span><i class="fas fa-phone-square"></i></span>
-								<input type="text" name="nickname" placeholder="휴대 전화번호" />
-							</p>
+								<input type="text" name="tel" class="chk" placeholder="휴대 전화번호(- 없이 숫자만 입력하세요)" />
+								<div class="common"></div>
+							</div>
 							
-							<p>
+							<!-- <div>
 								<span><i class="fas fa-map-marker-alt"></i></span>
-								<input type="text" name="addr" style="width: 292px;" placeholder="위치 찾기 버튼을 눌러주세요" />
+								<input type="text" name="addr" class="chk" style="width: 280px;" placeholder="위치 찾기 버튼을 눌러주세요" readonly="readonly" />
 								<a class="btn-fill-s" onclick="search_location()">위치 찾기</a>
-							</p>
-						<!-- <table id="signUpForm">
-							<tr>
-								<th><i class="far fa-envelope"></i></th>
-								<td>
-									<input type="text" name="id" class="chk" /><br/>
-									<div class="valid">아이디를 입력하세요(이메일 형식으로 입력해주세요)</div>
-								</td>
-							</tr>
-							<tr>
-								<th>* 비밀번호</th>
-								<td>
-									<input type="password" name="pw" class="chk" />
-									<div class="valid">비밀번호를 입력하세요(영문대.소문자, 숫자를 모두 포함)</div>
-								</td>
-							</tr>
-							<tr>
-								<th>* 비밀번호 확인</th>
-								<td>
-									<input type="password" name="pw_ck" class="chk" />
-									<div class="valid">비밀번호를 다시 입력하세요</div>
-								</td>
-							</tr>
-							<tr>
-								<th class="w-px160">* 성명</th>
-								<td><input type="text" name="name" /></td>
-							</tr>
-							<tr>
-								<th>* 닉네임</th>
-								<td>
-									<input type="text" name="nickname" />
-								</td>
-							</tr>
-							<tr>
-								<th>핸드폰 번호</th>
-								<td>
-									<input type="text" name="tel" maxlength="3" />
-									 - <input type="text" name="tel" maxlength="4" />
-									 - <input type="text" name="tel" maxlength="4" />
-								</td>
-							</tr>
-							<tr>
-								<th>주소</th>
-								<td>
-									<a class="btn-fill-s" onclick="search_location()">우편번호 찾기</a>
-									<input type="text" name="post" readonly /><br/>
-									<input type="text" name="addr" readonly />
-									<input type="text" name="addr" />
-								</td>
-							</tr>
-						</table> -->					
-					</form>
-					<div class="btnSet">
-						<a class="btn-fill" onclick="go_join()">회원가입</a>
-						<a class="btn-empty" onclick="history.go(-1)">취소</a>
+								<a id="test">위치 찾기</a>
+							</div> -->
+						
+				</form>
+				<div class="btnSet">
+						<a id="btn-submit" onclick="go_join()">회원가입</a>
+						<a id="btn-reset" onclick="history.go(-1)">취소</a>
 					</div>
+				<div id="popup-background" onclick="$('#popup-background, #map').css('display', 'none');"></div>
+				<div id="map"></div>
 			</div>
 		</div> <!-- .content_wrap -->
 	</div> <!-- .container -->
 </section>
 	
-	<script type="text/javascript" src="js/join_check.js?v=<%=new java.util.Date().getTime()%>"></script>
+	<script type="text/javascript" src="js/join_check.js"></script>
 	
 	<!-- datepicker 사용하기 위해 : stylesheet도 설정해야 함(위에 link 태그 참조)  -->
 	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -173,15 +175,6 @@
 	
 	<script type="text/javascript">
 		function go_join() {
-			
-			if( $("[name=name]").val() == "" ) {
-				alert("성명을 입력하세요");
-				$("[name=name]").focus();
-				return;
-			}
-
-			//invalid인 경우 회원가입되지 않도록 한다.
-			
 			//아이디
 			//중복확인을 한 경우
 			if( $("[name=id]").hasClass("checked") ) {
@@ -201,10 +194,38 @@
 				}
 			}
 			
+			if( $("[name=name]").val() == "" ) {
+				alert("성명을 입력하세요");
+				$("[name=name]").focus();
+				return;
+			}
+
+			//invalid인 경우 회원가입되지 않도록 한다.
+			
+			
 			if( !item_check( $("[name=pw]") ) ) 		return;		//비밀번호
 			if( !item_check( $("[name=pw_ck]") ) ) 		return;		//비밀번호 확인
-			if( !item_check( $("[name=email]") ) ) 	return;		//이메일
-			
+
+			//닉네임
+			//중복확인을 한 경우
+			if( $("[name=nickname]").hasClass("checked") ) {
+				//이미 사용중인 아이디인 경우 회원가입 불가
+				if( $("[name=nickname]").siblings("div").hasClass("invalid") ) {
+					alert("회원가입 불가!\n" + join.usernickname.unUsable.desc );
+					$("[name=nickname]").focus();
+					return;
+				}
+			} else {
+				//중복확인 하지 않은 경우
+				if( !item_check( $("[name=nickname]") ) ) 	return;	
+				else {
+					alert("회원가입 불가!\n" + join.usernickname.valid.desc );
+					$("[name=nickname]").focus();
+					return;
+				}
+			}
+
+			if( !item_check( $("[name=tel]") ) ) 	return;		//핸드폰 번호			
 			
 			$("form").submit();
 		} //go_join()
@@ -219,12 +240,27 @@
 				} 
 				else return true;
 			}
-		}
+		} //item_check()
 	
 		$("#btn-id").on("click", function() {
 			userid_check();
 		});
 
+		$("#btn-nickname").on("click", function() {
+			usernickname_check();
+		});
+
+		$("#test").on("click", function() {
+			var reg = /(01[016789])([1-9]{1}[0-9]{2,3})([0-9]{4})$/
+			var test1 = "010-1234-5678";
+			var test2 = "01012345678";
+
+			console.log("- 들어간 전화번호 : " + reg.test(test1));	
+			console.log("- 안들어간 전화번호 : " + reg.test(test2));	
+
+		});
+
+		// 아이디 중복확인
 		function userid_check() {			
 			//올바른 아이디인 경우만 중복확인 필요
 			var $userid = $("[name=id]");
@@ -249,15 +285,48 @@
 				}			
 			});	
 		} //userid_check()
-	
+		
+		// 닉네임 중복확인
+		function usernickname_check() {
+			//올바른 닉네임 경우만 중복확인 필요
+			var $usernickname = $("[name=nickname]");
+			if( $usernickname.hasClass("checked") ) return;	//이미 중복확인을 한 경우, 함수를 끝냄
+			var data = join.tag_status( $usernickname );
+			if( data.code != "valid" ) { 
+				alert(data.desc);
+				$usernickname.focus();
+				return;
+			}
+
+			$.ajax({
+				url: "nickname_check",
+				data: { nickname: $usernickname.val() },
+				success: function( data ) {
+					data = join.usernickname_usable( data );
+					display_status( $usernickname.siblings("div"), data);	
+					$usernickname.addClass("checked");	//이미 중복확인을 한 경우
+				},
+				error: function(req, text) {
+					alert(text + ":" + req.status);
+				}			
+			});
+
+		} //usernickname_check()
+		
 		$(".chk").on("keyup", function() {
 			//아이디에 대해 입력 데이터를 변경시 다시 중복확인할 수 있도록 한다
 			if( $(this).attr("name") == "id" ) {
 				if( event.keyCode == 13 ) userid_check();
 				else {
 					$(this).removeClass("checked");
-					validate( $(this) )
+					validate( $(this) );
 				}	
+			} else if( $(this).attr("name") == "nickname") {
+				if( event.keyCode == 13 ) usernickname_check();
+				else {
+					$(this).removeClass("checked");
+					validate( $(this) );
+				}
 			} else	validate( $(this) );
 		});
 
@@ -271,35 +340,89 @@
 			div.removeClass();
 			div.addClass( data.code );
 		}
-	
-		var today = new Date();
-		//만 13세 날짜까지만 선택하 수 있도록 제한
 		
-		var endDay = new Date( today.getFullYear()-13, today.getMonth(), today.getDate()-1 );
-
-		$("[name=birth]").change(function() {
-			$("#delete").css("display", "inline-block");
-		});
-
-		$("#delete").click(function() {
-			$("[name=birth]").val("");
-			$("#delete").css("display", "none");
-		});
-	
-		$("[name=birth]").datepicker({
-			showMonthAfterYear: true
-			, dateFormat: "yy-mm-dd"
-			, dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"]
-			, monthNamesShort: ["1월", "2월", "3월", "4월", "5월", "6월", 
-								"7월", "8월", "9월", "10월", "11월", "12월"]
-			, changeMonth: true
-			, changeYear: true
-			, maxDate: endDay	
-		});
-
 		function search_location() {
-			navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
+			$('#popup-background, #map').css('display', 'block');
+			
+			var nav = null;
+			var map;
+			var marker;
+			/* 현재 위치(위도/경도)를 받아오기 위한 부분 */
+			$(function() {
+				if (nav == null) {
+					nav = window.navigator;
+				}
+				if (nav != null) {
+					var geoloc = nav.geolocation;
+					if (geoloc != null) {
+						/* Callback 성공 시, successCallback() 호출 */
+						geoloc.getCurrentPosition(successCallback);
+					} else {
+						alert("geolocation not supported");
+					}
+				} else {
+					alert("Navigator not found");
+				}
+			});
 
+			function successCallback(position) {
+				/* 위도 */ var latitude = position.coords.latitude;
+				/* 경도 */ var longitude = position.coords.longitude; 
+				
+				/* Google Map으로 위도와 경도 초기화 */
+				initialize(latitude, longitude);
+			}
+
+			function initialize(latitude, longitude) {
+				/* 현재 위치의 위도와 경도 정보를 currentLocatioon 에 초기화 */
+				var currentLocation = new google.maps.LatLng(latitude, longitude);
+				var mapOptions = {
+					center : currentLocation, /* 지도에 보여질 위치 */ 				
+					zoom : 15, /* 지도 줌 (0축소 ~ 18확대),  */ 	
+					mapTypeId : google.maps.MapTypeId.ROADMAP
+				};
+				/* DIV에 지도 달아주기 */
+				map = new google.maps.Map(document.getElementById("map"),
+						mapOptions);
+				/* 지도 위에 마커 달아주기 */
+				marker = new google.maps.Marker({
+					position : currentLocation,
+					map : map
+				});
+				google.maps.event.addListener(marker, 'click', toggleBounce(marker));
+
+				/* 지도에서 마우스 클릭시 마커 생성 */
+				google.maps.event.addListener(map, 'click', function(event) {
+					addMarker(event.latLng);
+				});
+			}
+
+			// Add a marker to the map and push to the array.
+			/*
+			 * 이 소스는 마커를 하나만 추가할 수 있도록 구현해놓습니다.
+			 * 개발자분들 재량에 따라 코드를 응용하도록 하세요.  
+			 */
+			function addMarker(location) {
+				/* 기존에 있던 마커 삭제 후 */
+				/*새 마커 추가하기. */ 
+				marker.setMap(null);
+				marker = new google.maps.Marker({
+					position : location,
+					map : map
+				});
+				/* 마커 토글바운스 이벤트 걸어주기(마커가 통통 튀도록 애니메이션을 걸어줌) */
+				google.maps.event.addListener(marker, 'click', toggleBounce(marker));
+			}
+
+			function toggleBounce(marker) {
+				if (marker.getAnimation() != null) {
+					marker.setAnimation(null);
+				} else {
+					marker.setAnimation(google.maps.Animation.BOUNCE);
+				}
+			}
+			google.maps.event.addDomListener(window, 'load', initialize);
+			/*
 			function geo_success(position) { 
 				var latitude = position.coords.latitude;
 				var longitude =  position.coords.longitude;
@@ -310,30 +433,16 @@
 				alert("위치 정보를 사용할 수 없습니다."); 
 			}
 
-			var geo_options = { 
+			var geo_options = {	
 				enableHighAccuracy: true, // 불리언 
 				maximumAge : 30000, // 천분의 1초 단위 
 				timeout : 27000 // 천분의 1초 단위 
 			};
 
+			navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
+			*/
 		} //search_location()
 
-		/*
-		function daum_post() {
-			new daum.Postcode({
-				oncomplete: function(data) {
-					$("[name=post]").val( data.zonecode );		//우편번호
-					//사용자가 선택한 주소 타입에 따라 도로명 주소R / 지번 주소J
-					var address 
-						= data.userSelectedType == 'J' ? data.jibunAddress : data.roadAddress;
-
-					if(data.buildingName != "") address += " (" + data.buildingName + ")";
-					
-					$("[name=addr]").eq(0).val( address );
-				}
-			}).open();
-		} //daum_post()
-		*/
 	</script>
 </body>
 </html>

@@ -22,8 +22,9 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void  member_update(MemberVO vo) {
-		 dao.member_update(vo);
+	public boolean member_update(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
@@ -34,10 +35,14 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public boolean member_id_check(String userid) {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.member_id_check(userid);
 	}
 
+	@Override
+	public boolean member_nickname_check(String nickname) {
+		return dao.member_nickname_check(nickname);
+	}
+	
 	@Override
 	public MemberVO social_login(String member_id) {
 		
@@ -59,9 +64,5 @@ public class MemberServiceImpl implements MemberService{
 		return dao.kakao_insert(vo);
 	}
 
-	@Override
-	public MemberVO member_detail(String member_id) {
-		
-		return dao.member_detail(member_id);
-	}
+
 }

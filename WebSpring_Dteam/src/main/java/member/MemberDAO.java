@@ -22,8 +22,9 @@ public class MemberDAO implements MemberService{
 	}
 
 	@Override
-	public void  member_update(MemberVO vo) {
-		 sql.update("member.mapper.update", vo); 
+	public boolean member_update(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
@@ -34,8 +35,13 @@ public class MemberDAO implements MemberService{
 
 	@Override
 	public boolean member_id_check(String userid) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return (Integer) sql.selectOne("member.mapper.id_check", userid) > 0 ? false : true;
+	}
+	
+	@Override
+	public boolean member_nickname_check(String nickname) {
+		return (Integer) sql.selectOne("member.mapper.nickname_check", nickname) > 0 ? false : true;
 	}
 
 	@Override
@@ -58,9 +64,4 @@ public class MemberDAO implements MemberService{
 		return sql.insert("member.mapper.kakao_join", vo) > 0 ? true : false;
 	}
 
-	@Override
-	public MemberVO member_detail(String member_id) {
-		
-		return sql.selectOne("member.mapper.detail", member_id);
-	}
 }

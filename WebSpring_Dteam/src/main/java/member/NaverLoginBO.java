@@ -3,6 +3,7 @@ package member;
 import java.io.IOException;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.util.StringUtils;
@@ -33,8 +34,9 @@ public class NaverLoginBO {
         /* 세션 유효성 검증을 위하여 난수를 생성 */
         String state = generateRandomString();
         /* 생성한 난수 값을 session에 저장 */
-        setSession(session,state);        
- 
+        setSession(session,state);
+        System.out.println("session " +  session + ", " + SESSION_STATE + ": "+state);
+        System.out.println(session.getAttribute(SESSION_STATE));
         /* Scribe에서 제공하는 인증 URL 생성 기능을 이용하여 네아로 인증 URL 생성 */
         OAuth20Service oauthService = new ServiceBuilder()                                                   
                 .apiKey(CLIENT_ID)
@@ -50,13 +52,15 @@ public class NaverLoginBO {
     public OAuth2AccessToken getAccessToken(HttpSession session, String code, String state) throws IOException{
  
         /* Callback으로 전달받은 세선검증용 난수값과 세션에 저장되어있는 값이 일치하는지 확인 */
-    	System.out.println("getAccessToken에 들어옴");
         String sessionState = getSession(session);
+    	System.out.println("getAccessToken에 들어옴 session> " + session  );
+//        System.out.println("getAccessToken session " + session);
         
         System.out.println("getAccessToken 1 : sessionState = " + sessionState);
         System.out.println("getAccessToken 1 : state = " + state);
         
-        if(StringUtils.pathEquals(sessionState, state)){
+        if( sessionState !=null && sessionState.equals(state) ) {
+//    	if(StringUtils.pathEquals(sessionState, state)){
  
         	System.out.println("getAccessToken 2");
             OAuth20Service oauthService = new ServiceBuilder()
@@ -71,9 +75,7 @@ public class NaverLoginBO {
             OAuth2AccessToken accessToken = oauthService.getAccessToken(code);
             System.out.println("getAccessToken 4");
             return accessToken;
-        }
-        System.out.println("getAccessToken 5");
-        return null;
+        }else return null;
     }
  
     /* 세션 유효성 검증을 위한 난수 생성기 */
