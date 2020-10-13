@@ -24,15 +24,31 @@
 		box-sizing: border-box;
 	}
 	
-	#member_login {
+	#member_login, #sign_up {
 		display: block; 
-		background-color: #858585; 
-		color: #ffffff; 
-		height: 60px; 
-		line-height: 60px;
+		height: 50px; 
+		line-height: 50px;
 		font-weight: 70;
 		cursor: pointer;
 	}
+	
+	#member_login { background-color: #666666; color: #ffffff; font-weight: 900; }
+	
+	#sign_up { 
+		background-color: #ffffff; 
+		color: #666666; 
+		font-weight: 600;
+		box-shadow: 2px 2px 5px #666666;
+		/* border: 2px solid #666666; */
+	}
+	
+ 	#search_id_pw {
+		padding: 15px 10px 0 0;
+		font-size: 13px;
+		color: #666666;
+		float: right;
+	} 
+
 	
 	#login_form > li:last-child {
 		overflow: hidden;
@@ -53,7 +69,7 @@
 	#naver_login > img {
 		display: block; 
 		float: left; 
-		height: 45px;
+		height: 44px;
 		cursor: pointer;
 	}
 	
@@ -100,6 +116,8 @@
 			}
 		});
 	} //go_login()
+	
+	
 
 	$(function() {
 		var member_id, member_nickname, member_token;
@@ -121,7 +139,6 @@
 						console.log("member_id : ", member_id);
 						console.log("member_nickname : ", member_nickname);
 						console.log("member_token : ", member_token);
-
 						$.ajax({
 							url: "kakao_login",		//Controller
 							data: { member_id:member_id, member_nickname:member_nickname, member_token:member_token },
@@ -139,7 +156,6 @@
 								alert(text + ":" + req.status);
 							}
 						});
-						
 					},
 					fail: function(error) {
 						console.log("request fail", error);
@@ -152,6 +168,25 @@
 			},
 		}); //Kakao.Auth.createLoginButton()
 
+		$("#member_login").hover(function() {
+			$(this).css({"background-color": "#000000",
+				 		"color": "white",
+				 		"transition": "0.4s"});
+				}, function() {
+					$(this).css({"background-color": "",
+				 				"color": ""});
+
+				});
+
+		$("#userPw").keyup(function() {
+			$("#member_login").css({"background-color": "black",
+									 "color": "white",
+									 "transition": "0.4s"});
+			
+			if (!$userId.val()) {
+				$submit.css("background-color", "").css("color", "");
+			}
+		});
 	});
 	
 </script>
@@ -179,8 +214,12 @@
 					<li class="mb20">
 						<input type="password" id="userPw" onkeypress="if( event.keyCode==13 ){ go_login(); }" placeholder="비밀번호" />
 					</li>
-					<li class="mb40">
+					<li class="mb10">
 						<a id="member_login" onclick="go_login();">로그인</a>
+					</li>
+					<li class="mb60">
+						<a id="sign_up" href="member">회원가입</a>
+						<a id="search_id_pw" href="">아이디/비밀번호 찾기 ></a>
 					</li>
 					<li class="mb10">
 						<a id="naver_login" href="naver_login">
