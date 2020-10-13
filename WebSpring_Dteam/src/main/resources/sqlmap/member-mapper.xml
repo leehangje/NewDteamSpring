@@ -7,8 +7,14 @@
 
 	<!--  마이페이지  -->
 	<select resultType="member.MemberVO" id="detail">
-		select * from tblmemberwhere member_id = #{member_id} 
-	</select>
+		select * from tblmember where member_id = #{member_id} 
+	</select>	
+	<!--  회원정보수정 -->
+	<update id="update">
+		update tblmember set member_pw=#{member_pw}, member_nickname=#{member_nickname}, member_phone=#{member_phone}, member_latitude= #{member_latitude}, member_longitude=#{member_longitude}
+		where member_id = #{member_id}
+	</update>
+
 	<!-- 로그인 -->
 	<select id="login" resultType="member.MemberVO">
 		select * from tblmember where member_id=#{id} and member_pw=#{pw}

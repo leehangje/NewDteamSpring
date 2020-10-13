@@ -48,6 +48,15 @@ public class MemberController {
 			model.addAttribute("vo",service.member_detail(member_id));
 			return "member/mypage";
 		}
+		
+		
+	//고객정보수정화면 요청
+		@RequestMapping("/modify")
+		public String modify(Model model, String member_id) {
+			//해당 고객의 정보를 DB에서 조회해와 수정화면에 출력한다.
+			model.addAttribute("vo",service.member_detail(member_id));
+			return "member/modify";
+		}	
 
 	/****************************************
 	 ** 로그인

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,7 @@
 							</colgroup>
 							<tbody>
 								<tr>
-									<th style="height: ">닉네임</th>
+									<th>닉네임</th>
 									<td>${vo.member_nickname}</td>
 								</tr>
 
@@ -42,7 +43,7 @@
 									<td>${vo.member_grade}</td>
 								</tr>
 								<tr>
-									<th colspan="2">${vo.member_id}<a href="#">회원정보수정</a></th>
+									<th colspan="2">${vo.member_id}&nbsp;&nbsp; <a href="modify?member_id=${vo.member_id}">회원정보수정</a></th>
 								</tr>
 							</tbody>
 						</table>
