@@ -28,6 +28,17 @@
 .jetab_con { clear:both; margin-top:5px; border:1px solid #ddd; padding: 15px 0;}
 .jetab_con div { display:block; background:#fff; line-height:30px; text-align:center; padding: 0 15px;}
 
+table {
+	width: 100%; 
+	margin: 0 auto;
+	border: 1px solid;
+	border-collapse: collapse;  
+}
+
+table th, table td{
+	border: 1px solid;
+	padding: 5px 10px;
+}
 
 </style>
 </head>

@@ -35,7 +35,7 @@
 .btn-fill { width: 150px;}
 
 /*1:1문의하기(QnA) table style*/
-.qna_basic_table { width:95%; border-collapse:collapse; color: #424242; margin: 0 auto; }
+.qna_basic_table { width:100%; border-collapse:collapse; color: #424242; margin: 0 auto; }
 .qna_basic_table:after { display:block; visibility:hidden; clear:both; content:"" }
 .qna_basic_table tr:hover { background-color: #F7F7F7; }
 .qna_basic_table thead tr th,.qna_basic_table thead tr td {padding:15px 5px;}
@@ -46,7 +46,17 @@
 .qna_basic_table td a{ text-decoration:none; color:#454545}  
 .qna_basic_table .td_center { text-align:center }
 
+table {
+	width: 100%; 
+	margin: 0 auto;
+	border: 1px solid;
+	border-collapse: collapse;  
+}
 
+table th, table td{
+	border: 1px solid;
+	padding: 5px 10px;
+}
 
 </style>
 </head>
@@ -103,7 +113,7 @@
 									
 										<c:if test="${1 eq vo.indent }">
 											<%-- <c:if test="${login_info.member_id eq 'admin'}"> --%>
-												<a href='detail.qn?id=${vo.id}' style="color: blue">${vo.title}</a>
+												<a href='detail.qn?id=${vo.id}' style="color: blue; font-weight: 500;">${vo.title}</a>
 											<%-- </c:if> --%>
 										</c:if>
 										
