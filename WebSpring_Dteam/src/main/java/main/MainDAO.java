@@ -20,7 +20,11 @@ public class MainDAO implements MainService{
 
 	@Override
 	public MainVO main_detail(String md_serial_number) {
-		return sql.selectOne("main.mapper.detail", md_serial_number);
+		MainVO vo = sql.selectOne("main.mapper.detail", md_serial_number);
+		vo.setReview( sql.selectList("main.mapper.review", md_serial_number) );
+		vo.setNickaddr(sql.selectList("main.mapper.nickaddr", md_serial_number));
+		
+		return vo;
 	}
 	
 	

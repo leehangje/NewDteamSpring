@@ -79,12 +79,12 @@ a { text-decoration:none; color:#000; }
 .tab_con div { display:none; height:500px; background:#fff; line-height:500px; text-align:center; }    
 
 /* 상세페이지 TAB 메뉴 단축키  */
-.md_tab { border:1px solid #ddd; border-left:none; background:#fff; overflow:hidden; padding-left: 0px;}
-.md_tab li { float:left; width:50%; border-left:1px solid #ddd; text-align:center; box-sizing:border-box; }
+.md_tab { border:1px solid #ddd; border-left:none; background:#fff; overflow:hidden; padding-left: 0px; margin-top: 50px; }
+.md_tab li { float:left; width:33.33%; border-left:1px solid #ddd; text-align:center; box-sizing:border-box; }
 .md_tab li { display:inline-block; padding:20px; cursor:pointer; }
 .md_tab li.on { background-color:#eee; color:#f00; }
 .md_tab_con { clear:both; margin-top:5px; border:1px solid #ddd; }     
-.md_tab_con div { background:#fff; line-height:100px; text-align:center; }  
+.md_tab_con div { display:none; height:500px; background:#fff; line-height:20px; text-align:center; }
 
 /*상세페이지 table style*/
 
