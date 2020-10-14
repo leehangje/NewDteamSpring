@@ -6,15 +6,16 @@
 	<div class="category">
 		<div class="header_menu">
 				<form method='post' action='list.ma'>
-				<a href='<c:url value="/"/>'><img src="img/logo3.jpg" alt="홈으로" /></a>
-					<input type='hidden' name='curPage' value='1' /> <input
-						type='hidden' name='id' />
-					<div id="content">
+					<div id="content" style=" width: 300px; margin: 0 auto;">
 						<ul class="con">
 							<li><input type='text' name='keyword'
 								value='${page.keyword}' class='w-px300' placeholder="동네이름, 물품명 등을 검색해보세요!"/></li>
 						</ul>
-					</div>
+					</div><br/>
+				<a href='<c:url value="/"/>'><img src="img/logo3.jpg" alt="홈으로" /></a>
+					<input type='hidden' name='curPage' value='1' /> <input
+						type='hidden' name='id' />
+
 					<div class="member_menu">
 						<c:if test="${empty login_info }">
 							<a href="login_view" class="login">로그인</a>
