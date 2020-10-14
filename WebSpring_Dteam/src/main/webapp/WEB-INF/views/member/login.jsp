@@ -32,7 +32,7 @@
 		cursor: pointer;
 	}
 	
-	#member_login { background-color: #666666; color: #ffffff; font-weight: 900; }
+	#member_login { background-color: #858585; color: #ffffff; font-weight: 900; }
 	
 	#sign_up { 
 		background-color: #ffffff; 
@@ -102,13 +102,21 @@
 			url: "login",		//Controller
 			data: { userId:$("#userId").val(), userPw:$("#userPw").val()  },
 			success: function(data) {
-				if (data) {
-					alert("로그인 성공!" + "${login_info.member_id}");
+				if (data.member_id != null) {
+					if(data.member_token == null) {
+						alert("인증 이메일을 확인해 주세요!");
+						$("#userId").val("");
+						$("#userPw").val("");
+						return;
+					}
+					alert(data.member_id +  "님 로그인 성공 ~");
 					//history.go(-1);
 					location.href = "/dteam";
 					
-				} else {
+				} else  {
 					alert("아이디나 비밀번호가 일치하지 않습니다!");
+					$("#userId").val("");
+					$("#userPw").val("");
 				}
 			},
 			error: function(req, text) {
@@ -147,7 +155,6 @@
 									alert("카카오 소셜 로그인 성공!" + "${login_info.member_id}");
 									//history.go(-1);
 									location.href = "/dteam";
-									
 								} else {
 									alert("아이디나 비밀번호가 일치하지 않습니다!");
 								}
@@ -169,7 +176,7 @@
 		}); //Kakao.Auth.createLoginButton()
 
 		$("#member_login").hover(function() {
-			$(this).css({"background-color": "#000000",
+			$(this).css({"background-color": "#3e4ba9",
 				 		"color": "white",
 				 		"transition": "0.4s"});
 				}, function() {
@@ -179,7 +186,7 @@
 				});
 
 		$("#userPw").keyup(function() {
-			$("#member_login").css({"background-color": "black",
+			$("#member_login").css({"background-color": "#3e4ba9",
 									 "color": "white",
 									 "transition": "0.4s"});
 			
@@ -219,7 +226,7 @@
 					</li>
 					<li class="mb60">
 						<a id="sign_up" href="member">회원가입</a>
-						<a id="search_id_pw" href="">아이디/비밀번호 찾기 ></a>
+						<a id="search_id_pw" href="searchIdPw_view">아이디/비밀번호 찾기 ></a>
 					</li>
 					<li class="mb10">
 						<a id="naver_login" href="naver_login">

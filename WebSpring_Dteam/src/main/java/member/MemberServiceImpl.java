@@ -64,5 +64,22 @@ public class MemberServiceImpl implements MemberService{
 		return dao.kakao_insert(vo);
 	}
 
+	@Override
+	public String member_searchId(HashMap<String, String> map) {
+		return dao.member_searchId(map);
+	}
+
+	@Override
+	public String member_searchPw(HashMap<String, String> map) {
+		return dao.member_searchPw(map);
+	}
+
+	@Override
+	public boolean member_resetPw(HashMap<String, String> map) {
+		return dao.member_resetPw(map);
+	}
+	
+	
+
 
 }

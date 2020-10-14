@@ -50,7 +50,7 @@
  	},
  	
  	userpw_ck_status: function(pw_ck){
-   		if(pw_ck == $("[name=pw]").val() )	return this.userpw.equal;
+   		if(pw_ck == $("[name=member_pw]").val() )	return this.userpw.equal;
    		else                              	return this.userpw.notEqual;
 	},
 	
@@ -99,11 +99,11 @@
  		var data = tag.val();
  		tag = tag.attr("name");
  	
- 		if( tag == "id") data = this.userid_status( data );
- 		else if( tag == "pw") data = this.userpw_status( data );
+ 		if( tag == "member_id") data = this.userid_status( data );
+ 		else if( tag == "member_pw") data = this.userpw_status( data );
  		else if( tag == "pw_ck" ) data = this.userpw_ck_status( data );
- 		else if( tag == "nickname" ) data = this.usernickname_status( data );
- 		else if( tag == "tel" ) data = this.usertel_status( data );
+ 		else if( tag == "member_nickname" ) data = this.usernickname_status( data );
+ 		else if( tag == "member_tel" ) data = this.usertel_status( data );
  		return data;
  	}	
  }

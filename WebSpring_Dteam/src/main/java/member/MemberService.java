@@ -20,4 +20,7 @@ public interface MemberService {
 	// → 카카오 계정이 DB에 저장이 안되어 있을 경우 DB에 저장하도록 하는 메소드
 	
 	int update_token(MemberVO vo);	//토큰 변경시 수정
+	String member_searchId(HashMap<String, String> map);	//아이디 찾기
+	String member_searchPw(HashMap<String, String> map);	//비밀번호 찾기
+	boolean member_resetPw(HashMap<String, String> map);	//비밀번호 재설정
 }
