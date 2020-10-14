@@ -95,11 +95,17 @@ table th, table td{
 						<a class="btn-fill" href="javascript:$('form').submit()">목록으로</a>
 						
 						<!-- 관리자로 로그인한 경우만 수정/삭제가능 -->
-						<c:if test="${login_info.member_id eq 'admin'}">
+						<%-- <c:if test="${login_info.member_id eq 'admin'}">
 							<a class="btn-fill" href="modify.qn?id=${vo.id }">수정</a>
 							<a class="btn-fill" onclick="if( confirm('정말 삭제하시겠습니까?') ){ href='delete.qn?id=${vo.id }' }">삭제</a>
-						</c:if>
+						</c:if> --%>
 						
+						<a class="btn-fill" <c:if test="${login_info.member_id eq 'admin' || ( login_info.member_id ne 'admin' && login_info.member_id eq vo.writer) }"> 
+						href='modify.qn?id=${vo.id}'</c:if> > 수정</a>
+						
+						<a class="btn-fill" <c:if test="${login_info.member_id eq 'admin' || ( login_info.member_id ne 'admin' && login_info.member_id eq vo.writer) }"> 
+						href='detail.qn?id=${vo.id}' </c:if>  
+     					onclick="if( confirm('정말 삭제하시겠습니까?') ){ href='delete.qn?id=${vo.id }' }">삭제 </a>
 						
 						<!-- 관리자로 로그인한 경우만 답변 작성 가능-->
 						<c:if test="${login_info.member_id eq 'admin'}">
@@ -109,9 +115,9 @@ table th, table td{
 					</div>
 					
 					<form action="list.qn" method="post">
-					<%-- <input type="hidden" name="curPage" value="${page.curPage }"/> 
+					<input type="hidden" name="curPage" value="${page.curPage }"/> 
 					<input type="hidden" name="search" value="${page.search }"/> 
-					<input type="hidden" name="keyword" value="${page.keyword }"/> --%> 
+					<input type="hidden" name="keyword" value="${page.keyword }"/> 
 					</form>
 					
 					<!------------------------------------------------------------------------------------------------->
