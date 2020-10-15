@@ -37,13 +37,7 @@
 			</div>
 		</div>
 	</div>
-	 <div id="container01">
-            <ul id="slide">
-                <li><img src="img/banner01.jpg"></li>
-                <li><img src="img/banner02.jpg"></li>
-                <li><img src="img/banner03.jpg"></li>
-            </ul>
-        </div>
+	
 </header>
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js"
@@ -151,35 +145,5 @@
 }
 
 
-/* banner */
-  #container01 {
-                border-top: 8px solid white;
-                border-bottom: 8px solid white;
-              margin: 50px 0px 0px 0px; 
-                overflow: hidden;
-                min-width: 1080px;
-            }
-
-            #slide {
-                width: 500%;
-
-            }
-
-            #slide::after { content: ""; display: block; clear: both; }
-
-            #slide > li {
-                float: left;
-                width: 20%;
-                position: relative;
-                height: 400px;
-                overflow: hidden;
-            }
-
-            #slide > li > img {
-                display: block;
-                position: absolute;
-                top: 50%; left: 50%;
-                transform: translate(-50%, -50%);
-            }
 </style>  
 

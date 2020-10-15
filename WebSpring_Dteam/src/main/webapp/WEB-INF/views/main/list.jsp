@@ -6,115 +6,123 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main/list</title>
+<title>대여안대여</title>
+
 <style type="text/css">
+/* banner */
+ #container01 { border-top: 8px solid white;  border-bottom: 8px solid white; margin: 10px 0px 0px 0px;  overflow: hidden; min-width: 1080px;}
+#slide {width: 500%;}
+#slide::after { content: ""; display: block; clear: both; }
+#slide > li { float: left; width: 20%; position: relative;height: 400px;overflow: hidden;}
+#slide > li > img { display: block; position: absolute; top: 50%; left: 50%;  transform: translate(-50%, -50%);}
 
-a.btn-fill {
-	background-color: #3367d6;
-	color: #fff;
-}
-a.btn-empty {
-	background-color: #fff;
-	color: #3367d6;
-}
+/* 카테고리 */  
+/* #main_content {height:440px;} */
+#main_content .info_cate {position:relative; padding-top:43px; height:250px} 
+#main_content .cate_list li {float:left; margin-left:41px; width:90px; height:174px; margin-top:38px; text-align:center;}
+#main_content .cate_list li a {display:block; line-height:140%;padding-top:110px;}
+/* #main_content .cate_list li:nth-child(1){ background:url(img/cate_img1.jpg) left top no-repeat}
+#main_content .cate_list li:nth-child(2){ background:url(img/cate_img2.jpg) left top no-repeat}
+#main_content .cate_list li:nth-child(3){ background:url(img/cate_img3.jpg) left top no-repeat}
+#main_content .cate_list li:nth-child(4){ background:url(img/cate_img4.jpg) left top no-repeat}
+#main_content .cate_list li:nth-child(5){ background:url(img/cate_img5.jpg) left top no-repeat}
+#main_content .cate_list li:nth-child(6){ background:url(img/cate_img6.jpg) left top no-repeat}
+#main_content .cate_list li:nth-child(7){ background:url(img/cate_img7.jpg) left top no-repeat}
+#main_content .cate_list li:nth-child(8){ background:url(img/cate_img8.jpg) left top no-repeat}
+#main_content .cate_list li:nth-child(9){ background:url(img/cate_img9.jpg) left top no-repeat} */
+#main_content .info_cate a.more {position:absolute;  top:43px; right:17px; height:25px; margin:0 ! important; background:url(img/cate_more.png) no-repeat; padding-left:25px;}
+#main_content .info_cate a.more span {display:block; }  
 
-a.btn-fill-s, a.btn-empty-s {
-	font-size:13px;	font-weight: bold;
-	text-align:center;  padding:1px 10px;
-	border: 1px solid #c4dafc;
-	border-radius: 3px;
-	box-shadow:2px 2px 2px #022d72; 
-	color:#0000cd; 
-}
-a.btn-fill-s { background-color:#b1cdfa; }
-a.btn-empty-s { background-color:#fff; }
 
-.grid li div:nth-child(1) {
-	 overflow:hidden;  display:-webkit-box;
-	-webkit-line-clamp:3;  /*보이게할 줄 수*/
-	-webkit-box-orient:vertical; 
-	word-wrap: break-word;  /* 영문인 경우 */
-} 
+.input { background-position:top center; background-repeat:no-repeat; background-color: white; background-size: 100%; width: 90px; height: 170px;
+ 	    border: none; padding-top: 55px;}
+.div{overflow: hidden; margin: 0 auto; margin-top: 30px; margin-bottom: 40px;}
+.divsub{ width:90px; height:170px; float: left; margin-left: 46px;}   
+.divsub:nth-child(1){ margin-left: 0;}
+.a{ font-size: 11px; font-weight: bold;}
+.img{ width: 250px; height: 250px; border-radius: 10px; border: 1px solid #d8d8d8; background-color: white;}
 
-.mom{
-	float: left;
-	width: 200px;
-	margin: 0 auto;
-}
-.input {
-  background-position:top center; 
-  background-repeat:no-repeat;
-  background-color: white;
-  background-size: 55px;
- /*  text-indent: 150px; */
- 	width: 78px; height: 78px;
- 	border: 0px;
- 	padding-top: 55px;
- }
- .div{
- 	overflow: hidden;
- 	width: 900px;
- 	margin: 0 auto;
- 	margin-top: 20px;
- 	margin-bottom: 40px;
-
- }
-.divsub{
-	width:80px; height:80px; float: left; margin-left: 8px;
-	border: 1px solid gray;
-}
-.a{
-	font-size: 11px;
-	font-weight: bold;
-}
-.img{
-	width: 150px; height: 170px; border-radius: 10px; border: 1px solid black; background-color: white;
-}
-.grid{
-	overflow: hidden;
-}
-.gride_li{
-	float: left;
-	margin-left: 10px;
-}
-.gride_li { display:none; }
-#data-list { displau: none;}
 </style>
-</head>
+
+</head>   
 <body>
-<form method='post' action='list.ma'>
-	<div class="div">
-		<div class="divsub"><input type="submit" name="category" value="가전" class="input" style=" background-image : url('img/camera.png');"></div>
-		<div class="divsub"><input type="submit" name="category" value="아동" class="input" style="background-image : url('img/baby.png');"></div>
-		<div class="divsub"><input type="submit" name="category" value="생활" class="input" style="background-image : url('img/cup.png');"></div>
-		<div class="divsub"><input type="submit" name="category" value="스포츠" class="input" style="background-image : url('img/cycle.png');"></div>
-		<div class="divsub"><input type="submit" name="category" value="의류" class="input" style="background-image : url('img/closet.png');"></div>
-		<div class="divsub"><input type="submit" name="category" value="게임" class="input" style="background-image : url('img/game.png');"></div>
-		<div class="divsub"><input type="submit" name="category" value="뷰티" class="input" style="background-image : url('img/beauty.png');"></div>
-		<div class="divsub"><input type="submit" name="category" value="동물" class="input" style="background-image : url('img/pet.png');"></div>
-		<div class="divsub"><input type="submit" name="category" value="기타" class="input" style="background-image : url('img/etc.png');"></div>
-		<div class="divsub"><input type="submit" name="category" value="무료" class="input" style="background-image : url('img/free.png');"></div>
-	</div>
-</form>
-<div style="width: 1000px; margin: 0 auto; margin-bottom: 10px;">
-<h3 style="width: 150px; margin-left: 50px;">최신상품 ＞</h3>
+<section id="visual_area"> 
+ <div id="container01">
+            <ul id="slide">
+                <li><img src="img/banner01.jpg"></li>
+                <li><img src="img/banner02.jpg"></li>
+                <li><img src="img/banner03.jpg"></li>
+            </ul>
+        </div>
+</section>
+<section id="main_content">	
+	<h2 class="blind">메인 카테고리</h2>
+		<article class="container info_cate">
+			<form method='post' action='list.ma'>
+				<div class="div">
+					<div class="divsub">
+						<input type="submit" name="category" value="가전" class="input"
+							style="background-image: url('img/cate_img1.jpg');">
+					</div>
+					<div class="divsub">
+						<input type="submit" name="category" value="아동" class="input"
+							style="background-image: url('img/cate_img2.jpg');">
+					</div>
+					<div class="divsub">
+						<input type="submit" name="category" value="생활" class="input"
+							style="background-image: url('img/cate_img3.jpg');">
+					</div>
+					<div class="divsub">
+						<input type="submit" name="category" value="스포츠" class="input"
+							style="background-image: url('img/cate_img4.jpg');">
+					</div>
+					<div class="divsub">
+						<input type="submit" name="category" value="의류" class="input"
+							style="background-image: url('img/cate_img5.jpg');">
+					</div>
+					<div class="divsub">
+						<input type="submit" name="category" value="게임" class="input"
+							style="background-image: url('img/cate_img6.jpg');">
+					</div>
+					<div class="divsub">
+						<input type="submit" name="category" value="뷰티" class="input"
+							style="background-image: url('img/cate_img7.jpg');">
+					</div>
+					<div class="divsub">
+						<input type="submit" name="category" value="동물" class="input"
+							style="background-image: url('img/cate_img8.jpg');">
+					</div>
+					<div class="divsub">
+						<input type="submit" name="category" value="나눔" class="input"
+							style="background-image: url('img/cate_img9.jpg');">
+					</div>
+				</div>
+			</form>
+			<a href="" class="more">전체보기</a>
+		</article>
+
+	<div style="width: 1200px; margin: 0 auto; margin-bottom: 10px;">
+<h3 style="width: 150px;">최신상품 ＞</h3>
 </div>
-<div id='data-list' style=" width: 1000px; margin: 0 auto; margin-top: 10px;">
-<div class='grid' style="width:800px; margin:0 auto; margin-bottom: 30px; border-radius: 10px;">
+<div id='data-list' style=" width: 1200px; margin: 0 auto; margin-top: 10px;">
+<div class='grid' style="width:1200px; margin:0 auto; margin-bottom: 30px; border-radius: 10px;">
 <c:forEach items="${page.list}" var="vo">
-	<div  class='gride_li' style=" border: 0px; width: 150px; height: 220px; margin-bottom: 30px;">
+	<div  class='gride_li' style=" border: 0px; height: 240px; margin-bottom: 80px; float: left; margin-right: 50px; margin-top: 20px;"> 
 		<a href='detail.ma?md_serial_number=${vo.md_serial_number }'>
 		<img src='${vo.md_photo_url}' onerror="this.src='img/white.png'" class="img"></a>
-		<div style="padding:0px;">${vo.md_name}</div>
-		<div style="padding:0px;">${vo.md_price}</div>
+		<div style="padding:0px; font-weight: 600; margin-top: 10px;">${vo.md_name}</div>
+		<div style="padding:0px; font-weight: 300; margin-top: 10px; margin-bottom: 10px">${vo.md_price}원</div> 
 	</div>
 </c:forEach>
 </div>
 </div>
-<div style="border-top: 1px solid gray; border-bottom: 1px solid gray;display:inline; margin-bottom: 100px;">
-<a href="#" id="load" style=" height: 50px; padding: 0px 100px;">더 보기(More)</a>
+<div style="position:absolute; bottom:46px; right:370px; height:25px; margin: 0 ! important;
+    background: url(img/cate_more.png) no-repeat;
+    padding-left: 25px;">
+<a href="#" id="load" style=" height: 50px;">더 보기</a>
 </div>
 <div class="visivle" style="width: 50px; hegiht: 50px; padding-top: 50px;"></div>
+	</section>
 <script type="text/javascript">
 $(function(){
     $(".gride_li").slice(0, 5).show(); // select the first ten
