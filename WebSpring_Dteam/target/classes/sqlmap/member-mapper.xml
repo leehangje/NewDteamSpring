@@ -53,14 +53,5 @@
 		update tblmember set member_pw = #{member_pw}
 		where member_token = #{member_token}
 	</update>
-	<!--  마이페이지 회원정보 요청 -->
-	<select id="detail" resultType="member.MemberVO">
-		select * from tblmember where member_id=#{member_id}
-	</select>
-	<!-- 회원정보수정 -->
-	<update id="update">
-		update tblmember set member_pw=#{member_pw}, member_nickname=#{member_nickname}, member_phone=#{member_phone}
-		where member_id = #{member_id}
-	</update>
 	
 </mapper>

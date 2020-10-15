@@ -9,12 +9,6 @@
 <style type="text/css">
  iframe { height: 500px;}   
 </style>
-<c:if test="${empty login_info}">
-<script>
-   alert("로그인이 필요한 페이지 입니다.");
-   location.href = "login_view";
-</script>
-</c:if>
 </head>
 <body>
 <section id="content_area">
