@@ -1,6 +1,6 @@
 #Tomcat publish data
-#Tue Oct 06 09:34:34 KST 2020
+#Thu Oct 15 10:43:39 KST 2020
 >>>>>>>=ab5cb7ed2b11c9eab52b6bcb7e91b3e1c74117d7
-org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\user\\.m2\\repository\\org\\springframework\\spring-web\\4.2.3.RELEASE\\spring-web-4.2.3.RELEASE.jar=WEB-INF/lib/spring-web-4.2.3.RELEASE.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\user\\.m2\\repository\\org\\springframework\\spring-web\\5.2.5.RELEASE\\spring-web-5.2.5.RELEASE.jar=WEB-INF/lib/spring-web-5.2.5.RELEASE.jar
 <<<<<<<=HEAD
 =\=\=\=\=\=\=
