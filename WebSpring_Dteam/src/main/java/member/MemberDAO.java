@@ -79,4 +79,9 @@ public class MemberDAO implements MemberService{
 		return sql.update("member.mapper.reset_pw", map) > 0 ? true: false;
 	}
 
+	@Override
+	public MemberVO member_detail(String member_id) {
+		return sql.selectOne("member.mapper.detail", member_id);
+	}
+
 }

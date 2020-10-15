@@ -54,4 +54,8 @@
 		where member_token = #{member_token}
 	</update>
 	
+	<select id="detail" resultType="member.MemberVO">
+		select * from tblmember where member_id=#{member_id}
+	</select>
+	
 </mapper>
