@@ -155,7 +155,7 @@
   #container01 {
                 border-top: 8px solid white;
                 border-bottom: 8px solid white;
-                /* margin: 50px 0 100px 0; */
+              margin: 50px 0px 0px 0px; 
                 overflow: hidden;
                 min-width: 1080px;
             }
@@ -171,9 +171,7 @@
                 float: left;
                 width: 20%;
                 position: relative;
-                height: 600px;
-
-
+                height: 400px;
                 overflow: hidden;
             }
 
