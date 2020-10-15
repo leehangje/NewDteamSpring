@@ -8,9 +8,9 @@ a { text-decoration:none; }
 #header > .container { overflow:hidden;}
 .container {width:1200px; margin:0 auto;}
 h1.logo { margin-top:15px; width:153px; height:52px; float:left;}
-.tnb ul { float:right; margin-top:35px;}
+/* .tnb ul { float:right;}
 .tnb ul li { float:left; font-size:14px;}
-.tnb ul li a { padding:0 10px; color:#333;}
+.tnb ul li a { padding:0 10px; color:#333;} */
 .menu { height:60px; background-color:#fff; position:relative; border-top:1px solid #aaa;}
 .menu .gnb { float:left;}
 .menu .gnb li { float:left; padding:15px 110px; font-size:20px;} 
