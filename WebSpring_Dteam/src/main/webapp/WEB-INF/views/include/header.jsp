@@ -1,37 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<header
-	style="border-bottom: 1px solid #ccc; padding: 15px 0; text-align: left;">
-	<div class="category">
-		<div class="header_menu">
-				<form method='post' action='list.ma'>
-					<div id="content" style=" width: 300px; margin: 0 auto;">
-						<ul class="con">
-							<li><input type='text' name='keyword'
-								value='${page.keyword}' class='w-px300' placeholder="동네이름, 물품명 등을 검색해보세요!"/></li>
-						</ul>
-					</div><br/>
-				<a href='<c:url value="/"/>'><img src="img/logo3.jpg" alt="홈으로" /></a>
-					<input type='hidden' name='curPage' value='1' /> <input
-						type='hidden' name='id' />
+ <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<header id="header">
+	<h2 class="blind">상단 네비게이션</h2>
+	<div class="tnb">
+		<div class="container">		
+			<ul class="">
+				<li><a href='<c:url value="/"/>'>홈으로</a></li>
+				<c:if test="${empty login_info }">
+					<li><a href="login_view" class="login">로그인</a></li>
+					<li><a href="member">회원가입</a></li>
+				</c:if>
 
-					<div class="member_menu">
-						<c:if test="${empty login_info }">
-							<a href="login_view" class="login">로그인</a>
-							<a href="member">회원가입</a>
-						</c:if>
-						<c:if test="${!empty login_info }">
-							<span>${login_info.member_nickname }
-								[${login_info.member_id }]</span>
-							<a onclick="go_logout()">로그아웃</a>
-							<a id="mypage" href="mypage?member_id=${login_info.member_id }">마이페이지</a>
-						</c:if>
+				<c:if test="${!empty login_info }">
+					<li><a id="mypage"
+						href="mypage?member_id=${login_info.member_id }">마이페이지</a></li>
+					<span>${login_info.member_nickname } [${login_info.member_id }]</span>
+					<li><a onclick="go_logout()" style="color: #fff;">로그아웃</a></li>
 
-					</div>
-				</form>
+				</c:if>
+			</ul>		
 		</div>
 	</div>
+	<div class="m_content">
+		<h1 class="logo">
+			<a href='<c:url value="/"/>' title="대여안대여"><img
+				src="img/logo.png" alt="대여안대여"></a>
+		</h1>
+		<div class="wrap">
+			<div class="search">
+				<input type="text" class="searchTerm" placeholder="검색어를 입력해주세요!">
+				<button type="submit" class="searchButton">
+					<i class="fas fa-search"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	 <div id="container01">
+            <ul id="slide">
+                <li><img src="img/banner01.jpg"></li>
+                <li><img src="img/banner02.jpg"></li>
+                <li><img src="img/banner03.jpg"></li>
+            </ul>
+        </div>
 </header>
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js"
@@ -49,49 +61,127 @@
 		});
 	} //go_logout()
 </script>
+<script>
+	$(function() {
+	
+		var $slide = $("#slide");
+		var timerId;
+
+		timerId = window.setInterval(slideBanner, 2000);
+		$("#container").hover(function() {
+			window.clearInterval(timerId);
+		}, function() {
+			
+			timerId = window.setInterval(slideBanner, 2000);
+		});
+
+		function slideBanner() {
+		
+			$slide.css({
+				"margin-left" : "-100%",
+				"transition" : "0.4s"
+			});
+
+			window.setTimeout(function() {
+				
+				$slide.removeAttr("style").children(":first").appendTo($slide);
+
+			}, 400);
+		}
+	}); // document.onready
+</script>
+
+
 <style type="text/css">
-#content{
-	display: inline;
-}
-header ul, header ul li {
-	margin: 0;
-	padding: 0;
-	display: inline;
+/*header */
+#header{}
+#header > .container{ padding:13px 0; overflow:hidden }
+#header .tnb{width:100%; height:40px; background-color:#3f4baa;}
+#header .tnb li{ float:left; font-size:12px}
+#header .tnb li a{ display:block; padding:0 10px; line-height:40px; text-decoration: none; color: #fff;}
+#header .tnb p {float:left;}
+#header .tnb ul {float:right;}
+
+#header .logo{ width:236px; height:105px; padding-top:15px; margin:0 auto;     margin-left: 150px; }
+#header .logo a{ display:block }
+
+.m_content { width: 100%; height: 100px;}
+
+/* 검색 */
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
 }
 
-header div.category {
-	margin-left: 100px";
-	font-size: 18px;
+.searchTerm {
+  width: 100%;
+  border: 3px solid #3f4baa;
+  border-right: none;
+  padding: 5px;
+  height: 50px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #3f4baa;  
 }
 
-header div.category li:not(first-child) {
-	padding-left: 30px;
+.searchTerm:focus{
+  color: #00B4CC;
 }
 
-header div.category li a:hover, header div.category li a.active {
-	font-weight: bold;
-	color: #0000cd;
+.searchButton {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #3f4baa;
+  background: #3f4baa;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
 }
 
-.header_menu {
-	margin-left: 200px;
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 25%;
+  position: absolute;
+  top: 12%;
+  left: 46%;      
+  transform: translate(-50%, -50%);
 }
 
-#search {
-	margin-left: 50px;
-}
 
-.member_menu {
-	display: inline;
-	margin-left: 600px;
-}
+/* banner */
+  #container01 {
+                border-top: 8px solid white;
+                border-bottom: 8px solid white;
+                /* margin: 50px 0 100px 0; */
+                overflow: hidden;
+                min-width: 1080px;
+            }
 
-.login {
-	margin-right: 15px;
-}
+            #slide {
+                width: 500%;
 
-.gnb_item {
-	margin-top: 20px;
-	margin-left: 300px;
-}
-</style>
+            }
+
+            #slide::after { content: ""; display: block; clear: both; }
+
+            #slide > li {
+                float: left;
+                width: 20%;
+                position: relative;
+                height: 600px;
+
+
+                overflow: hidden;
+            }
+
+            #slide > li > img {
+                display: block;
+                position: absolute;
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%);
+            }
+</style>  
+
