@@ -22,9 +22,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public boolean member_update(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+	public void member_update(MemberVO vo) {
+		 dao.member_update(vo);
 	}
 
 	@Override

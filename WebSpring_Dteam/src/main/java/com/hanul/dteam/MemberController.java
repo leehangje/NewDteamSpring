@@ -50,6 +50,13 @@ public class MemberController {
 		return "member/mypage";
 	}
 
+	//회원정보수정 화면 요청
+	@RequestMapping("/modify")
+	public String modify(Model model, String member_id) {
+		model.addAttribute("vo", service.member_detail(member_id));
+		return "member/modify";
+	}
+	
 	/****************************************
 	 * 로그인
 	 ********************************/
