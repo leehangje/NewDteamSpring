@@ -81,9 +81,14 @@ tbody{
 
 
 .review_list th {
-	width: 15%;
+	width: 20%;
 	text-align: center;
 } 
+
+.review_list td{
+	padding: 10px;
+	width: 100%;
+}
 
 </style>
 <script type="text/javascript">
@@ -133,13 +138,11 @@ tbody{
 				</div>
 				<div class="contents">
 					<form action="">
-
 						<a class="md_img"><img src='${vo.md_photo_url}'></a>
 						<table class="md_basic_table">
 							<colgroup>
 								<col width="50%">
 								<col width="50%">
-								<%-- <col width="25%"> --%>
 							</colgroup>
 							<tbody>
 							<tr>
@@ -179,18 +182,15 @@ tbody{
 				</div><!-- content  -->
 
 				<ul class="md_tab" id="tab">
-					<li>상품상세</li>
 					<li>상품리뷰</li>
 					<li>상품문의</li>
 				</ul>
 
 
 				<div class="md_tab_con" id="tab_con">
-				    <iframe src="mdcontent.ma" width="100%" height="100%";></iframe>
-				
 					<div class="md_tab_con_sub" style="overflow:scroll; width:100%; height:500px; padding:10px;">
 					<c:forEach items="${vo.review }" var="list">
-						<table class="review_list" style="margin-bottom: 15px; text-align: left;">
+						<table class="review_list" style="width:100%; margin-bottom: 15px; text-align: left; border-bottom: 1px solid gray; border-top: 1px solid gray;">
 							<tr>
 								<th>닉네임</th>
 								<td>${list.member_nickname }</td>
@@ -206,8 +206,8 @@ tbody{
 						</table>
 					</c:forEach>
 					</div>
-					<!-- <iframe src="mdcontent.ma" width="100%" height="100%";></iframe> -->
-					
+   				
+   					<div><iframe src="mdqna.ma?md_serial_number=${vo.md_serial_number}" width="100%" height="1000px";></iframe></div>					
 				</div>
 				
 				

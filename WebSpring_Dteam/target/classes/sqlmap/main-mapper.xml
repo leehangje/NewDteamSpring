@@ -35,9 +35,27 @@
 
 	
 	<select id="detail" resultType="main.MainVO">
-		<!-- select * from tblmerchandise where md_serial_number = #{md_serial_number , jdbcType=VARCHAR} -->
 		select * from tblmerchandise where md_serial_number = #{md_serial_number}
+	</select>
+	
+	<!--<select id="review" resultType="main.ReviewVO">
+		select review_content, review_scope, 
+    		(select member_nickname from tblmember m where m.member_id=r.md_member_id ) member_nickname 
+		from  tblreview r
+		where md_serial_number=#{md_serial_number}
+	</select> -->
+	
+	<select id="nickaddr" resultType="main.NickaddrVO">
+		select (select member_nickname from tblmember m where m.member_id = c.member_id)member_nickname,
+		(select member_addr from tblmember m where m.member_id = c.member_id) member_addr
+		from tblmerchandise c
+		where md_serial_number = #{md_serial_number}
+	</select>
 		
+	<select id="review" resultType="main.ReviewVO">
+		select review_content, review_scope, member_nickname 
+		from  tblreview r
+		where md_serial_number=#{md_serial_number}
 	</select>
 	
 </mapper>

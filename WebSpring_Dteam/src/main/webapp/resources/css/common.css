@@ -55,11 +55,24 @@ a.btn-fill-s, a.btn-empty-s{
 	border: 1px solid #c4dafc;
 	border-radius: 3px;
 	box-shadow: 2px 2px 2px #022d72;
-	color: #0000cd;
+	color: #ffffff;
+}
+a.btn-fill-s2, a.btn-empty-s2{
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	padding: 1px 10px;
+	border: 1px solid #c4dafc;
+	border-radius: 3px;
+	box-shadow: 2px 2px 2px #022d72;
+	color: #ffffff;
 }
 
 a.btn-fill-s {background-color: #b1cdfa;}
+a.btn-fill-s2 {background-color: #0373fc;}
+
 a.btn-empty-s{background-color: #fff;}
+a.btn-empty-s2{background-color: #fff;}
 
 input[type-radio]{
 	width: 18px; 
