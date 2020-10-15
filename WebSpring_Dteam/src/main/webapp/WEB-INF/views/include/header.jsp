@@ -47,7 +47,8 @@
 		$.ajax({
 			url : "logout",
 			success : function() {
-				location.reload();
+				alert("로그아웃!");
+				location.reload(); 
 			},
 			error : function() {
 				alert(text + ":" + req.status);
@@ -89,17 +90,16 @@
 <style type="text/css">
 /*header */
 #header{}
-#header > .container{ padding:13px 0; overflow:hidden }
+#header > .m_content{ padding:13px 0; overflow:hidden; position: relative;  }
 #header .tnb{width:100%; height:40px; background-color:#3f4baa;}
 #header .tnb li{ float:left; font-size:12px}
 #header .tnb li a{ display:block; padding:0 10px; line-height:40px; text-decoration: none; color: #fff;}
 #header .tnb p {float:left;}
 #header .tnb ul {float:right;}
 
-#header .logo{ width:236px; height:105px; padding-top:15px; margin:0 auto;     margin-left: 150px; }
+#header .logo{ width:236px; height:105px; margin:0 auto;}
 #header .logo a{ display:block }
-
-.m_content { width: 100%; height: 100px;}
+.m_content { width: 1200px; margin: 0 auto; min-width: 1200px;}
 
 /* 검색 */
 .search {
@@ -134,13 +134,13 @@
   cursor: pointer;
   font-size: 20px;
 }
-
+ 
 /*Resize the wrap to see the search bar change!*/
 .wrap{
-  width: 25%;
+  width: 40%; 
   position: absolute;
-  top: 12%;
-  left: 46%;      
+  top: 54%;
+  left: 55%;       
   transform: translate(-50%, -50%);
 }
 
