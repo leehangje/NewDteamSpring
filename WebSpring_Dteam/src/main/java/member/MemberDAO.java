@@ -64,4 +64,24 @@ public class MemberDAO implements MemberService{
 		return sql.insert("member.mapper.kakao_join", vo) > 0 ? true : false;
 	}
 
+	@Override
+	public String member_searchId(HashMap<String, String> map) {
+		return sql.selectOne("member.mapper.search_id", map);
+	}
+
+	@Override
+	public String member_searchPw(HashMap<String, String> map) {
+		return sql.selectOne("member.mapper.search_pw", map);
+	}
+
+	@Override
+	public boolean member_resetPw(HashMap<String, String> map) {
+		return sql.update("member.mapper.reset_pw", map) > 0 ? true: false;
+	}
+
+	@Override
+	public MemberVO member_detail(String member_id) {
+		return sql.selectOne("member.mapper.detail", member_id);
+	}
+
 }

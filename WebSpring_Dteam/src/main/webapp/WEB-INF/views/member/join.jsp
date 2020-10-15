@@ -13,7 +13,7 @@
 	}
 	
 	#frmJoin > div {
-		border: 2px solid black;
+		border: 1px solid #858585;
 		height: 55px;
 		margin-bottom: 20px;
 	}
@@ -23,7 +23,7 @@
 		display: block;
 		float: left;
 		padding: 14px 0 0 0;
-		border-right: 2px solid black;
+		border-right: 1px solid #858585;
 	}
 	
 	.valid, .invalid {
@@ -37,25 +37,28 @@
 	#frmJoin > div > span > i {
 		width: 50px;
 		font-size: 25px;
+		color: #3e4ba9;
 	}
 	
 	#frmJoin input {
-		width: 368px;
-		height: 50px;
+		width: 369px;
+		height: 52px;
 		box-sizing: border-box;
 		border: none;
 	}
 	
 	.common { display: none; }
-	.valid { color: green; display: block; }
+	.valid { color: #3e4ba9; display: block; }
 	.invalid { color: red; display: block;}
 	
 	.btn-check {
 		color: #ffffff;
-		background-color: #111111;
-		padding: 10px 5px 14px 5px;
+		background-color: #3e4ba9;
+		padding: 6px 5px 8px 5px;
 		border-radius: 5px;
 		cursor: pointer;
+		font-size: 13px;
+		margin-right: 3px;
 	}
 	
 /* 	#map { 
@@ -69,27 +72,29 @@
 	 */
 	 .btnSet {
 	 	width: 40%;
+	 	height: 55px;
 	 	margin: 0 auto;
 	 	overflow: hidden;
 	 }
 	 
 	 #btn-submit, #btn-reset {
-	 	width: 49%;
+	 	width: 48.5%;
 		display: block; 
-		height: 50px; 
 		line-height: 50px;
 		font-weight: 70;
 		cursor: pointer;
 		float: left;
 	 }
 	 
-	#btn-submit { background-color: #000000; color: #ffffff; font-weight: 900; margin-left: 3px; }
+	#btn-submit { background-color: #3e4ba9; color: #ffffff; font-weight: 900; margin-left: 3px; height: 50px; }
 	
 	#btn-reset { 
 		background-color: #ffffff; 
-		color: #000000; 
+		color: #666666;
+		height: 50px; 
 		font-weight: 600;
-		border: 2px solid #000000;
+		/* border: 1px solid #000000; */
+		box-shadow: 2px 2px 5px #666666;
 	}
 
 	
@@ -112,17 +117,17 @@
 				<form action="join" method="post" id='frmJoin'>
 							<div>
 								<span><i class="far fa-envelope"></i></span>
-								<input type="text" name="id" class="chk" placeholder="아이디(이메일)" style="width: 280px;" />
+								<input type="text" name="member_id" class="chk" placeholder="아이디(이메일)" style="width: 293px;" />
 								<a class="btn-check" id="btn-id">중복 확인</a>
 								<div class="common">아이디를 입력하세요(이메일 형식으로 입력해주세요)</div>
 							</div>	
 							<div>
 								<span><i class="far fa-user"></i></span>
-								<input type="text" name="name" placeholder="이름" />
+								<input type="text" name="member_name" placeholder="이름" />
 							</div>
 							<div>
 								<span><i class="fas fa-unlock-alt"></i></span>
-								<input type="password" name="pw" class="chk" placeholder="비밀번호" />
+								<input type="password" name="member_pw" class="chk" placeholder="비밀번호" />
 								<div class="common">비밀번호를 입력하세요(영문대.소문자, 숫자를 모두 포함)</div>
 							</div>	
 							<div>
@@ -132,13 +137,13 @@
 							</div>	
 							<div>
 								<span><i class="far fa-user-circle"></i></span>
-								<input type="text" name="nickname" class="chk" placeholder="닉네임" style="width: 280px;" />
+								<input type="text" name="member_nickname" class="chk" placeholder="닉네임" style="width: 293px;" />
 								<a class="btn-check" id="btn-nickname">중복 확인</a>
 								<div class="common">닉네임을 입력하세요</div>
 							</div>
 							<div>
 								<span><i class="fas fa-phone-square"></i></span>
-								<input type="text" name="tel" class="chk" placeholder="휴대 전화번호(- 없이 숫자만 입력하세요)" />
+								<input type="text" name="member_tel" class="chk" placeholder="휴대 전화번호(- 없이 숫자만 입력하세요)" />
 								<div class="common"></div>
 							</div>
 							
@@ -177,55 +182,55 @@
 		function go_join() {
 			//아이디
 			//중복확인을 한 경우
-			if( $("[name=id]").hasClass("checked") ) {
+			if( $("[name=member_id]").hasClass("checked") ) {
 				//이미 사용중인 아이디인 경우 회원가입 불가
-				if( $("[name=id]").siblings("div").hasClass("invalid") ) {
+				if( $("[name=member_id]").siblings("div").hasClass("invalid") ) {
 					alert("회원가입 불가!\n" + join.userid.unUsable.desc );
-					$("[name=id]").focus();
+					$("[name=member_id]").focus();
 					return;
 				}
 			} else {
 				//중복확인 하지 않은 경우
-				if( !item_check( $("[name=id]") ) ) 	return;	
+				if( !item_check( $("[name=member_id]") ) ) 	return;	
 				else {
 					alert("회원가입 불가!\n" + join.userid.valid.desc );
-					$("[name=id]").focus();
+					$("[name=member_id]").focus();
 					return;
 				}
 			}
 			
-			if( $("[name=name]").val() == "" ) {
+			if( $("[name=member_name]").val() == "" ) {
 				alert("성명을 입력하세요");
-				$("[name=name]").focus();
+				$("[name=member_name]").focus();
 				return;
 			}
 
 			//invalid인 경우 회원가입되지 않도록 한다.
 			
 			
-			if( !item_check( $("[name=pw]") ) ) 		return;		//비밀번호
+			if( !item_check( $("[name=member_pw]") ) ) 		return;		//비밀번호
 			if( !item_check( $("[name=pw_ck]") ) ) 		return;		//비밀번호 확인
 
 			//닉네임
 			//중복확인을 한 경우
-			if( $("[name=nickname]").hasClass("checked") ) {
+			if( $("[name=member_nickname]").hasClass("checked") ) {
 				//이미 사용중인 아이디인 경우 회원가입 불가
-				if( $("[name=nickname]").siblings("div").hasClass("invalid") ) {
+				if( $("[name=member_nickname]").siblings("div").hasClass("invalid") ) {
 					alert("회원가입 불가!\n" + join.usernickname.unUsable.desc );
-					$("[name=nickname]").focus();
+					$("[name=member_nickname]").focus();
 					return;
 				}
 			} else {
 				//중복확인 하지 않은 경우
-				if( !item_check( $("[name=nickname]") ) ) 	return;	
+				if( !item_check( $("[name=member_nickname]") ) ) 	return;	
 				else {
 					alert("회원가입 불가!\n" + join.usernickname.valid.desc );
-					$("[name=nickname]").focus();
+					$("[name=member_nickname]").focus();
 					return;
 				}
 			}
 
-			if( !item_check( $("[name=tel]") ) ) 	return;		//핸드폰 번호			
+			if( !item_check( $("[name=member_tel]") ) ) 	return;		//핸드폰 번호			
 			
 			$("form").submit();
 		} //go_join()
@@ -263,7 +268,7 @@
 		// 아이디 중복확인
 		function userid_check() {			
 			//올바른 아이디인 경우만 중복확인 필요
-			var $userid = $("[name=id]");
+			var $userid = $("[name=member_id]");
 			if( $userid.hasClass("checked") ) return;	//이미 중복확인을 한 경우, 함수를 끝냄
 			var data = join.tag_status( $userid );
 			if( data.code != "valid" ) { 
@@ -289,7 +294,7 @@
 		// 닉네임 중복확인
 		function usernickname_check() {
 			//올바른 닉네임 경우만 중복확인 필요
-			var $usernickname = $("[name=nickname]");
+			var $usernickname = $("[name=member_nickname]");
 			if( $usernickname.hasClass("checked") ) return;	//이미 중복확인을 한 경우, 함수를 끝냄
 			var data = join.tag_status( $usernickname );
 			if( data.code != "valid" ) { 
@@ -315,13 +320,13 @@
 		
 		$(".chk").on("keyup", function() {
 			//아이디에 대해 입력 데이터를 변경시 다시 중복확인할 수 있도록 한다
-			if( $(this).attr("name") == "id" ) {
+			if( $(this).attr("name") == "member_id" ) {
 				if( event.keyCode == 13 ) userid_check();
 				else {
 					$(this).removeClass("checked");
 					validate( $(this) );
 				}	
-			} else if( $(this).attr("name") == "nickname") {
+			} else if( $(this).attr("name") == "member_nickname") {
 				if( event.keyCode == 13 ) usernickname_check();
 				else {
 					$(this).removeClass("checked");

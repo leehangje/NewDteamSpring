@@ -111,19 +111,10 @@ table a { font-weight: bold;}
 									</c:forEach>
 									
 									<!-- !!!!!작성자 또는 관리자만 상세페이지로 들어갈 수 있게 변경해야 함 !!!!!-->
-									
-										<c:if test="${1 eq vo.indent }">
-											<%-- <c:if test="${login_info.member_id eq 'admin'}"> --%>
-												<a href='detail.qn?id=${vo.id}' style="color: #3043b0;">${vo.title}</a>
-											<%-- </c:if> --%>
-										</c:if>
-										
-										<c:if test="${0 eq vo.indent }">
-											<a href='detail.qn?id=${vo.id}'>${vo.title}</a>
-										</c:if>
-										<%-- <a href='detail.qn?id=${vo.id}'>${vo.title}</a> --%>
-									
-									
+									<a <c:if test="${login_info.member_id eq 'admin' || ( login_info.member_id ne 'admin' && login_info.member_id eq vo.writer) }"> href='detail.qn?id=${vo.id}' </c:if>  
+									   <c:if test="${login_info.member_id ne 'admin' && ( login_info.member_id ne 'admin' && login_info.member_id ne vo.writer) }"> onclick="alert('읽기권한이 없습니다!')"</c:if>  
+										 ${1 eq vo.indent ? 'style="color: #3043b0;"': ''} >${vo.title}</a>
+
 								</td>
 								<td>${vo.name} </td>
 								<td>${vo.writedate} </td>

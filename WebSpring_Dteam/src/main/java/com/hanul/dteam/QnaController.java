@@ -189,11 +189,11 @@ public class QnaController {
 	public String list(Model model, @RequestParam(defaultValue = "1") int curPage, HttpSession session
 			, String search, String keyword) {
 		//임시테스트용 관리자 로그인
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("id", "admin");
-		map.put("pw", "0000");
-		session.setAttribute("login_info", member.member_login(map));
-
+		/*
+		 * HashMap<String, String> map = new HashMap<String, String>(); map.put("id",
+		 * "admin"); map.put("pw", "0000"); session.setAttribute("login_info",
+		 * member.member_login(map));
+		 */
 		session.setAttribute("category", "qn");
 
 		page.setCurPage(curPage);
