@@ -23,7 +23,7 @@ ul.mission_column li h4 { font-size: 24pt; margin: 15px 0 0 ;}
 .location_container { width: 94%; padding: 3%; max-width: 800px; margin-top: 10px;}
 .head_office { float:left; width:120px; font-size: 36px; font-weight: 400; line-height: 1.2; margin-bottom: 20px;}
 table.address { float:right; border:none; border-collapse:collapse; max-width: 520px; }
-table.address td:first-child { width: 90px; vertical-align: top;}
+table.address td:first-child { width: 96px; vertical-align: top;}
 table.address td { font-size: 15px; line-height: 1.3; padding: 4px 0;}  
 table.address td:nth-child(2) {font-weight: 400; color: #888; padding-left: 20px; padding-right: 20px;}
 

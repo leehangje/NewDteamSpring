@@ -13,7 +13,7 @@
  #container01 { border-top: 8px solid white;  border-bottom: 8px solid white; margin: 10px 0px 0px 0px;  overflow: hidden; min-width: 1080px;}
 #slide {width: 500%;}
 #slide::after { content: ""; display: block; clear: both; }
-#slide > li { float: left; width: 20%; position: relative;height: 400px;overflow: hidden;}
+#slide > li { float: left; width: 20%; position: relative;height: 500px;overflow: hidden;}
 #slide > li > img { display: block; position: absolute; top: 50%; left: 50%;  transform: translate(-50%, -50%);}
 
 /* 카테고리 */  
@@ -21,6 +21,8 @@
 #main_content .info_cate {position:relative; padding-top:43px; height:250px} 
 #main_content .cate_list li {float:left; margin-left:41px; width:90px; height:174px; margin-top:38px; text-align:center;}
 #main_content .cate_list li a {display:block; line-height:140%;padding-top:110px;}
+
+#main_content .new_pro{position:relative; padding-top:20px;} 
 /* #main_content .cate_list li:nth-child(1){ background:url(img/cate_img1.jpg) left top no-repeat}
 #main_content .cate_list li:nth-child(2){ background:url(img/cate_img2.jpg) left top no-repeat}
 #main_content .cate_list li:nth-child(3){ background:url(img/cate_img3.jpg) left top no-repeat}
@@ -35,7 +37,8 @@
 
 
 .input { background-position:top center; background-repeat:no-repeat; background-color: white; background-size: 100%; width: 90px; height: 170px;
- 	    border: none; padding-top: 55px;}
+ 	    border: none; padding-top: 55px; cursor:pointer;}
+input:focus{ outline: none;}
 .div{overflow: hidden; margin: 0 auto; margin-top: 30px; margin-bottom: 40px;}
 .divsub{ width:90px; height:170px; float: left; margin-left: 46px;}   
 .divsub:nth-child(1){ margin-left: 0;}
@@ -98,30 +101,40 @@
 					</div>
 				</div>
 			</form>
-			<a href="" class="more">전체보기</a>
+			<!-- <a href="" class="more">전체보기</a> -->
 		</article>
 
-	<div style="width: 1200px; margin: 0 auto; margin-bottom: 10px;">
-<h3 style="width: 150px;">최신상품 ＞</h3>
-</div>
-<div id='data-list' style=" width: 1200px; margin: 0 auto; margin-top: 10px;">
-<div class='grid' style="width:1200px; margin:0 auto; margin-bottom: 30px; border-radius: 10px;">
-<c:forEach items="${page.list}" var="vo">
-	<div  class='gride_li' style=" border: 0px; height: 240px; margin-bottom: 80px; float: left; margin-right: 50px; margin-top: 20px;"> 
-		<a href='detail.ma?md_serial_number=${vo.md_serial_number }'>
-		<img src='${vo.md_photo_url}' onerror="this.src='img/white.png'" class="img"></a>
-		<div style="padding:0px; font-weight: 600; margin-top: 10px;">${vo.md_name}</div>
-		<div style="padding:0px; font-weight: 300; margin-top: 10px; margin-bottom: 10px">${vo.md_price}원</div> 
-	</div>
-</c:forEach>
-</div>
-</div>
-<div style="position:absolute; bottom:46px; right:370px; height:25px; margin: 0 ! important;
-    background: url(img/cate_more.png) no-repeat;
-    padding-left: 25px;">
-<a href="#" id="load" style=" height: 50px;">더 보기</a>
-</div>
-<div class="visivle" style="width: 50px; hegiht: 50px; padding-top: 50px;"></div>
+		<article class="container new_pro">
+		<div style="width: 1200px; margin: 0 auto; margin-bottom: 10px;">
+			<h3 style="width: 150px;">최신상품 ＞</h3>
+		</div>
+		<div id='data-list'
+			style="width: 1200px; margin: 0 auto; margin-top: 10px;">
+			<div class='grid'
+				style="width: 1200px; margin: 0 auto; margin-bottom: 30px; border-radius: 10px;">
+				<c:forEach items="${page.list}" var="vo">
+					<div class='gride_li'
+						style="border: 0px; height: 240px; margin-bottom: 80px; float: left; margin-right: 50px; margin-top: 20px;">
+						<a href='detail.ma?md_serial_number=${vo.md_serial_number }'>
+							<img src='${vo.md_photo_url}' onerror="this.src='img/white.png'"
+							class="img">
+						</a>
+						<div style="padding: 0px; font-weight: 600; margin-top: 10px;">${vo.md_name}</div>
+						<div
+							style="padding: 0px; font-weight: 300; margin-top: 10px; margin-bottom: 10px">${vo.md_price}원</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<!-- <div
+			style="position: absolute; top:18px; right: 17px; height: 25px; margin: 0 ! important; background: url(img/cate_more.png) no-repeat; padding-left: 25px;">
+			<a href="#" id="load" style="height: 50px;">더 보기</a>
+		</div> -->
+		
+		</article>
+		<!-- <div class="visivle"
+			style="width: 50px; hegiht: 50px; padding-top: 50px;"></div> -->
+
 	</section>
 <script type="text/javascript">
 $(function(){
