@@ -24,7 +24,7 @@
 
 .container {
 	margin: 0 auto;
-	width: 1200px;
+	width: 1400px;
 	display: flex;
 	-webkit-box-pack: center;
     justify-content: center;
@@ -32,7 +32,7 @@
 
 .bottom_gnb_menu {
 	height: 64px;
-    width: 1124px;
+    width: 1300px;
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
@@ -43,7 +43,7 @@
 .bottom_gnb_menu a {
 	width: 14.5%;
     text-align: center;
-    font-size: 14px;
+    font-size: 14.5px;
     font-weight: bold;
     color: rgb(88, 88, 88);
     position: relative;
