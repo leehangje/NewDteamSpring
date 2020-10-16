@@ -43,7 +43,7 @@
 .bottom_gnb_menu a {
 	width: 14.5%;
     text-align: center;
-    font-size: 14.5px;
+    font-size: 14px;
     font-weight: bold;
     color: rgb(88, 88, 88);
     position: relative;
