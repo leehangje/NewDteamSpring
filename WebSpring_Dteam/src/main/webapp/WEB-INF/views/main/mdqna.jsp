@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 header,footer { display: none;}
+hr { color: #3a3a3a; margin-bottom: 20px;}
 
 </style>
 </head>
@@ -17,7 +18,7 @@ header,footer { display: none;}
 	<div id='comment_regist'>
 		<span class="left"><strong>문의작성</strong></span>
 		<span class="right"><a onclick="comment_regist()" class="btn-fill-s2">등록</a></span>
-		<textarea id="comment" placeholder="내용을 입력하세요" style="width: 99%; height: 50px; margin-top: 5px; resize: none; padding: 10px;	"></textarea>	
+		<textarea id="comment" placeholder="내용을 입력하세요" style="width: 99%; height: 50px; border:1px solid #d3d3d3; margin-top:30px; margin-bottom:30px; resize: none; padding: 10px;	"></textarea>	
 	</div>
 	<div id = "comment_list" class="left">
 		

@@ -190,7 +190,7 @@ tbody{
 				<div class="md_tab_con" id="tab_con">
 					<div class="md_tab_con_sub" style="overflow:scroll; width:100%; height:500px; padding:10px;">
 					<c:forEach items="${vo.review }" var="list">
-						<table class="review_list" style="width:100%; margin-bottom: 15px; text-align: left; border-bottom: 1px solid gray; border-top: 1px solid gray;">
+						<table class="review_list" style="width:100%; margin-bottom: 15px; text-align: left; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
 							<tr>
 								<th>닉네임</th>
 								<td>${list.member_nickname }</td>

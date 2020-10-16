@@ -104,7 +104,7 @@
 
 #header .logo{ width:236px; height:105px; margin:0 auto;}
 #header .logo a{ display:block }
-
+button:focus{ outline: none;}
 .m_content { width: 1200px; margin: 0 auto; min-width: 1200px;}
 
 /* 검색 */

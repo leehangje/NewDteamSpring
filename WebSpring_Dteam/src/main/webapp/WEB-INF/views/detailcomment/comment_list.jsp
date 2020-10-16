@@ -19,7 +19,7 @@
 		<a class="btn-fill-s2 btn-delete-cancel" >삭제</a>
 	</span>
 	</c:if>
-	<div class="original" style="margin-top: 10px; margin-bottom: 10px; font-size: #7d7d7d;">${fn:replace(fn:replace( vo.content, lf, '<br>' ), crlf, '<br>' )}</div>
+	<div class="original" style="margin-top: 10px; margin-bottom: 20px; font-size: #7d7d7d;">${fn:replace(fn:replace( vo.content, lf, '<br>' ), crlf, '<br>' )}</div>
 	<div class="modify" style="display:none; margin-top: 6px;"></div>
 </div>
 <hr>
