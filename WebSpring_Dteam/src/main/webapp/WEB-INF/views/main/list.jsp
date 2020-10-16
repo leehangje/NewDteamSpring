@@ -13,7 +13,7 @@
  #container01 { border-top: 8px solid white;  border-bottom: 8px solid white; margin: 10px 0px 0px 0px;  overflow: hidden; min-width: 1080px;}
 #slide {width: 500%;}
 #slide::after { content: ""; display: block; clear: both; }
-#slide > li { float: left; width: 20%; position: relative;height: 400px;overflow: hidden;}
+#slide > li { float: left; width: 20%; position: relative;height: 500px;overflow: hidden;}
 #slide > li > img { display: block; position: absolute; top: 50%; left: 50%;  transform: translate(-50%, -50%);}
 
 /* 카테고리 */  
@@ -37,7 +37,8 @@
 
 
 .input { background-position:top center; background-repeat:no-repeat; background-color: white; background-size: 100%; width: 90px; height: 170px;
- 	    border: none; padding-top: 55px;}
+ 	    border: none; padding-top: 55px; cursor:pointer;}
+input:focus{ outline: none;}
 .div{overflow: hidden; margin: 0 auto; margin-top: 30px; margin-bottom: 40px;}
 .divsub{ width:90px; height:170px; float: left; margin-left: 46px;}   
 .divsub:nth-child(1){ margin-left: 0;}
@@ -100,7 +101,7 @@
 					</div>
 				</div>
 			</form>
-			<a href="" class="more">전체보기</a>
+			<!-- <a href="" class="more">전체보기</a> -->
 		</article>
 
 		<article class="container new_pro">
@@ -125,10 +126,10 @@
 				</c:forEach>
 			</div>
 		</div>
-		<div
+		<!-- <div
 			style="position: absolute; top:18px; right: 17px; height: 25px; margin: 0 ! important; background: url(img/cate_more.png) no-repeat; padding-left: 25px;">
 			<a href="#" id="load" style="height: 50px;">더 보기</a>
-		</div>
+		</div> -->
 		
 		</article>
 		<!-- <div class="visivle"
