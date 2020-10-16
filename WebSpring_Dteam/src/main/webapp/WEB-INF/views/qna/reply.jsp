@@ -73,7 +73,7 @@ table th, table td{
 					<input type="hidden" name="step" value="${vo.step }" />
 					<table>
 						<tr><th>제목</th>
-							<td><input type="text" name="title" class="need" title="제목"/></td>
+							<td><input type="text" name="title" class="need" title="제목" style="height: 27px;"/></td>
 						</tr>
 						<tr><th>내용</th>
 							<td><textarea name="content" class="need" title="내용"></textarea></td>

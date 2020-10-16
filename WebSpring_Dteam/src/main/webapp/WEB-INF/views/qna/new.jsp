@@ -74,10 +74,10 @@ table th, table td{
 					<form action="insert.qn" method="post" enctype='multipart/form-data'>
 					<table>
 						<tr><th>제목</th>
-							<td><input type="text" name="title" class="need" title="제목"/></td>
+							<td><input type="text" name="title" class="need" title="제목" style="height: 27px;"/></td>
 						</tr>
 						<tr><th>내용</th>
-							<td><textarea name="content" class="need" title="내용"></textarea></td>
+							<td><textarea name="content" class="need" title="내용" ></textarea></td>
 						</tr>
 						<tr><th>첨부파일</th>
 							<td class="left">

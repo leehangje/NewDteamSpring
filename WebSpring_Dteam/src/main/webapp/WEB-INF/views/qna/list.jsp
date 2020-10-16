@@ -88,7 +88,9 @@ table a { font-weight: bold;}
 						<form method="post" action="list.qn">
 						<input type="hidden" name="curPage" value="1" />
 						<div id="list-top">
-							<a class="btn-fill" id="btn_qna" href="new.qn">문의하기</a>
+							<!-- 로그인 회원만 글쓰기 가능 -->
+							<a class="btn-fill" id="btn_qna" <c:if test='${login_info.member_id ne null }'> href="new.qn" </c:if> 
+							<c:if test="${login_info.member_id eq null }">onclick="alert('로그인이 필요한 기능입니다!')"</c:if> >문의하기</a>
 						</div>
 						</form>
 						
