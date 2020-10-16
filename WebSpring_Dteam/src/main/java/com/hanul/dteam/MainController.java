@@ -34,6 +34,24 @@ public class MainController {
 		model.addAttribute("page", service.main_list(page));
 		return "main/list";
 	}
+
+	//메인 목록화면 요청
+	@RequestMapping("/search.ma")
+	public String search(Model model, HttpSession session
+			, String keyword, String category
+			, @RequestParam(defaultValue = "list") String viewType 
+			, @RequestParam(defaultValue = "100") int pageList
+			, @RequestParam(defaultValue = "1") int curPage) {
+		
+		//DB에서 방명록 정보를 조회해와 목록화면에 출력
+		page.setCurPage(curPage);
+		page.setKeyword(keyword);
+		page.setPageList(pageList);
+		page.setViewType(viewType);
+		page.setCategory(category);
+		model.addAttribute("page", service.main_list(page));
+		return "main/search";
+	}
 	
 	@RequestMapping("/detail.ma")
 	public String detail(Model model, String md_serial_number){
