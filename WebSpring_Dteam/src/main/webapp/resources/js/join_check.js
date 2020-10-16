@@ -56,17 +56,17 @@
 	
 	usernickname: {
  		valid: { code: "valid", desc: "닉네임 중복확인 해주세요." },
- 		invalid: { code: "invalid", desc: "닉네임은 2~8자 영문 대소문자, 숫자, 한글만 사용가능 합니다." },
+ 		invalid: { code: "invalid", desc: "닉네임은 2~8자 영문 대소문자, 한글만 사용가능 합니다." },
  		usable: { code: "valid", desc: "사용가능한 닉네임입니다" },
  		unUsable: { code: "invalid", desc: "이미 사용중인 닉네임입니다" }
 	},
 	
 	usernickname_status: function(nickname) {
-		var reg = /^[a-zA-Z0-9가-힣]{2,8}$/;
+		var reg = /^[ㄱ-ㅎ가-힣a-zA-Z]{2,8}$/;
 		
 		if( nickname == "" )				return this.common.empty;
  		else if ( nickname.match(space) ) return this.common.space;
- 		else if ( reg.test(nickname) )	return this.usernickname.invalid;
+ 		else if ( !reg.test(nickname) )	return this.usernickname.invalid;
  		else						return this.usernickname.valid;
 	},
 	

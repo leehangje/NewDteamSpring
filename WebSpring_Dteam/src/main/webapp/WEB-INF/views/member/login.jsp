@@ -109,8 +109,6 @@
 						$("#userPw").val("");
 						return;
 					}
-					alert(data.member_id +  "님 로그인 성공 ~");
-					//history.go(-1);
 					location.href = "/dteam";
 					
 				} else  {
@@ -152,8 +150,6 @@
 							data: { member_id:member_id, member_nickname:member_nickname, member_token:member_token },
 							success: function(data) {
 								if (data) {
-									alert("카카오 소셜 로그인 성공!" + "${login_info.member_id}");
-									//history.go(-1);
 									location.href = "/dteam";
 								} else {
 									alert("아이디나 비밀번호가 일치하지 않습니다!");

@@ -90,6 +90,21 @@ tbody{
 	width: 100%;
 }
 
+/* map 관련 css */
+#map { 
+	position:absolute; 
+	width:800px; height:600px;
+	left:50%; top:65%;	
+	transform:translate(-50%, -50%);
+	border:2px solid #666;		
+	display:none;      
+}
+
+#btn_gps {
+	font-size: 20px;
+	margin-left: 5px;
+}
+
 </style>
 <script type="text/javascript">
 
@@ -166,7 +181,11 @@ tbody{
 									<td colspan="2" style="color: #696763; padding-left: 30px;">닉네임 : ${list.member_nickname}</td>
 								</tr>
 								<tr>
-									<td colspan="2" style="color: #696763; padding-left: 30px;">주소 : ${list.member_addr}</td>
+									<td colspan="2" style="color: #696763; padding-left: 30px;" onclick="search_location();">주소 : ${list.member_addr}
+										<c:if test="${(info.member_latitude ne null) and (info.member_longitude ne null)}">
+											<span><i class="fas fa-map-marker-alt" id="btn_gps" onclick="search_location();"></i></span>
+										</c:if>
+									</td>
 								</tr>
 							</c:forEach>
 							<tr>
@@ -213,7 +232,62 @@ tbody{
 				
 			</div> <!--content wrap  -->
 		</div>
+		<div id="popup-background" onclick="$('#popup-background, #map').css('display', 'none');"></div>
+		<div id="map"></div>
 	</section>
+	<!-- google map을 위한 js -->
+	<script type="text/javascript" 
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsrerDHJrp9Wu09Ij7MUELxCTPiYfxfBI" ></script>
+	<script type="text/javascript">
+		function search_location() {
+
+			var map;
+			var marker;
+			var latitude = Number(${info.member_latitude});		//위도
+			var longitude = Number(${info.member_longitude}); 	//경도
+
+			if("${info.member_latitude}" == "" || "${info.member_longitude}" == "") {
+				alert("위치 정보를 찾을 수 없습니다!");
+				return false;
+			} else {
+				$('#popup-background, #map').css('display', 'block');
+				google.maps.event.addDomListener(window, 'load', initialize(latitude, longitude));
+			}
+				
+			// Google Map으로 위도와 경도 초기화
+			//initialize(latitude, longitude);
+	
+			function initialize(latitude, longitude) {
+				// 현재 위치의 위도와 경도 정보를 currentLocatioon 에 초기화 
+				var currentLocation = new google.maps.LatLng(latitude, longitude);
+				var mapOptions = {
+					center : currentLocation, 	//지도에 보여질 위치			
+					zoom : 18, 		//지도 줌 (0축소 ~ 18확대) 	
+					mapTypeId : google.maps.MapTypeId.ROADMAP
+				};
+				
+				// DIV에 지도 달아주기
+				map = new google.maps.Map(document.getElementById("map"), mapOptions);
+				
+				// 지도 위에 마커 달아주기
+				marker = new google.maps.Marker({
+					position : currentLocation,
+					map : map
+				});
+				
+				google.maps.event.addListener(marker, 'click', toggleBounce(marker));
+			}
+
+			function toggleBounce(marker) {
+				if (marker.getAnimation() != null) {
+					marker.setAnimation(null);
+				} else {
+					marker.setAnimation(google.maps.Animation.BOUNCE);
+				}
+			}
+			
+		} //search_location()
+	</script>
 </body>
 
 

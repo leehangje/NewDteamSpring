@@ -36,6 +36,10 @@
 		display: none;
 	}
 	
+	.mr10 {
+		color: #3e4ba9;
+	}
+	
 </style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -80,8 +84,8 @@
 </script>
 </head>
 <body>
-<div class="ml20 mb20 tl"><span class="mr10"><i class="fas fa-check"></i></span><span style="font-weight: 900">소셜 계정 회원</span>은 아이디 찾기가 불가능합니다.</div>
-<div class="ml20 mb20 tl"><span class="mr10"><i class="fas fa-check"></i></span>핸드폰 번호는 -를 제외한 <span style="font-weight: 900">숫자만</span> 입력하세요</div>
+<div class="ml20 mb20 tl"><span class="mr10"><i class="fas fa-check"></i></span><b>소셜 계정 회원</b>은 아이디 찾기가 불가능합니다.</div>
+<div class="ml20 mb20 tl"><span class="mr10"><i class="fas fa-check"></i></span>핸드폰 번호는 -를 제외한 <b>숫자만</b> 입력하세요</div>
 <table class="basic_table">
 	<tr>
 		<th><span>이름</span></th>

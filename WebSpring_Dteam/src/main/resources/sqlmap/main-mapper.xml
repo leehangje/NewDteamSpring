@@ -58,4 +58,9 @@
 		where md_serial_number=#{md_serial_number}
 	</select>
 	
+	<select id="member_info" resultType="member.MemberVO">
+		select * from tblmember m 
+		where m.member_id = (select member_id from tblmerchandise c where c.md_serial_number=#{md_serial_number})
+	</select>
+	
 </mapper>

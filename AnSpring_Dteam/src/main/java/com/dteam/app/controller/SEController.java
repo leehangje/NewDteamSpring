@@ -133,6 +133,7 @@ public class SEController {
 		String member_latitude = (String) request.getParameter("member_latitude");
 		String member_longitude = (String) request.getParameter("member_longitude");
 		String member_name = (String) request.getParameter("member_name");
+		String member_token = (String) request.getParameter("member_token");
 
 		System.out.println(member_id);
 		System.out.println(member_pw);
@@ -142,6 +143,7 @@ public class SEController {
 		System.out.println(member_latitude);
 		System.out.println(member_longitude);
 		System.out.println(member_name);
+		System.out.println(member_token);
 
 		model.addAttribute("member_id", member_id);
 		model.addAttribute("member_pw", member_pw);
@@ -151,6 +153,7 @@ public class SEController {
 		model.addAttribute("member_latitude", member_latitude);
 		model.addAttribute("member_longitude", member_longitude);
 		model.addAttribute("member_name", member_name);
+		model.addAttribute("member_token", member_token);
 
 		command = new AJoinCommand();
 		command.execute(model);

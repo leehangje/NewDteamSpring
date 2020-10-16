@@ -19,6 +19,7 @@ public class MemberDto {
     public MemberDto() {}
     
     // 일반 회원가입 시 데이터베이스에 멤버 정보를 추가할 때
+    // 일반 회원가입때 이 생성자 안쓰는데, 혹시 쓰는 사람 있을까봐 남겨둡니다.
     public MemberDto(String member_id, String member_pw, String member_nickname, String member_tel, String member_addr,
 			String member_latitude, String member_longitude, String member_grade, String member_name, String member_profile) {
 		super();
@@ -33,8 +34,29 @@ public class MemberDto {
 		this.member_name = member_name;
 		this.member_profile = member_profile;
 	}
+    
+    // 일반 회원가입 시 데이터베이스에 멤버 정보를 추가할 때
+    /*
+    public MemberDto(String member_id, String member_pw, String member_nickname, String member_tel, String member_addr,
+			String member_latitude, String member_longitude, String member_grade, String member_name,
+			String member_profile, String member_logintype, String member_token) {
+		super();
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_nickname = member_nickname;
+		this.member_tel = member_tel;
+		this.member_addr = member_addr;
+		this.member_latitude = member_latitude;
+		this.member_longitude = member_longitude;
+		this.member_grade = member_grade;
+		this.member_name = member_name;
+		this.member_profile = member_profile;
+		this.member_logintype = member_logintype;
+		this.member_token = member_token;
+	}
+	*/
 
-    // 암호 없이 멤버 정보를 가져올 때(소셜로그인)
+	// 암호 없이 멤버 정보를 가져올 때(소셜로그인)
     // 이메일 중복체크할 때
     public MemberDto(String member_id, String member_nickname,
                      String member_tel, String member_addr, String member_latitude,

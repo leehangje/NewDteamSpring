@@ -167,8 +167,7 @@ public class CommonService {
 			msg.append("<div style='margin-bottom: 20px; font-size: 15px;'>");
 			msg.append("안녕하세요 [대여안대여]입니다.<br/> 아래 버튼을 누르고 비밀번호를 재설정해주세요.");
 			msg.append("</div>");
-			msg.append("<a style='display: block; background-color: #3e4ba9; color: #ffffff; width: 300px; height: 50px; line-height: 50px; text-align: center; font-weight: bold; text-decoration: none;'" + 
-						" href='http://localhost:8080/dteam/resetPwForm?member_token=" + member_token + "'>비밀번호 재설정하기</a>");
+			msg.append("<a href='http://localhost:8080/dteam/resetPwForm?member_token=" + member_token + "'>비밀번호 재설정하기</a>");
 			msg.append("</body>");
 			msg.append("</html>");
 			mail.setHtmlMsg(msg.toString());

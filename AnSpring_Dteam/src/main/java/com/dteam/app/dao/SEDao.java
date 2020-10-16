@@ -207,7 +207,7 @@ public class SEDao {
 
 	// 일반 회원가입할 때
 	public int anJoin(String member_id, String member_pw, String member_nickname, String member_tel, String member_addr,
-			String member_latitude, String member_longitude, String member_name) {
+			String member_latitude, String member_longitude, String member_name, String member_token) {
 
 		Connection connection = null;
 		PreparedStatement prepareStatement = null;
@@ -216,9 +216,9 @@ public class SEDao {
 		try {
 			connection = dataSource.getConnection();
 			String sql = "insert into tblmember(member_id, member_pw, member_nickname, member_tel, "
-					+ "member_addr, member_latitude, member_longitude, member_name) " + "values('" + member_id + "', '"
+					+ "member_addr, member_latitude, member_longitude, member_name, member_token) " + "values('" + member_id + "', '"
 					+ member_pw + "', '" + member_nickname + "', '" + member_tel + "', '" + member_addr + "', '"
-					+ member_latitude + "', '" + member_longitude + "', '" + member_name + "' )";
+					+ member_latitude + "', '" + member_longitude + "', '" + member_name + "', '" + member_token + "' )";
 			prepareStatement = connection.prepareStatement(sql);
 			state = prepareStatement.executeUpdate();
 

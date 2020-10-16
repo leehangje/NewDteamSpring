@@ -1,10 +1,13 @@
 package main;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import member.MemberVO;
 
 @Repository
 public class MainDAO implements MainService{
@@ -27,6 +30,12 @@ public class MainDAO implements MainService{
 		return vo;
 	}
 	
-	
+	// 상품 글을 등록한 사용자의 정보(MemberVO)를 반환하는 메소드
+	@Override
+	public MemberVO member_info(String md_serial_number) {
+		MemberVO vo = sql.selectOne("main.mapper.member_info", md_serial_number);
+		
+		return vo;
+	}
 	
 }

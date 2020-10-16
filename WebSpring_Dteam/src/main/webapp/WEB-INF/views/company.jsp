@@ -54,7 +54,6 @@ table.address td:nth-child(2) {font-weight: 400; color: #888; padding-left: 20px
 				</div>
 			</div>
 		</div>
-		</div>
 	</section>
 	<!--  mission -->
 	<div id="brand_mission">
@@ -87,6 +86,7 @@ table.address td:nth-child(2) {font-weight: 400; color: #888; padding-left: 20px
 			<!--  오시는 길 -->
 			<div id="contact_us">
 				<h3 class="brand_m">contact us</h3>
+				<div id="map"></div>
 			<div class="contents_container">
 				<div class="location_container">
 					<div class="head_office">대여 안대여 본사</div>
@@ -121,6 +121,50 @@ table.address td:nth-child(2) {font-weight: 400; color: #888; padding-left: 20px
 				</div>
 			</div>
 		</div>
-	</div>
+	<!-- google map을 위한 js -->
+	<script type="text/javascript" 
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsrerDHJrp9Wu09Ij7MUELxCTPiYfxfBI" ></script>
+
+	<script type="text/javascript">
+		var nav = null;
+		var map;
+		var marker;
+
+		google.maps.event.addDomListener(window, 'load', initialize(35.15364860194203, 126.887975975145));
+			
+		// Google Map으로 위도와 경도 초기화
+		//initialize(35.15364860194203, 126.887975975145);
+
+		function initialize(latitude, longitude) {
+			// 현재 위치의 위도와 경도 정보를 currentLocatioon 에 초기화 
+			var currentLocation = new google.maps.LatLng(latitude, longitude);
+			var mapOptions = {
+				center : currentLocation, 	//지도에 보여질 위치			
+				zoom : 15, 		//지도 줌 (0축소 ~ 18확대) 	
+				mapTypeId : google.maps.MapTypeId.ROADMAP
+			};
+			
+			// DIV에 지도 달아주기
+			map = new google.maps.Map(document.getElementById("map"), mapOptions);
+			
+			// 지도 위에 마커 달아주기
+			marker = new google.maps.Marker({
+				position : currentLocation,
+				map : map
+			});
+			
+			google.maps.event.addListener(marker, 'click', toggleBounce(marker));
+
+		}
+
+		function toggleBounce(marker) {
+			if (marker.getAnimation() != null) {
+				marker.setAnimation(null);
+			} else {
+				marker.setAnimation(google.maps.Animation.BOUNCE);
+			}
+		}
+		
+	</script>
 </body>
 </html>

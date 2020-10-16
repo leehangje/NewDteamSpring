@@ -56,6 +56,10 @@ public class MainController {
 	@RequestMapping("/detail.ma")
 	public String detail(Model model, String md_serial_number){
 		model.addAttribute("vo", service.main_detail(md_serial_number));
+		
+		// 상세 페이지에서 해당 상품 글을 등록한 사용자의 정보(MemberVO)를 가져와서 model 객체에 담음
+		model.addAttribute("info", service.member_info(md_serial_number));
+		
 		return "main/detail";
 	}
 	

@@ -15,10 +15,11 @@ public class AJoinCommand implements ACommand{
 		String member_latitude = (String) model.asMap().get("member_latitude");
 		String member_longitude = (String) model.asMap().get("member_longitude");
 		String member_name = (String) model.asMap().get("member_name");
+		String member_token = (String) model.asMap().get("member_token");
 		
 		SEDao dao = new SEDao();
 		int state = dao.anJoin(member_id, member_pw, member_nickname, member_tel, member_addr, 
-								member_latitude, member_longitude, member_name);
+								member_latitude, member_longitude, member_name, member_token);
 		
 		model.addAttribute("anJoin", String.valueOf(state));	//model�� ����ֱ�
 	

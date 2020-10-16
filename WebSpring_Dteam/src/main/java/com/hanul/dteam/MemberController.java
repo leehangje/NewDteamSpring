@@ -3,6 +3,7 @@ package com.hanul.dteam;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
@@ -195,7 +196,7 @@ public class MemberController {
 		}
 
 		if (result) {
-			msg += "alert('네이버 소셜 로그인 성공'); location.href = '/dteam'";
+			msg += "location.href = '/dteam'";
 		} else {
 			msg += "alert('네이버 소셜 로그인에 실패하셨습니다. 관리자에게 문의하세요'); location.href = '/dteam/login_view'";
 		}
@@ -307,7 +308,6 @@ public class MemberController {
 	public void logout(HttpSession session) {
 		// 세션의 로그인정보를 삭제한다.
 		session.removeAttribute("login_info");
-		System.out.println(common.getRandomCode(8));
 
 		// 로그아웃 한 후 가지고갈 데이터가 없기 때문에 반환할 값이 없다.
 	} // logout()
