@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,7 @@ header,footer { display: none;}
 	<div id='comment_regist'>
 		<span class="left"><strong>문의작성</strong></span>
 		<span class="right"><a onclick="comment_regist()" class="btn-fill-s2">등록</a></span>
-		<textarea id="comment" style="width: 99%; height: 50px; margin-top: 5px; resize: none"></textarea>	
+		<textarea id="comment" placeholder="내용을 입력하세요" style="width: 99%; height: 50px; margin-top: 5px; resize: none; padding: 10px;	"></textarea>	
 	</div>
 	<div id = "comment_list" class="left">
 		
@@ -46,6 +48,7 @@ function comment_regist(){
 	}else if( $('#comment').val() == '' ){
 		alert('댓글을 입력하세요')
 	}
+	
 	$.ajax({
 		url: 'detail.ma/comment/regist',
 		type: 'post',

@@ -74,7 +74,7 @@ table th, table td{
 					<table>
 						<tr>
 							<th>제목</th>
-							<td><input class="need" title="제목" value="${vo.title }" type="text" name="title"></td>
+							<td><input class="need" title="제목" value="${vo.title }" type="text" name="title" style="height: 27px;"></td>
 						</tr>
 						<tr>
 							<th>내용</th>

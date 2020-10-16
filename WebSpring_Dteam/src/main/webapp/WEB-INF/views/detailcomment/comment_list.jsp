@@ -13,13 +13,13 @@
 <c:forEach items="${list}" var="vo">
 <div data-id="${vo.id}">${vo.member_id} [ ${vo.writedate} ]
 	<!-- 로그인한 사용자가 작성한 댓글에 대해 수정/삭제 가능 -->
-	<c:if test="${login_info.member_id eq vo.member_id}">
+	<c:if test="${login_info.member_id eq vo.member_id}" >
 	<span style="float: right;">
 		<a class="btn-fill-s2 btn-modify-save">수정</a>
 		<a class="btn-fill-s2 btn-delete-cancel" >삭제</a>
 	</span>
 	</c:if>
-	<div class="original">${fn:replace(fn:replace( vo.content, lf, '<br>' ), crlf, '<br>' )}</div>
+	<div class="original" style="margin-top: 10px; margin-bottom: 10px; font-size: #7d7d7d;">${fn:replace(fn:replace( vo.content, lf, '<br>' ), crlf, '<br>' )}</div>
 	<div class="modify" style="display:none; margin-top: 6px;"></div>
 </div>
 <hr>
@@ -33,7 +33,7 @@ $('.btn-modify-save').on('click', function(){
 	
 	if( $(this).text() == '수정'){		
 	
-		var tag = '<textarea style="width:99%; height:90%; resize:none">'
+		var tag = '<textarea style="width:99%; height:15px; resize:none">'
 			+ $div.children('.original').html().replace(/<br>/g, '\n'); 
 			+ '</textarea>';
 		$div.children('.modify').html( tag );

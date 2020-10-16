@@ -146,34 +146,34 @@ tbody{
 							</colgroup>
 							<tbody>
 							<tr>
-								<td class="md_name" style="font-size: 30px; line-height: 200%;">${vo.md_name }</td>
+								<td class="md_name" style="font-size: 30px; line-height: 200%; padding-left: 30px;">${vo.md_name }</td>
 								<td></td>
 							</tr>
 							<tr>
-								<td style="font-size: 40px; line-height: 170%;">${vo.md_price }원</td>
+								<td style="font-size: 40px; line-height: 170%; padding-left: 30px;">${vo.md_price }원</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td style="color: #696763" colspan="2">
-								<img src="img/heart.png" style="width: 20px; height: 20px;">&nbsp;${vo.md_fav_count }
+								<img src="img/heart.png" style="width: 20px; height: 20px; padding-left: 30px;">&nbsp;${vo.md_fav_count }
 								&nbsp;&nbsp;&nbsp;&nbsp;
-								<img src="img/view.png" style="width: 20px; height: 20px;">&nbsp;${vo.md_hits}
+								<img src="img/view.png" style="width: 20px; height: 20px; padding-left: 30px;">&nbsp;${vo.md_hits}
 								</td>
 								<%-- <td style="color: #696763" ><img src="img/view.png" style="width: 20px; height: 20px;">&nbsp;${vo.md_hits}</td> --%>
 							</tr>
 							<c:forEach items="${vo.nickaddr }" var="list">
 								<tr>
-									<td colspan="2" style="color: #696763">닉네임 : ${list.member_nickname}</td>
+									<td colspan="2" style="color: #696763; padding-left: 30px;">닉네임 : ${list.member_nickname}</td>
 								</tr>
 								<tr>
-									<td colspan="2" style="color: #696763">주소 : ${list.member_addr}</td>
+									<td colspan="2" style="color: #696763; padding-left: 30px;">주소 : ${list.member_addr}</td>
 								</tr>
 							</c:forEach>
 							<tr>
-								<td colspan="2" style="border-bottom: solid 0.5px #696763 ;">상세설명</td>
+								<td colspan="2" style="padding-left: 30px; font-size: 20px;">상품정보</td>
 							</tr>
 							<tr>
-								<td colspan="2" class="md_content">${vo.md_detail_content}</td>
+								<td colspan="2" class="md_content" style="padding-left: 30px;">${vo.md_detail_content}</td>
 							</tr>
 							
 							</tbody>
@@ -207,7 +207,7 @@ tbody{
 					</c:forEach>
 					</div>
    				
-   					<div><iframe src="mdqna.ma?md_serial_number=${vo.md_serial_number}" width="100%" height="1000px";></iframe></div>					
+   					<div><iframe src="mdqna.ma?md_serial_number=${vo.md_serial_number}" style="width: 100%; height: 500px;"></iframe></div>					
 				</div>
 				
 				

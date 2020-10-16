@@ -28,14 +28,18 @@
 			<a href='<c:url value="/"/>' title="대여안대여"><img
 				src="img/logo.png" alt="대여안대여"></a>
 		</h1>
+		<form method='post' action='search.ma'>
+		<input type='hidden' name='curPage' value='1' />
+		<input type='hidden' name='id' />
 		<div class="wrap">
 			<div class="search">
-				<input type="text" class="searchTerm" placeholder="검색어를 입력해주세요!">
+				<input type="text" class="searchTerm" name="keyword" placeholder="검색어를 입력해주세요!">
 				<button type="submit" class="searchButton">
 					<i class="fas fa-search"></i>
 				</button>
 			</div>
 		</div>
+		</form>
 	</div>
 	
 </header>
