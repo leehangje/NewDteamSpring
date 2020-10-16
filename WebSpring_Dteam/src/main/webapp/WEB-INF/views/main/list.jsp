@@ -34,7 +34,7 @@
 #main_content .cate_list li:nth-child(9){ background:url(img/cate_img9.jpg) left top no-repeat} */
 #main_content .info_cate a.more {position:absolute;  top:43px; right:17px; height:25px; margin:0 ! important; background:url(img/cate_more.png) no-repeat; padding-left:25px;}
 #main_content .info_cate a.more span {display:block; }  
-
+.m_container{ margin: 0 auto; width: 1200px;}
 
 .input { background-position:top center; background-repeat:no-repeat; background-color: white; background-size: 100%; width: 90px; height: 170px;
  	    border: none; padding-top: 55px; cursor:pointer;}
@@ -104,7 +104,7 @@ input:focus{ outline: none;}
 			<!-- <a href="" class="more">전체보기</a> -->
 		</article>
 
-		<article class="container new_pro">
+		<article class="m_container new_pro">
 		<div style="width: 1200px; margin: 0 auto; margin-bottom: 10px;">
 			<h3 style="width: 150px;">최신상품 ＞</h3>
 		</div>
