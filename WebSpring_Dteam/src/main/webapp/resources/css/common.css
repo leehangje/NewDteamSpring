@@ -52,7 +52,7 @@ a.btn-fill-s, a.btn-empty-s{
 	font-weight: bold;
 	text-align: center;
 	padding: 1px 10px;
-	border: 1px solid #c4dafc;
+	border: 1px solid #3f4baa;
 	border-radius: 3px;
 	box-shadow: 2px 2px 2px #022d72;
 	color: #ffffff;
@@ -62,14 +62,14 @@ a.btn-fill-s2, a.btn-empty-s2{
 	font-weight: bold;
 	text-align: center;
 	padding: 1px 10px;
-	border: 1px solid #c4dafc;
+	border: 1px solid #3f4baa;
 	border-radius: 3px;
 	box-shadow: 2px 2px 2px #022d72;
 	color: #ffffff;
 }
 
 a.btn-fill-s {background-color: #b1cdfa;}
-a.btn-fill-s2 {background-color: #0373fc;}
+a.btn-fill-s2 {background-color: #3f4baa;}
 
 a.btn-empty-s{background-color: #fff;}
 a.btn-empty-s2{background-color: #fff;}
@@ -94,7 +94,7 @@ table tr td label:not(:last-child) {
 
 #content {
 	padding:20px 0;
-	min-width: 1280px;
+	min-width: 500px;
 }
 
 img{
