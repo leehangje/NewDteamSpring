@@ -26,10 +26,15 @@ table.address { float:right; border:none; border-collapse:collapse; max-width: 5
 table.address td:first-child { width: 96px; vertical-align: top;}
 table.address td { font-size: 15px; line-height: 1.3; padding: 4px 0;}  
 table.address td:nth-child(2) {font-weight: 400; color: #888; padding-left: 20px; padding-right: 20px;}
+#sub_visual_area{ margin-top:30px;  min-height:185px; background:#f1f1d5 url(img/sub_banner01.jpg) center no-repeat}
 
 </style>
 </head>
 <body>
+<!--visual_area-->
+<section id="sub_visual_area">		
+</section>
+<!--visual_area end-->
 	<section id="content_area">
 		<div class="container">
 			<div class="content_wrap">
