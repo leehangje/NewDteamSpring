@@ -24,7 +24,7 @@
 
 .container {
 	margin: 0 auto;
-	width: 1400px;
+	width: 1300px;
 	display: flex;
 	-webkit-box-pack: center;
     justify-content: center;
@@ -32,7 +32,7 @@
 
 .bottom_gnb_menu {
 	height: 64px;
-    width: 1300px;
+    width: 1200px;
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
