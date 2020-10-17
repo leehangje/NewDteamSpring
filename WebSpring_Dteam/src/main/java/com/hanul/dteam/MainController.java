@@ -1,5 +1,7 @@
 package com.hanul.dteam;
 
+import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import main.MainPage;
 import main.MainServiceImpl;
 import main.MainVO;
+import member.MemberVO;
 
 @Controller
 public class MainController {
@@ -58,7 +61,20 @@ public class MainController {
 		model.addAttribute("vo", service.main_detail(md_serial_number));
 		
 		// 상세 페이지에서 해당 상품 글을 등록한 사용자의 정보(MemberVO)를 가져와서 model 객체에 담음
-		model.addAttribute("info", service.member_info(md_serial_number));
+		MemberVO vo = service.member_info(md_serial_number);
+		String member_addr = vo.getMember_addr();
+		String[] split = member_addr.split(" ");
+		String member_addr_re = "";
+		
+        for (int i = 0; i < split.length; i++) {
+            if(Pattern.matches("[가-힣]+(시|도|군|구|동|면)", split[i])) {
+                member_addr_re += split[i] + " ";
+            }
+        }
+        
+        vo.setMember_addr(member_addr_re);
+		
+		model.addAttribute("info", vo);
 		
 		return "main/detail";
 	}
