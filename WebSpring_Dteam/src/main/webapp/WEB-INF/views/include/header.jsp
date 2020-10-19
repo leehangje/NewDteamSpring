@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<title>대여 안대여</title>
  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <header id="header">
 	<h2 class="blind">상단 네비게이션</h2>
@@ -16,7 +17,7 @@
 				<c:if test="${!empty login_info }">
 					<li><a id="mypage"
 						href="mypage?member_id=${login_info.member_id }">마이페이지</a></li>
-					<span>${login_info.member_nickname } [${login_info.member_id }]</span>
+					<%-- <span>${login_info.member_nickname } [${login_info.member_id }]</span> --%>
 					<li><a onclick="go_logout()" style="color: #fff;">로그아웃</a></li>
 
 				</c:if>

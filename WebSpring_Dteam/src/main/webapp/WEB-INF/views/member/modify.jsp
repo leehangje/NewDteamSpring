@@ -114,7 +114,8 @@
 				</ul>
 			</div>
 			<div class="contents">
-					<form action="join" method="post" id='frmJoin'>
+					<form action="update" method="post" id='frmJoin'>
+					<input type="hidden" name="member_id" value="${login_info.member_id }"/>
 							<div>
 								<span><i class="fas fa-unlock-alt"></i></span>
 								<input type="password" name="member_pw" class="chk" placeholder="비밀번호" />
@@ -130,11 +131,6 @@
 								<input type="text" name="member_nickname" class="chk" placeholder="닉네임" style="width: 293px;" />
 								<a class="btn-check" id="btn-nickname">중복 확인</a>
 								<div class="common">닉네임을 입력하세요</div>
-							</div>
-							<div>
-								<span><i class="fas fa-phone-square"></i></span>
-								<input type="text" name="member_tel" class="chk" placeholder="휴대 전화번호(- 없이 숫자만 입력하세요)" />
-								<div class="common"></div>
 							</div>
 						
 				</form>
