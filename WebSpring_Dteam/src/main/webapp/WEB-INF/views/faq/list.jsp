@@ -471,12 +471,12 @@ jQuery(function($){
         var myArticle = $(this).parents('.article:first');
         if(myArticle.hasClass('hide')){
             article.addClass('hide').removeClass('show');
-            article.find('.a').slideUp(200);
+            article.find('.a').slideUp(300);
             myArticle.removeClass('hide').addClass('show');
-            myArticle.find('.a').slideDown(200);
+            myArticle.find('.a').slideDown(300);
         } else {
             myArticle.removeClass('show').addClass('hide');
-            myArticle.find('.a').slideUp(200);
+            myArticle.find('.a').slideUp(300);
         }
         return false;
     });
@@ -484,10 +484,10 @@ jQuery(function($){
         var hidden = $('.faq>.faqBody>.article.hide').length;
         if(hidden > 0){
             article.removeClass('hide').addClass('show');
-            article.find('.a').slideDown(200);
+            article.find('.a').slideDown(300);
         } else {
             article.removeClass('show').addClass('hide');
-            article.find('.a').slideUp(200);
+            article.find('.a').slideUp(300);
         }
     });
 });
