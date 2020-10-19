@@ -170,9 +170,9 @@ tbody{
 							</tr>
 							<tr>
 								<td style="color: #696763" colspan="2">
-								<img src="img/heart.png" style="width: 20px; height: 20px; padding-left: 30px;">&nbsp;${vo.md_fav_count }
+								<img src="img/heart.png" style="width: 50px; height: 20px; padding-left: 30px;">&nbsp;${vo.md_fav_count }
 								&nbsp;&nbsp;&nbsp;&nbsp;
-								<img src="img/view.png" style="width: 20px; height: 20px; padding-left: 30px;">&nbsp;${vo.md_hits}
+								<img src="img/view.png" style="width: 50px; height: 20px; padding-left: 30px;">&nbsp;${vo.md_hits}
 								</td>
 								<%-- <td style="color: #696763" ><img src="img/view.png" style="width: 20px; height: 20px;">&nbsp;${vo.md_hits}</td> --%>
 							</tr>

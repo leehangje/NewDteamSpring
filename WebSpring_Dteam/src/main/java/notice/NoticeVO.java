@@ -3,20 +3,15 @@ package notice;
 import java.sql.Date;
 
 public class NoticeVO {
-	private int id, readcnt, no, root, step, indent;
+	private int id, no, root, step, indent;
 	private String title, content, writer, filename, filepath, name;
 	private Date writedate;
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getReadcnt() {
-		return readcnt;
-	}
-	public void setReadcnt(int readcnt) {
-		this.readcnt = readcnt;
 	}
 	public int getNo() {
 		return no;
