@@ -26,8 +26,8 @@ header,footer { display: none;}
 				<tr>
 					<th>상품이미지</th>
 					<th>상품명</th>
+					<th> 찜</th>
 					<th>대여비</th>
-					<th>대여가능여부</th>
 				</tr>	
 			</thead>
 			<tbody>
@@ -35,12 +35,8 @@ header,footer { display: none;}
 				<tr>
 					<td><img src='${vo.md_photo_url}' style='width: 100px; height: 100px; border-radius: 10px;'></td>
 					<td>${vo.md_name}</td>
-					<td>${vo.md_price}원</td>
-					<td>
-						<select>
-							<option>대여가능</option>
-							<option>대여중</option>
-						</select>
+					<td>${vo.md_fav_count}</td>
+					<td>${vo.md_rent_status}
 					</td>
 				</tr>
 			</c:forEach>

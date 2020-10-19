@@ -41,7 +41,7 @@ header,footer { display: none;}
 					<td><img src='${vo.md_photo_url}' style='width: 100px; height: 100px; border-radius: 10px;'></td>
 					<td>${vo.md_name}</td>
 					<td>${vo.md_price}원</td>
-					<td>대여중</td>
+					<td>${vo.md_rent_status}</td>
 				</tr>
 			</c:forEach>
 			</tbody>
