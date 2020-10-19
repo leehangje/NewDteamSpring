@@ -152,8 +152,6 @@ public class NoticeController {
 	
 	
 	
-	
-	
 	//신규문의글 화면 요청
 	@RequestMapping("/new.no")
 	public String notice() {
@@ -183,7 +181,6 @@ public class NoticeController {
 		 page.setKeyword(keyword);
 		 
 		 
-		 
 		 //DB에서 공지글 목록을 조회해와 목록화면에 출력한다. 
 		 //model.addAttribute("list",service.notice_list());
 		 model.addAttribute("page", service.notice_list(page));
@@ -195,6 +192,5 @@ public class NoticeController {
 		return "notice/list";
 	}
 	 
-	
 	
 }//class

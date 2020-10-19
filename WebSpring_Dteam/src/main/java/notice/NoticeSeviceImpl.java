@@ -24,11 +24,6 @@ public class NoticeSeviceImpl implements NoticeService{
 		return dao.notice_detail(id);
 	}
 
-	@Override
-	public void notice_reply_insert(NoticeVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void notice_insert(NoticeVO vo) {

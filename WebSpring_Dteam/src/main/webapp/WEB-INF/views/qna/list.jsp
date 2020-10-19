@@ -117,10 +117,11 @@ table a { font-weight: bold;}
 									   <c:if test="${login_info.member_id ne 'admin' && ( login_info.member_id ne 'admin' && login_info.member_id ne vo.writer) }"> onclick="alert('읽기권한이 없습니다!')"</c:if>  
 										 ${1 eq vo.indent ? 'style="color: #3043b0;"': ''} >${vo.title}</a>
 
+									
 								</td>
 								<td>${vo.name} </td>
 								<td>${vo.writedate} </td>
-							</tr>
+							</tr>	
 							</c:forEach>
 						</table>
 					

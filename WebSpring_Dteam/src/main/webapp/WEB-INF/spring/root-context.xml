@@ -13,7 +13,7 @@
 <!-- 	<property value="5242880" name="maxInMemorySize"/> -->
 <!-- 	</bean> -->
 	
-	<context:component-scan base-package="member, common, notice, merchandise, main, favorite, qna, detailcomment"/> 
+	<context:component-scan base-package="member, common, notice, merchandise, main, favorite, qna, detailcomment, faq"/> 
 	
 	
 </beans>

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class NoticeDAO implements NoticeService{
-	
 	@Autowired private SqlSession sql;
 	
 	@Override
@@ -28,11 +27,6 @@ public class NoticeDAO implements NoticeService{
 		return sql.selectOne("notice.mapper.detail", id);
 	}
 
-	@Override
-	public void notice_reply_insert(NoticeVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void notice_insert(NoticeVO vo) {

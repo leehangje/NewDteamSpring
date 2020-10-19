@@ -47,36 +47,36 @@ table th, table td{
 	<div class="container">
 		<div class="content_wrap">
 			<div class="content_top">
-				<h3>공지사항</h3>
+				<h3>자주묻는 질문</h3>
 				<ul class="breadcrumb">
 					<li><img src="img/home.png" alt="홈"> &gt;</li>
-					<li>공지사항</li>
+					<li>자주묻는 질문</li>
 				</ul>
 			</div>
 			<div class="contents">
 <!------------------------------------------------------------------------------------------------->
 				<!-- 탭메뉴 -->
 				<ul class="tab" id="tab">
-					<li>공지사항</li>
-					<li onclick="location.href='list.fa'">자주묻는 질문</li>
+					<li onclick="location.href='list.no'">공지사항</li>
+					<li>자주묻는 질문</li>
 					<li onclick="location.href='list.qn'">1:1 문의하기</li>
 				</ul>
 		
 				<div class="jetab_con" id="tab_con">
 					<div class="qna">
 					<!------------------------------------------------------------------------------------------------->
-					<h3>공지글 수정하기(관리자전용)</h3>
+					<h3>FAQ 수정하기(관리자전용)</h3>
 					
-					<form action="update.no" method="post" enctype="multipart/form-data">
+					<form action="update.fa" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="id" value="${vo.id }" />
 					<input type="hidden" name="attach" />
 					<table>
 						<tr>
-							<th>제목</th>
+							<th><b style="color: blue;">[Q]</b>질문</th>
 							<td><input class="need" title="제목" value="${vo.title }" type="text" name="title" style="height: 27px;"></td>
 						</tr>
 						<tr>
-							<th>내용</th>
+							<th><b style="color: green;">[A]</b>답변</th>
 							<td><textarea class="need" title="내용" name="content" >${vo.content }</textarea></td>
 						</tr>
 						<tr>
@@ -99,7 +99,7 @@ table th, table td{
 						<!-- <a class="btn-fill" onclick="if( necessary() ){ $('[name=attach]').val( $('#file-name').text() );  $('form').submit() }">저장</a> -->
 						<a class="btn-fill" onclick="$('form').submit()">저장</a>
 						<a class="btn-empty" href="javascript:history.go(-1)">취소</a>
-						<a class="btn-fill" onclick="if(confirm('정말 삭제하시겠습니까?')){ href='delete.no?id=${vo.id}' }" style="background-color: #f74519; border: 0.5px solid #f74519;">삭제</a>
+						<a class="btn-fill" onclick="if(confirm('정말 삭제하시겠습니까?')){ href='delete.fa?id=${vo.id}' }" style="background-color: #f74519; border: 0.5px solid #f74519;">삭제</a>
 					</div>
 					
 					<!------------------------------------------------------------------------------------------------->
@@ -127,11 +127,11 @@ if( ${ !empty vo.filename }){
 
 /* 공지사항/자주묻는질문/1:1문의 탭 */
 $(function () {	
-	tab('#tab',0);	
+	tab('#tab',1);	
 });
 
 function tab(e, num){
-    var num = num || 0;
+    var num = num || 1;
     var menu = $(e).children();
     var con = $('jetab_con').children();
     var select = $(menu).eq(num);

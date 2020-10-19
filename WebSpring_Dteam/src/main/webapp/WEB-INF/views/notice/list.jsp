@@ -100,31 +100,30 @@
 								<c:if test='${login_info.member_id ne "admin" }'> style="display: none;" </c:if> >공지사항 글쓰기(관리자 전용)</a>
 						    </div>
 					 
-					    <!------------------------------------------------------------------------------------------------->
-					     
-					    <c:forEach items="${page.list }" var="vo">
-					        <li class="article" id="a1">
-					            <p class="q">
-					                <a href="#a1">${vo.title} 
-					                <c:if test="${!empty vo.filename }">
-					                	<img src="img/attach.png" width="15px" height="15px">
-					                </c:if>
-					                
-					                <br><time class="time">${vo.writedate } </time>
-					                	<button <c:if test="${login_info.member_id ne 'admin' }"> style="display: none;"</c:if> onclick="location.href='modify.no?id=${vo.id}'">수정 / 삭제</button>
-					            	</a>
-					            </p>
-					            <p class="a">
-						           ${vo.content}
-						           <c:if test="${!empty vo.filename }">
-						           	<br/><br/>
-						           	<img src="img/attach.png" width="15px" height="15px">
-						            <b>첨부파일</b> : ${vo.filename } <a href="download.no?id=${vo.id }"><i class="fas fa-download"></i></a> 
-						           </c:if>
-								</p>
-					        </li>
-					        <hr/>
-					     </c:forEach>
+					     	<!----- 리스트  ----->
+						    <c:forEach items="${page.list }" var="vo">
+						        <li class="article" id="a1">
+						            <p class="q">
+						                <a href="#a1">${vo.title} 
+						                <c:if test="${!empty vo.filename }">
+						                	<img src="img/attach.png" width="15px" height="15px">
+						                </c:if>
+						                
+						                <br><time class="time">${vo.writedate } </time>
+						                	<button <c:if test="${login_info.member_id ne 'admin' }"> style="display: none;"</c:if> onclick="location.href='modify.no?id=${vo.id}'">수정 / 삭제</button>
+						            	</a>
+						            </p>
+						            <p class="a">
+							           ${vo.content}
+							           <c:if test="${!empty vo.filename }">
+							           	<br/><br/>
+							           	<img src="img/attach.png" width="15px" height="15px">
+							            <b>첨부파일</b> : ${vo.filename } <a href="download.no?id=${vo.id }"><i class="fas fa-download"></i></a> 
+							           </c:if>
+									</p>
+						        </li>
+						        <hr/>
+						     </c:forEach>
 					     
 					    </ul>
 					</div>
