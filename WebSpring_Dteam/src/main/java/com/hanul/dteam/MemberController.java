@@ -452,6 +452,7 @@ public class MemberController {
 		return "member/resetPwForm";
 	}
 	
+	// 재설정된 비밀번호를 DB에 저장
 	@ResponseBody @RequestMapping(value = "resetPw")
 	public boolean restPw(String member_pw, String member_token) {
 		

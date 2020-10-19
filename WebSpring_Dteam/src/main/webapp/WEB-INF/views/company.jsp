@@ -28,6 +28,13 @@ table.address td { font-size: 15px; line-height: 1.3; padding: 4px 0;}
 table.address td:nth-child(2) {font-weight: 400; color: #888; padding-left: 20px; padding-right: 20px;}
 #sub_visual_area{ margin-top:30px;  min-height:185px; background:#f1f1d5 url(img/sub_banner01.jpg) center no-repeat}
 
+/* map 관련 css */
+#map {
+	margin: 0 auto;
+	width: 80%;
+	height: 450px;
+}
+
 </style>
 </head>
 <body>

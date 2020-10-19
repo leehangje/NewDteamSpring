@@ -512,6 +512,48 @@ public class SEDao {
 	} // anSearchId()
 
 	public int sendEmail(String member_id, String member_name) {
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		ResultSet resultSet = null;
+		
+		// 넘겨준 id 값으로 토큰 값 반환
+		String token = "";
+			
+		try {
+			connection = dataSource.getConnection(); // md_title, 빠짐 DTO에 컬럼 빠짐
+			String sql = "select member_token from tblmember" + " where member_id = '" + member_id + "' ";
+
+			prepareStatement = connection.prepareStatement(sql);
+			resultSet = prepareStatement.executeQuery();
+
+			if (resultSet.next()) {
+				System.out.println("토큰 값 반환");
+				token = resultSet.getString("member_token");
+			} else {
+				System.out.println("토큰 값 반환 x");
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (prepareStatement != null) {
+					prepareStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
+			}
+		}
+		
+		
 		int state = -100;
 
 		HtmlEmail mail = new HtmlEmail();
@@ -533,7 +575,7 @@ public class SEDao {
 			msg.append("<hr>");
 			msg.append("<h1>비밀번호 재설정 안내</h1>");
 			msg.append("<p>아래 링크를 누르시고 새로운 비밀번호를 입력하시면 비밀번호가 변경됩니다.</p>");
-			msg.append("<a href='http://192.168.0.178:8080/app/anResetPwView?member_id=" + member_id
+			msg.append("<a href='http://192.168.0.178:8080/app/anResetPwView?member_token=" + token
 					+ "'>비밀번호 재설정 하기</a>");
 			// 안드로이드에서는 localhost로 접근이 x, 서버를 돌리고 있는 ip주소를 입력해야 접근이 가능함
 
@@ -554,7 +596,7 @@ public class SEDao {
 	} // sendEmail()
 
 	// 비밀번호 재설정
-	public int anResetPw(String id, String pw) {
+	public int anResetPw(String token, String pw) {
 		Connection connection = null;
 		PreparedStatement prepareStatement = null;
 		ResultSet resultSet = null;
@@ -562,7 +604,7 @@ public class SEDao {
 
 		try {
 			connection = dataSource.getConnection();
-			String sql = "update tblmember set member_pw = '" + pw + "' where member_id = '" + id + "'";
+			String sql = "update tblmember set member_pw = '" + pw + "' where member_token = '" + token + "'";
 			prepareStatement = connection.prepareStatement(sql);
 			succ = prepareStatement.executeUpdate();
 

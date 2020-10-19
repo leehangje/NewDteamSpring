@@ -379,11 +379,11 @@ public class SEController {
 			e.printStackTrace();
 		}
 
-		String member_id = (String) request.getParameter("member_id");
+		String member_token = (String) request.getParameter("member_token");
 
-		System.out.println(member_id);
+		System.out.println(member_token);
 
-		model.addAttribute("anResetPwView", member_id);
+		model.addAttribute("member_token", member_token);
 
 		command = new AResetPwCommand();
 		command.execute(model);
@@ -393,10 +393,11 @@ public class SEController {
 
 	// 비밀번호 재설정한 후 DB에 저장
 	@ResponseBody
-	@RequestMapping(value = "/anResetPw", produces = "text/html; charset=utf-8")
-	public String anResetPw(HttpServletRequest request, String pw) {
+	@RequestMapping(value = "/anResetPw"/*, produces = "text/html; charset=utf-8"*/)
+	public Boolean anResetPw(HttpServletRequest request, String member_pw) {
 		System.out.println("anResetPw()");
-		String msg = "<script type='text/javascript'>";
+		//String msg = "<script type='text/javascript'>";
+		boolean state;
 
 		try {
 			request.setCharacterEncoding("UTF-8");
@@ -404,26 +405,28 @@ public class SEController {
 			e.printStackTrace();
 		}
 
-		String member_id = (String) request.getParameter("member_id");
-		String member_pw = (String) request.getParameter("member_pw");
+		String member_token = (String) request.getParameter("member_token");
+		//String member_pw = (String) request.getParameter("member_pw");
 
-		System.out.println(member_id);
+		System.out.println(member_token);
 		System.out.println(member_pw);
-		System.out.println(pw);
+		//System.out.println(pw);
 
 		SEDao dao = new SEDao();
 		// int succ = adao.anResetPw(member_id, member_pw); //일치하는 아이디 반환
-		int succ = dao.anResetPw(member_id, pw); // 일치하는 아이디 반환
+		int succ = dao.anResetPw(member_token, member_pw); // 일치하는 아이디 반환
 
 		if (succ > 0) {
-			msg += "alert('비밀번호가 재설정되었습니다.');";
+			//msg += "alert('비밀번호가 재설정되었습니다.');";
+			state = true;
 		} else {
-			msg += "alert('회원가입 실패'); history.go(-1)";
+			//msg += "alert('비밀번호 재설정 실패'); history.go(-1)";
+			state = false;
 		}
 
-		msg += "</script>";
+		//msg += "</script>";
 
-		return msg;
+		return state;
 	} // anResetPw()
-
+	
 }

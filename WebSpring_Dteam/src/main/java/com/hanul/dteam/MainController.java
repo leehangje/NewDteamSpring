@@ -63,16 +63,20 @@ public class MainController {
 		// 상세 페이지에서 해당 상품 글을 등록한 사용자의 정보(MemberVO)를 가져와서 model 객체에 담음
 		MemberVO vo = service.member_info(md_serial_number);
 		String member_addr = vo.getMember_addr();
-		String[] split = member_addr.split(" ");
-		String member_addr_re = "";
+		String member_addr_re;
 		
-        for (int i = 0; i < split.length; i++) {
-            if(Pattern.matches("[가-힣]+(시|도|군|구|동|면)", split[i])) {
-                member_addr_re += split[i] + " ";
-            }
-        }
+		if(member_addr != null) {
+			String[] split = member_addr.split(" ");
+			member_addr_re = "";
+			
+	        for (int i = 0; i < split.length; i++) {
+	            if(Pattern.matches("[가-힣]+(시|도|군|구|동|면)", split[i])) {
+	                member_addr_re += split[i] + " ";
+	            }
+	        }
+	        vo.setMember_addr(member_addr_re);
+		}
         
-        vo.setMember_addr(member_addr_re);
 		
 		model.addAttribute("info", vo);
 		

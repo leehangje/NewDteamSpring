@@ -181,11 +181,13 @@ tbody{
 									<td colspan="2" style="color: #696763; padding-left: 30px;">닉네임 : ${list.member_nickname}</td>
 								</tr>
 								<tr>
-									<td colspan="2" style="color: #696763; padding-left: 30px;" onclick="search_location();">주소 : ${info.member_addr}
-										<c:if test="${(info.member_latitude ne null) and (info.member_longitude ne null)}">
-											<span><i class="fas fa-map-marker-alt" id="btn_gps" onclick="search_location();"></i></span>
-										</c:if>
-									</td>
+									<c:if test="${info.member_addr ne null }">
+										<td colspan="2" style="color: #696763; padding-left: 30px; cursor: pointer;" onclick="search_location();">주소 : ${info.member_addr}
+											<c:if test="${(info.member_latitude ne null) and (info.member_longitude ne null)}">
+												<span><i class="fas fa-map-marker-alt" id="btn_gps" onclick="search_location();"></i></span>
+											</c:if>
+										</td>
+									</c:if>
 								</tr>
 							</c:forEach>
 							<tr>
