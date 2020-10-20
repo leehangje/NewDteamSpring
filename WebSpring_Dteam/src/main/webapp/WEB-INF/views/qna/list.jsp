@@ -90,7 +90,7 @@ table a { font-weight: bold;}
 						<div id="list-top">
 							<!-- 로그인 회원만 글쓰기 가능 -->
 							<a class="btn-fill" id="btn_qna" <c:if test='${login_info.member_id ne null }'> href="new.qn" </c:if> 
-							<c:if test="${login_info.member_id eq null }">onclick="alert('로그인이 필요한 기능입니다!')"</c:if> >문의하기</a>
+							<c:if test="${login_info.member_id eq null }">onclick="alert('로그인이 필요한 기능입니다!'); window.location ='/dteam/login_view';"</c:if> >문의하기</a>
 						</div>
 						</form>
 						
@@ -120,7 +120,14 @@ table a { font-weight: bold;}
 
 									
 								</td>
-								<td>${vo.name} </td>
+								<td>
+									<c:if test="${vo.q_writer eq 'admin' }">
+										<p style="color: #3043b0; font-weight: bold;">고객만족팀</p>	
+									</c:if>
+									<c:if test="${vo.q_writer ne 'admin' }">
+										<p style="font-weight: bold;">${vo.name}</p>			
+									</c:if>
+								</td>
 								<td>${vo.writedate} </td>
 							</tr>	
 							</c:forEach>
