@@ -6,8 +6,16 @@ public class QnaVO {
 	private int id, no, root, step, indent;
 	private String title, content, writer, filename, filepath, name;
 	private Date writedate;
+	private String q_writer;
+
 	
-	
+	public String getQ_writer() {
+		return q_writer;
+	}
+
+	public void setQ_writer(String q_writer) {
+		this.q_writer = q_writer;
+	}
 	public int getId() {
 		return id;
 	}

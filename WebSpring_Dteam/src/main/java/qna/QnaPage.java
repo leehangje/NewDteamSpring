@@ -9,8 +9,6 @@ import common.PageVO;
 @Component
 public class QnaPage extends PageVO{
 	private List<QnaVO> list;
-
-	
 	public List<QnaVO> getList() {
 		return list;
 	}
