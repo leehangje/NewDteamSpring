@@ -66,7 +66,7 @@ table th, table td{
 				<div class="jetab_con" id="tab_con">
 					<div class="qna">
 					<!------------------------------------------------------------------------------------------------->
-					<h3>1:1문의글 수정하기</h3>
+					<h3>1:1문의글 답변하기</h3>
 					
 					<form action="update.qn" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="id" value="${vo.id }" />
@@ -74,7 +74,12 @@ table th, table td{
 					<table>
 						<tr>
 							<th>제목</th>
-							<td><input class="need" title="제목" value="${vo.title }" type="text" name="title" style="height: 27px;"></td>
+							<td>
+								<input class="need" title="제목" value="${vo.title } 
+								
+								<img src='img/re.gif'><b style='font-size: 0.8em'> 답변완료</b>" name="title" style="height: 27px;">
+							
+							</td>
 						</tr>
 						<tr>
 							<th>내용</th>
@@ -93,12 +98,18 @@ table th, table td{
 								</span>
 							</td>
 						</tr>
+						
 					</table>
 					</form>
 					
+					
+					
+								<!-- <input type="radio" name="answerType" value="stand_by" checked="checked"/> 답변대기 &nbsp;&nbsp;
+								<input type="radio" name="answerType" value="Answer_completedstand"/> 답변완료 -->
+					
 					<div class="btnSet">
 						<!-- <a class="btn-fill" onclick="if( necessary() ){ $('[name=attach]').val( $('#file-name').text() );  $('form').submit() }">저장</a> -->
-						<a class="btn-fill" onclick="$('form').submit()">저장</a>
+						<a class="btn-fill" onclick="$('form').submit()">답변 저장</a>
 						<a class="btn-empty" href="javascript:history.go(-1)">취소</a>
 					</div>
 					

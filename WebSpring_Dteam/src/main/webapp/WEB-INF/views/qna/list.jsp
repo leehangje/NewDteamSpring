@@ -107,14 +107,15 @@ table a { font-weight: bold;}
 									<c:forEach var="i" begin="1" end="${vo.indent }">
 									&nbsp;&nbsp;
 										<c:if test="${i eq vo.indent }">
-											<img src="img/re.gif"><b style="font-size: 0.8em"> 답변완료 : </b>
+											<img src="img/re.gif"><b style="font-size: 0.8em"> [답변완료] </b>
 												<%-- ${ vo.indent gt 0 ? '<img src="img/re.gif" />' : '' } --%>
 										</c:if>
 									</c:forEach>
 									
 									<!-- !!!!!작성자 또는 관리자만 상세페이지로 들어갈 수 있게 변경해야 함 !!!!!-->
-									<a <c:if test="${login_info.member_id eq 'admin' || ( login_info.member_id ne 'admin' && login_info.member_id eq vo.writer) }"> href='detail.qn?id=${vo.id}' </c:if>  
-									   <c:if test="${login_info.member_id ne 'admin' && ( login_info.member_id ne 'admin' && login_info.member_id ne vo.writer) }"> onclick="alert('읽기권한이 없습니다!')"</c:if>  
+									<c:set var="qna" value="${login_info.member_id eq vo.writer or login_info.member_id eq vo.q_writer}" /> <!-- 작성자나 질문자인지 --> 
+									<a <c:if test="${login_info.member_id eq 'admin' || ( login_info.member_id ne 'admin' && qna ) }"> href='detail.qn?id=${vo.id}' </c:if>  
+									   <c:if test="${login_info.member_id ne 'admin' && ( login_info.member_id ne 'admin' && !qna) }"> onclick="alert('읽기권한이 없습니다!')"</c:if>
 										 ${1 eq vo.indent ? 'style="color: #3043b0;"': ''} >${vo.title}</a>
 
 									
