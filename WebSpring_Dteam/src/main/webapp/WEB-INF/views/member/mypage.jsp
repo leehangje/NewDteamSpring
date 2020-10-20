@@ -9,7 +9,13 @@
 <style type="text/css">
  iframe { height: 500px;}   
 </style>
-</head>
+<c:if test="${empty login_info}">
+<script>
+   alert("로그인이 필요한 페이지 입니다.");
+   location.href = "login_view";
+</script>
+</c:if>
+</head>  
 <body>
 <section id="content_area">
 	<div class="container">
@@ -24,7 +30,7 @@
 				<div class="contents">
 					<div class="profile_box">
 						<div class="profile_img" style="float: left; width: 200px; height: 200px; margin-right: 20px;">
-							 <img src="<c:url value='/' />${vo.member_profile}" class="file-img"/></a> 
+							 <img src="${vo.member_profile}" style=" width: 180px; height: 180px;"/>
 						</div>
 						<div class="user_info" style="float: left; width: 830px;">
 						<table class="t_style03" >

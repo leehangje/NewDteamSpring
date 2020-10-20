@@ -31,7 +31,7 @@ header,footer { display: none;}
 				<tr>
 					<th>상품이미지</th>
 					<th>상품명</th>
-					<th>대여비</th>
+					<th>대여가격</th>
 					<th>대여여부</th>
 				</tr>	
 			</thead>

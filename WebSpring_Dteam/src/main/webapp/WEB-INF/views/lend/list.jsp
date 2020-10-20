@@ -27,7 +27,7 @@ header,footer { display: none;}
 					<th>상품이미지</th>
 					<th>상품명</th>
 					<th> 찜</th>
-					<th>대여비</th>
+					<th>대여가격</th>
 				</tr>	
 			</thead>
 			<tbody>
