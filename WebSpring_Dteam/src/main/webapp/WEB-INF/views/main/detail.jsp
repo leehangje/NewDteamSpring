@@ -263,22 +263,25 @@ tbody{
 				var currentLocation = new google.maps.LatLng(latitude, longitude);
 				var mapOptions = {
 					center : currentLocation, 	//지도에 보여질 위치			
-					zoom : 18, 		//지도 줌 (0축소 ~ 18확대) 	
+					zoom : 17, 		//지도 줌 (0축소 ~ 18확대) 	
 					mapTypeId : google.maps.MapTypeId.ROADMAP
 				};
 				
 				// DIV에 지도 달아주기
 				map = new google.maps.Map(document.getElementById("map"), mapOptions);
-				
+
+				/* 개인 정보 유출 문제로 마커는 삭제함!
 				// 지도 위에 마커 달아주기
 				marker = new google.maps.Marker({
 					position : currentLocation,
 					map : map
 				});
+				*/
 				
-				google.maps.event.addListener(marker, 'click', toggleBounce(marker));
+				//google.maps.event.addListener(marker, 'click', toggleBounce(marker));
 			}
 
+			/*
 			function toggleBounce(marker) {
 				if (marker.getAnimation() != null) {
 					marker.setAnimation(null);
@@ -286,6 +289,7 @@ tbody{
 					marker.setAnimation(google.maps.Animation.BOUNCE);
 				}
 			}
+			*/
 			
 		} //search_location()
 	</script>
