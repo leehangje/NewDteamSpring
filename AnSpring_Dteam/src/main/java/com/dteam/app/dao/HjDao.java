@@ -34,7 +34,7 @@ public class HjDao {
 	
 	// 카테고리 별로 상품을 가져오는 메소드
 	public ArrayList<MdDto> anMdpull(String category, String member_id) {
-		String sql = "select Md_name, Md_category, member_id, md_serial_number, md_photo_url "
+		String sql = "select Md_name, Md_category, md_price, md_deposit, md_detail_content, md_fav_count, md_registration_date , member_id, md_serial_number, md_photo_url "
 				   + "from tblmerchandise "
 				   //+ "where md_category = ?";
 				   + "where md_category = ? and member_id = ?";
@@ -52,6 +52,11 @@ public class HjDao {
 				dto.setMd_category(rs.getNString("md_category"));
 				dto.setMember_id(rs.getString("member_id"));
 				dto.setMd_serial_number(rs.getString("md_serial_number"));
+				dto.setMd_price(rs.getString("md_price"));
+				dto.setMd_deposit(rs.getString("md_deposit"));
+				dto.setMd_detail_content(rs.getString("md_detail_content"));
+				dto.setMd_fav_count(rs.getString("md_fav_count"));
+				dto.setMd_registration_date(rs.getString("md_registration_date"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {
