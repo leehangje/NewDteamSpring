@@ -9,8 +9,9 @@
 <title>상품 상세페이지</title>
 <style type="text/css">
 .md_basic_table {
-	width: 50%;
+	width: 600px;
 	border-collapse: collapse;
+	
 }
 
 .md_basic_table tr:hover {
@@ -66,8 +67,8 @@
 }
 
 .md_img {
-	width: 50%;
-	height: 200px;
+	/* width: 50%;
+	height: 200px; */
 	float: left;
 }
 
@@ -153,7 +154,7 @@ tbody{
 				</div>
 				<div class="contents">
 					<form action="">
-						<a class="md_img"><img src='${vo.md_photo_url}'></a>
+						<a class="md_img" style="width: 420px; height: 420px; margin-right: 40px;"><img src='${vo.md_photo_url}'></a>
 						<table class="md_basic_table">
 							<colgroup>
 								<col width="50%">
@@ -161,40 +162,38 @@ tbody{
 							</colgroup>
 							<tbody>
 							<tr>
-								<td class="md_name" style="font-size: 30px; line-height: 200%; padding-left: 30px;">${vo.md_name }</td>
+								<td class="md_name" style="font-size: 30px; line-height: 200%; ">${vo.md_name }</td>
 								<td></td>
 							</tr>
 							<tr>
-								<td style="font-size: 40px; line-height: 170%; padding-left: 30px;">${vo.md_price }원</td>
+								<td style="font-size: 40px; line-height: 170%; ">${vo.md_price }원</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td style="color: #696763" colspan="2">
-								<img src="img/heart.png" style="width: 50px; height: 20px; padding-left: 30px;">&nbsp;${vo.md_fav_count }
+								<img src="img/heart.png" style="width: 20px; height: 20px;">&nbsp;${vo.md_fav_count }
 								&nbsp;&nbsp;&nbsp;&nbsp;
-								<img src="img/view.png" style="width: 50px; height: 20px; padding-left: 30px;">&nbsp;${vo.md_hits}
+								<img src="img/view.png" style="width: 20px; height: 20px; ">&nbsp;${vo.md_hits}
 								</td>
 								<%-- <td style="color: #696763" ><img src="img/view.png" style="width: 20px; height: 20px;">&nbsp;${vo.md_hits}</td> --%>
 							</tr>
 							<c:forEach items="${vo.nickaddr }" var="list">
 								<tr>
-									<td colspan="2" style="color: #696763; padding-left: 30px;">닉네임 : ${list.member_nickname}</td>
+									<td colspan="2" style="color: #696763; ">닉네임 : ${list.member_nickname}</td>
 								</tr>
 								<tr>
-									<c:if test="${info.member_addr ne null }">
-										<td colspan="2" style="color: #696763; padding-left: 30px; cursor: pointer;" onclick="search_location();">주소 : ${info.member_addr}
-											<c:if test="${(info.member_latitude ne null) and (info.member_longitude ne null)}">
-												<span><i class="fas fa-map-marker-alt" id="btn_gps" onclick="search_location();"></i></span>
-											</c:if>
-										</td>
-									</c:if>
+									<td colspan="2" style="color: #696763; " onclick="search_location();">주소 : ${info.member_addr}
+										<c:if test="${(info.member_latitude ne null) and (info.member_longitude ne null)}">
+											<span><i class="fas fa-map-marker-alt" id="btn_gps" onclick="search_location();"></i></span>
+										</c:if>
+									</td>
 								</tr>
 							</c:forEach>
 							<tr>
-								<td colspan="2" style="padding-left: 30px; font-size: 20px;">상품정보</td>
+								<td colspan="2" style="font-size: 20px;">상품정보</td>
 							</tr>
 							<tr>
-								<td colspan="2" class="md_content" style="padding-left: 30px;">${vo.md_detail_content}</td>
+								<td colspan="2" class="md_content">${vo.md_detail_content}</td>
 							</tr>
 							
 							</tbody>
@@ -208,8 +207,8 @@ tbody{
 				</ul>
 
 
-				<div class="md_tab_con" id="tab_con">
-					<div class="md_tab_con_sub" style="overflow:scroll; width:100%; height:500px; padding:10px;">
+				<div class="md_tab_con" id="tab_con" style="margin-bottom: 150px;">
+					<div class="md_tab_con_sub" style="overflow:scroll; width:100%; height:500px; padding:10px; ">
 					<c:forEach items="${vo.review }" var="list">
 						<table class="review_list" style="width:100%; margin-bottom: 15px; text-align: left; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
 							<tr>
