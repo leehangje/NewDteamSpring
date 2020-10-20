@@ -201,18 +201,24 @@ public class JKController {
 			String nickname = (String) req.getParameter("nickname");
 			String tel = (String) req.getParameter("tel");
 			String addr = (String) req.getParameter("addr");
+			String latitude = (String) req.getParameter("latitude");
+			String longitude = (String) req.getParameter("longitude");
 			
 			System.out.println("Sub1Update:id " + id);
 			System.out.println("Sub1Update:name " + name);
 			System.out.println("Sub1Update:nickname " + nickname);
 			System.out.println("Sub1Update:tel " + tel);
 			System.out.println("Sub1Update:addr " + addr);
+			System.out.println("Sub1Update:latitude " + latitude);
+			System.out.println("Sub1Update:longitude " + longitude);
 			
 			model.addAttribute("id", id);
 			model.addAttribute("name", name);
 			model.addAttribute("nickname", nickname);
 			model.addAttribute("tel", tel);
 			model.addAttribute("addr", addr);
+			model.addAttribute("latitude", latitude);
+			model.addAttribute("longitude", longitude);
 			
 			command = new ASubUpdateMultiCommand();
 			command.execute(model);		

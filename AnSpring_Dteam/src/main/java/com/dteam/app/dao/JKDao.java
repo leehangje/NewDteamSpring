@@ -79,7 +79,7 @@ public class JKDao {
 
 	}
 
-	public int anSubUpdateMulti(String id, String name, String nickname, String tel, String addr) {
+	public int anSubUpdateMulti(String id, String name, String nickname, String tel, String addr, String latitude, String longitude) {
 
 		Connection connection = null;
 		PreparedStatement prepareStatement = null;
@@ -91,8 +91,9 @@ public class JKDao {
 			// �븘�씠�뵒�뒗 �닔�젙�븷�닔 �뾾�쓬
 			connection = dataSource.getConnection();
 			String query = "update tblmember set MEMBER_NAME = '" + name + "', MEMBER_NICKNAME = '" + nickname
-					+ "', MEMBER_TEL = '" + tel + "', MEMBER_ADDR = '" + addr + "' where upper(member_id) LIKE upper('"
-					+ id + "')";
+					+ "', MEMBER_TEL = '" + tel + "', MEMBER_ADDR = '" + addr
+					+ "', MEMBER_LATITUDE = '" + latitude + "', MEMBER_LONGITUDE = '" + longitude 
+					+ "' where upper(member_id) LIKE upper('" + id + "')";
 			prepareStatement = connection.prepareStatement(query);
 			state = prepareStatement.executeUpdate();
 

@@ -14,11 +14,13 @@ public class ASubUpdateMultiCommand implements ACommand{
 		String nickname= (String)model.asMap().get("nickname");
 		String tel= (String)model.asMap().get("tel");
 		String addr= (String)model.asMap().get("addr");
+		String latitude= (String)model.asMap().get("latitude");
+		String longitude= (String)model.asMap().get("longitude");
 		
 		
 		JKDao jkdao = new JKDao();
 		
-		jkdao.anSubUpdateMulti(id, name, nickname, tel, addr);
+		jkdao.anSubUpdateMulti(id, name, nickname, tel, addr, latitude, longitude);
 		
 		
 	}	 
