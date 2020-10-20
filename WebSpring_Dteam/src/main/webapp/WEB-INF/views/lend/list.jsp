@@ -36,7 +36,7 @@ header,footer { display: none;}
 					<td><img src='${vo.md_photo_url}' style='width: 100px; height: 100px; border-radius: 10px;'></td>
 					<td>${vo.md_name}</td>
 					<td>${vo.md_fav_count}</td>
-					<td>${vo.md_rent_status}
+					<td>${vo.md_deposit}
 					</td>
 				</tr>
 			</c:forEach>
