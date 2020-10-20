@@ -157,8 +157,8 @@ tbody{
 						<a class="md_img" style="width: 420px; height: 420px; margin-right: 40px;"><img src='${vo.md_photo_url}'></a>
 						<table class="md_basic_table">
 							<colgroup>
-								<col width="50%">
-								<col width="50%">
+								<col width="90%">
+								<col width="10%">
 							</colgroup>
 							<tbody>
 							<tr>
