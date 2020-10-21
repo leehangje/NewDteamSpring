@@ -75,6 +75,10 @@ public class AController {
 		
 		String md_name = (String) request.getParameter("md_name");
 		String md_photo_url = (String) request.getParameter("md_photo_url");
+		int pos = md_photo_url.lastIndexOf("/");
+		String path = md_photo_url.substring(0, pos);
+		String file_name = md_photo_url.substring(pos);
+		md_photo_url = path+"/dteam"+file_name;
 		String md_category = (String) request.getParameter("md_category");
 		String md_price = (String) request.getParameter("md_price");
 		String md_rental_term = (String) request.getParameter("md_rental_term");
@@ -115,7 +119,7 @@ public class AController {
 				
 			if(file.getSize() > 0){			
 				String realImgPath = request.getSession().getServletContext()
-						.getRealPath("/resources/");
+						.getRealPath("/resources/dteam");
 				
 				System.out.println( fileName + " : " + realImgPath);
 				System.out.println( "fileSize : " + file.getSize());					
@@ -144,7 +148,7 @@ public class AController {
 
 	private void makeDir(HttpServletRequest request) {
 		File f = new File(request.getSession().getServletContext()
-				.getRealPath("/resources"));
+				.getRealPath("/resources/dteam"));
 		if(!f.isDirectory()){
 		f.mkdir();
 		}	

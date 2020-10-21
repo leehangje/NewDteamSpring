@@ -104,6 +104,12 @@ public class JKController {
 			f.mkdir();
 			}	
 		}
+		public void makeDir(String req){
+			File f = new File(req);
+			if(!f.isDirectory()){
+				f.mkdir();
+			}	
+		}
 		
 		@RequestMapping(value="/anUpdateMulti", method = {RequestMethod.GET, RequestMethod.POST})
 		public void anUpdateMulti(HttpServletRequest req, Model model){
@@ -117,6 +123,11 @@ public class JKController {
 			}  
 			String id = (String) req.getParameter("id");
 			String dbImgPath = (String) req.getParameter("dbImgPath");
+			int pos = dbImgPath.lastIndexOf("/");
+			String path = dbImgPath.substring(0, pos);
+			String file_name = dbImgPath.substring(pos);
+			dbImgPath = path+"/profile"+file_name;
+			
 			String pDbImgPath = (String) req.getParameter("pDbImgPath");
 			
 			System.out.println("Sub1Update:id " + id);
@@ -127,10 +138,10 @@ public class JKController {
 			model.addAttribute("dbImgPath", dbImgPath);
 
 			// 占쎈쐻占쎈뼓獄�袁⑹굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈뼏�ⓦ끉�굲 占쎈쐻占쎈솏筌뤿슣�굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈뼓獄�袁⑹굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲
-			if(dbImgPath.equals(pDbImgPath)){			
+			if(!dbImgPath.equals(pDbImgPath)){			
 				
 				String pFileName = req.getParameter("pDbImgPath").split("/")[req.getParameter("pDbImgPath").split("/").length -1];
-				String delDbImgPath = req.getSession().getServletContext().getRealPath("/resources/" + pFileName);
+				String delDbImgPath = req.getSession().getServletContext().getRealPath("/resources/profile/" + pFileName);
 				
 				File delfile = new File(delDbImgPath);
 				System.out.println(delfile.getAbsolutePath());
@@ -155,11 +166,11 @@ public class JKController {
 				System.out.println(fileName);
 				
 				// 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈쑓�뵳占� 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲 占쎈쐻占쎈짗占쎌굲占쎈쐻占쎈짗占쎌굲
-				makeDir(req);	
+				makeDir(req.getSession().getServletContext().getRealPath("/resources/profile"));	
 					
 				if(file.getSize() > 0){			
 					String realImgPath = req.getSession().getServletContext()
-							.getRealPath("/resources/");
+							.getRealPath("/resources/profile");
 					
 					System.out.println( fileName + " : " + realImgPath);
 					System.out.println( "fileSize : " + file.getSize());					
