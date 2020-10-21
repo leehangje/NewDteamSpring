@@ -33,9 +33,9 @@
 
 
 	<select id="list" resultType="qna.QnaVO">
-		select n.* from
+		select n.*, (select writer from qna q where n.root=q.id) q_writer from
 		(select rownum no, n.*
-			, (select member_id from tblmember where writer=member_id) name from
+			, (select member_nickname from tblmember where writer=member_id) name from
 		(select * from qna order by root, step desc) n
 		order by no desc) n
 		where no between #{beginList} and #{endList}

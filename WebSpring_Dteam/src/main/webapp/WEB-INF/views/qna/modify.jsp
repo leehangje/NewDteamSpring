@@ -77,7 +77,7 @@ table th, table td{
 							<td>
 								<input class="need" title="제목" value="${vo.title } 
 								
-								<img src='img/re.gif'><b style='font-size: 0.8em'> 답변완료</b>" name="title" style="height: 27px;">
+								<img src='img/re.gif'><b style='font-size: 0.8em'> 답변완료</b>" name="title" style="height: 27px;"/>
 							
 							</td>
 						</tr>
