@@ -105,10 +105,12 @@ table th, table td{
 						<!--  -->
 						<c:if test="${login_info.member_id eq vo.writer }"> <a class="btn-fill"  
 						href='modify.qn?id=${vo.id}'>수정하기</a></c:if> 
-						
-						<a class="btn-fill" <c:if test="${login_info.member_id eq 'admin' || ( login_info.member_id ne 'admin' && login_info.member_id eq vo.writer) }"> 
-						href='detail.qn?id=${vo.id}' </c:if>  
-     					onclick="if( confirm('정말 삭제하시겠습니까?') ){ href='delete.qn?id=${vo.id }' }">삭제 </a>
+					
+						<c:if test="${login_info.member_id eq 'admin' || ( login_info.member_id ne 'admin' && login_info.member_id eq vo.writer) }">	
+							<a class="btn-fill"  
+							href='detail.qn?id=${vo.id}'   
+	     					onclick="if( confirm('정말 삭제하시겠습니까?') ){ href='delete.qn?id=${vo.id }' }">삭제 </a>
+	     				</c:if>
 						
 						<!-- 관리자로 로그인한 경우만 답변 작성 가능-->
 						<c:if test="${login_info.member_id eq 'admin'}">

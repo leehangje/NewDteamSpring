@@ -173,16 +173,16 @@ tbody{
 								<td style="color: #696763" colspan="2">
 								<img src="img/heart.png" style="width: 20px; height: 20px;">&nbsp;${vo.md_fav_count }
 								&nbsp;&nbsp;&nbsp;&nbsp;
-								<img src="img/view.png" style="width: 20px; height: 20px; ">&nbsp;${vo.md_hits}
-								</td>
+								<%-- <img src="img/view.png" style="width: 20px; height: 20px; ">&nbsp;${vo.md_hits}
+								</td> --%>
 								<%-- <td style="color: #696763" ><img src="img/view.png" style="width: 20px; height: 20px;">&nbsp;${vo.md_hits}</td> --%>
 							</tr>
 							<c:forEach items="${vo.nickaddr }" var="list">
 								<tr>
-									<td colspan="2" style="color: #696763; ">닉네임 : ${list.member_nickname}</td>
+									<td colspan="2" style="color: #696763; "><img src="img/pro_img.png" style="width: 20px; height: 20px; "> ${list.member_nickname}</td>
 								</tr>
 								<tr>
-									<td colspan="2" style="color: #696763; " onclick="search_location();">주소 : ${info.member_addr}
+									<td colspan="2" style="color: #696763; " onclick="search_location();"><img src="img/address.png" style="width: 20px; height: 20px; margin-right: 5px;" >${info.member_addr}
 										<c:if test="${(info.member_latitude ne null) and (info.member_longitude ne null)}">
 											<span><i class="fas fa-map-marker-alt" id="btn_gps" onclick="search_location();"></i></span>
 										</c:if>
