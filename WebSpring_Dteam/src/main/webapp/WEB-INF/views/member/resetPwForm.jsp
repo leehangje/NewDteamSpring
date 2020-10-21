@@ -64,8 +64,6 @@
 			return;
 		} else if( !lower.test(pw) || !digit.test(pw) || !special.test(pw) ) {
 			error_pw("비밀번호는 소문자, 숫자, 특수문자를 포함해주세요.");
-		} else {
-			alert("${member_token}");
 		}
 
 		function error_pw(data) {
