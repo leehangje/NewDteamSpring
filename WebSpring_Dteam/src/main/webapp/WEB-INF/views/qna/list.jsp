@@ -117,7 +117,6 @@ table a { font-weight: bold;}
 									<a <c:if test="${login_info.member_id eq 'admin' || ( login_info.member_id ne 'admin' && qna ) }"> href='detail.qn?id=${vo.id}' </c:if>  
 									   <c:if test="${login_info.member_id ne 'admin' && ( login_info.member_id ne 'admin' && !qna) }"> onclick="alert('읽기권한이 없습니다!')"</c:if>
 										 ${1 eq vo.indent ? 'style="color: #3043b0;"': ''} >${vo.title}</a>
-
 									
 								</td>
 								<td>

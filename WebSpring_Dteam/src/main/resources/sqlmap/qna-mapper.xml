@@ -8,6 +8,8 @@
 
 
 
+
+
 	<update id="update">
 		update qna set title=#{title}, content=#{content}
 		, filename=#{filename, jdbcType=VARCHAR}, filepath=#{filepath, jdbcType=VARCHAR} where id=#{id}

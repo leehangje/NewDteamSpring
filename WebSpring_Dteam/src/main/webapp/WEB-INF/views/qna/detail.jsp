@@ -102,6 +102,7 @@ table th, table td{
 						
 						<%-- <a class="btn-fill" <c:if test="${login_info.member_id eq 'admin' || ( login_info.member_id ne 'admin' && login_info.member_id eq vo.writer) }"> 
 						href='modify.qn?id=${vo.id}'</c:if> > 수정</a> --%>
+						<!--  -->
 						<c:if test="${login_info.member_id eq vo.writer }"> <a class="btn-fill"  
 						href='modify.qn?id=${vo.id}'>수정하기</a></c:if> 
 						
