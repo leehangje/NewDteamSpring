@@ -102,22 +102,6 @@ public class NoticeController {
 	
 	
 	
-	/*
-	 * //문의글 상세화면 요청
-	 * 
-	 * @RequestMapping("/detail.no") public String detail(int id, Model model) {
-	 * 
-	 * //선택한 문의글 정보를 DB에서 조회해와 상세화면에 출력한다.
-	 * model.addAttribute("vo",service.notice_detail(id) );
-	 * 
-	 * model.addAttribute("crlf", "\r\n"); //본문 띄어쓰기 적용시키기
-	 * model.addAttribute("lf","\n"); model.addAttribute("page", page);
-	 * 
-	 * return "notice/list";
-	 * 
-	 * }//detail()
-	 */
-	
 	
 	//첨부파일 다운로드 처리
 	@ResponseBody @RequestMapping("/download.no")
