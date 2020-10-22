@@ -115,7 +115,7 @@
 			</div>
 			<div class="contents">
 					<form action="update" method="post" id='frmJoin'>
-					<input type="hidden" name="member_id" value="${login_info.member_id }"/>
+					<input type="hidden" name="member_id" value="${vo.member_id }"/>
 							<div>
 								<span><i class="fas fa-unlock-alt"></i></span>
 								<input type="password" name="member_pw" class="chk" placeholder="비밀번호" />
@@ -135,7 +135,7 @@
 						
 				</form>
 				<div class="btnSet">
-						<a id="btn-submit" onclick="$('form').submit()">저장</a>
+						<a id="btn-submit" onclick="$('form').submit();">저장</a>
 						<a id="btn-reset" onclick="history.go(-1)">취소</a>
 					</div>
 				<div id="popup-background" onclick="$('#popup-background, #map').css('display', 'none');"></div>

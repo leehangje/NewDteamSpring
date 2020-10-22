@@ -58,6 +58,15 @@ public class MemberController {
 		return "member/modify";
 	}
 	
+	
+	//회원정보수정
+	@RequestMapping("/update")
+	public String update(MemberVO vo, HttpSession session) {
+		service.member_update(vo);
+		 session.setAttribute("login_info", vo);
+		return "redirect:mypage?member_id=" + vo.getMember_id();
+	}
+	
 	/****************************************
 	 * 로그인
 	 ********************************/
