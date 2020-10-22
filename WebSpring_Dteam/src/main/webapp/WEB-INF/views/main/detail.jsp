@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -137,7 +138,7 @@ tbody{
 		});
 	}
 
-	
+
 </script>
 </head>
 <body>
@@ -147,14 +148,14 @@ tbody{
 				<div class="content_top">
 					<h3>상세페이지</h3>
 					<ul class="breadcrumb">
-						<li><img src="img/home.png" alt="홈"> &gt;</li>
-						<li>상세페이지 &gt;</li>
-						<li>${vo.md_category }</li>
+						<li><a href="list.ma"><img src="img/home.png" alt="홈" style="margin-bottom: 2px;"></a> &gt;</li>
+						<li style="padding: 5px;">상세페이지 &gt;</li>
+						<li style="padding: 5px;">${vo.md_category }</li>
 					</ul>
 				</div>
 				<div class="contents">
 					<form action="">
-						<a class="md_img" style="width: 420px; height: 420px; margin-right: 40px;"><img src='${vo.md_photo_url}'></a>
+						<a class="md_img" style="width: 420px; height: 420px; margin-right: 40px;"><img src='${vo.md_photo_url}' style="width: 420px; height: 420px;"></a>
 						<table class="md_basic_table">
 							<colgroup>
 								<col width="90%">
@@ -166,7 +167,8 @@ tbody{
 								<td></td>
 							</tr>
 							<tr>
-								<td style="font-size: 40px; line-height: 170%; ">${vo.md_price }원</td>
+								<%-- <td style="font-size: 40px; line-height: 170%; " id="toCommaString">${vo.md_price }원</td> --%>
+								<td style="font-size: 40px; line-height: 170%;"><fmt:formatNumber value="${vo.md_price }" pattern="#,###" />원</td>
 								<td></td>
 							</tr>
 							<tr>
