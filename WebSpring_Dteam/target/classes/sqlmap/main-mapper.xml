@@ -29,7 +29,7 @@
 		(select * from tblmerchandise
 		<include refid="search_where" />
 		order by member_id) n
-		order by md_rental_term ) n
+		order by md_registration_date desc) n
 		where no between #{beginList} and #{endList}
 	</select>
 

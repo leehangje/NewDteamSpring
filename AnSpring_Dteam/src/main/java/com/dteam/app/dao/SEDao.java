@@ -575,7 +575,7 @@ public class SEDao {
 			msg.append("<hr>");
 			msg.append("<h1>비밀번호 재설정 안내</h1>");
 			msg.append("<p>아래 링크를 누르시고 새로운 비밀번호를 입력하시면 비밀번호가 변경됩니다.</p>");
-			msg.append("<a href='http://192.168.0.74:8181/app/anResetPwView?member_token=" + token
+			msg.append("<a href='http://112.164.58.7:8181/app/anResetPwView?member_token=" + token
 					+ "'>비밀번호 재설정 하기</a>");
 			// 안드로이드에서는 localhost로 접근이 x, 서버를 돌리고 있는 ip주소를 입력해야 접근이 가능함
 

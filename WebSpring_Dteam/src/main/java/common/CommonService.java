@@ -117,7 +117,7 @@ public class CommonService {
 			msg.append("<div>");
 			msg.append("안녕하세요 [대여안대여]입니다.<br/> 아래 버튼을 누르고 회원가입을 진행해주세요.");
 			msg.append("</div>");
-			msg.append("<a href='http://192.168.0.74:8181/dteam/emailAuth?code=" + code + "&member_id=" + vo.getMember_id() + "'>이메일 인증하기</a>");
+			msg.append("<a href='http://112.164.58.7:8181/dteam/emailAuth?code=" + code + "&member_id=" + vo.getMember_id() + "'>이메일 인증하기</a>");
 			msg.append("</body>");
 			msg.append("</html>");
 			mail.setHtmlMsg(msg.toString());
@@ -167,7 +167,7 @@ public class CommonService {
 			msg.append("<div style='margin-bottom: 20px; font-size: 15px;'>");
 			msg.append("안녕하세요 [대여안대여]입니다.<br/> 아래 버튼을 누르고 비밀번호를 재설정해주세요.");
 			msg.append("</div>");
-			msg.append("<a href='http://192.168.0.74:8181/dteam/resetPwForm?member_token=" + member_token + "'>비밀번호 재설정하기</a>");
+			msg.append("<a href='http://112.164.58.7:8181/dteam/resetPwForm?member_token=" + member_token + "'>비밀번호 재설정하기</a>");
 			msg.append("</body>");
 			msg.append("</html>");
 			mail.setHtmlMsg(msg.toString());
