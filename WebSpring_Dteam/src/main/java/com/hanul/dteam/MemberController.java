@@ -185,9 +185,9 @@ public class MemberController {
 					result = true;
 					System.out.println("vo의 아이디 : " + naverVO.getMember_id());
 				}
-				String member_id_c = member_id.substring(member_id.indexOf(member_loginType) + 1, member_id.length());
-				System.out.println(member_id_c);
-				naverVO.setMember_id(member_id_c);
+				//String member_id_c = member_id.substring(member_id.indexOf(member_loginType) + 1, member_id.length());
+				//System.out.println(member_id_c);
+				//naverVO.setMember_id(member_id_c);
 				session.setAttribute("login_info", naverVO);
 
 			} catch (Exception e) {
