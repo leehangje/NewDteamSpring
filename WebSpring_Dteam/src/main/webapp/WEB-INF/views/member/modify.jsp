@@ -132,7 +132,8 @@
 								<a class="btn-check" id="btn-nickname">중복 확인</a>
 								<div class="common">닉네임을 입력하세요</div>
 							</div>
-						
+						 
+						 
 				</form>
 				<div class="btnSet">
 						<a id="btn-submit" onclick="$('form').submit();">저장</a>

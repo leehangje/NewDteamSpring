@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page isELIgnored="false" contentType = "text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -109,7 +110,7 @@
 						                	<button <c:if test="${login_info.member_id ne 'admin' }"> style="display: none;"</c:if> onclick="location.href='modify.fa?id=${vo.id}'">수정 / 삭제</button>
 						            	</a>
 						            </p>
-						            <p class="a"> ${vo.content} </p>
+						            <p class="a"> ${fn:replace(fn:replace(vo.content, lf, '<br/>'), crlf, '<br/>')} </p>
 						        </li>
 						        <hr/>
 						     </c:forEach>
