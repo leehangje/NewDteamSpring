@@ -31,9 +31,12 @@ import member.NaverLoginBO;
 
 @Controller
 public class MemberController {
-	@Autowired private MemberServiceImpl service;
-	@Autowired private KakaoLoginAPI kakao;
-	@Autowired private CommonService common;
+	@Autowired
+	private MemberServiceImpl service;
+	@Autowired
+	private KakaoLoginAPI kakao;
+	@Autowired
+	private CommonService common;
 
 	/* NaverLoginBO */
 	private NaverLoginBO naverLoginBO;
@@ -43,7 +46,8 @@ public class MemberController {
 	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
 		this.naverLoginBO = naverLoginBO;
 	}
-	//마이페이지 화면 요청
+
+	// 마이페이지 화면 요청
 	@RequestMapping("/mypage")
 	public String mypage(Model model, String member_id, HttpSession session) {
 		session.setAttribute("header_menu", "mypage");
@@ -51,23 +55,21 @@ public class MemberController {
 		return "member/mypage";
 	}
 
-	//회원정보수정 화면 요청
+	// 회원정보수정 화면 요청
 	@RequestMapping("/modify")
 	public String modify(Model model, String member_id) {
 		model.addAttribute("vo", service.member_detail(member_id));
 		return "member/modify";
 	}
-	
-	
-	//회원정보수정
+
+	// 회원정보수정
 	@RequestMapping("/update")
 	public String update(MemberVO vo, HttpSession session) {
 		service.member_update(vo);
-		 session.setAttribute("login_info", vo);
+		session.setAttribute("login_info", vo);
 		return "redirect:mypage?member_id=" + vo.getMember_id();
-	}   
-	
-	
+	}
+
 	/****************************************
 	 * 로그인
 	 ********************************/
@@ -83,29 +85,24 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping("/login")
 	public MemberVO login(String userId, String userPw, HttpSession session, Model model) {
-		
+
 		// 화면에서 입력한 아이디, 비번이 일치하는 회원정보를 가져옴
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", userId);
 		map.put("pw", userPw);
 		MemberVO vo = service.member_login(map);
-		
+
 		/*
-		if(vo == null) {
-			state = false;
-		} else if(vo.getMember_token() == null) {
-			state = false;
-		} else {
-			System.out.println("토큰 : " + vo.getMember_token());
-			state = true;
-		}
-		*/
-		
-		if(vo != null) {	//아이디와 비밀번호가 일치하거나
-			if(vo.getMember_token() != null) {		//토큰값이 DB에 저장이되있어야만(이메일 인증)
+		 * if(vo == null) { state = false; } else if(vo.getMember_token() == null) {
+		 * state = false; } else { System.out.println("토큰 : " + vo.getMember_token());
+		 * state = true; }
+		 */
+
+		if (vo != null) { // 아이디와 비밀번호가 일치하거나
+			if (vo.getMember_token() != null) { // 토큰값이 DB에 저장이되있어야만(이메일 인증)
 				// DB에서 조회해와 세션에 담는다.
 				session.setAttribute("login_info", vo);
-			} 
+			}
 		}
 
 		return vo;
@@ -195,9 +192,10 @@ public class MemberController {
 					result = true;
 					System.out.println("vo의 아이디 : " + naverVO.getMember_id());
 				}
-				//String member_id_c = member_id.substring(member_id.indexOf(member_loginType) + 1, member_id.length());
-				//System.out.println(member_id_c);
-				//naverVO.setMember_id(member_id_c);
+				// String member_id_c = member_id.substring(member_id.indexOf(member_loginType)
+				// + 1, member_id.length());
+				// System.out.println(member_id_c);
+				// naverVO.setMember_id(member_id_c);
 				session.setAttribute("login_info", naverVO);
 
 			} catch (Exception e) {
@@ -304,9 +302,9 @@ public class MemberController {
 			}
 		}
 
-		member_id_c = member_id.substring(member_id.indexOf(member_loginType) + 1, member_id.length());
-		System.out.println("자른 member_id : " + member_id_c);
-		kakaoVO.setMember_id(member_id_c);
+		//member_id_c = member_id.substring(member_id.indexOf(member_loginType) + 1, member_id.length());
+		//System.out.println("자른 member_id : " + member_id_c);
+		//kakaoVO.setMember_id(member_id_c);
 		session.setAttribute("login_info", kakaoVO);
 
 		return result;
@@ -325,30 +323,29 @@ public class MemberController {
 	/****************************************
 	 * 회원가입
 	 ******************************/
-	
-	//회원가입처리 요청
-	@ResponseBody @RequestMapping(value="/join"
-			, produces = "text/html; charset=utf-8")
+
+	// 회원가입처리 요청
+	@ResponseBody
+	@RequestMapping(value = "/join", produces = "text/html; charset=utf-8")
 	public String join(MemberVO vo, HttpServletRequest request, HttpSession session) {
-		//화면에서 입력한 회원정보를 DB에 저장한다.
+		// 화면에서 입력한 회원정보를 DB에 저장한다.
 		String msg = "<script type='text/javascript'>";
-		if(service.member_insert(vo)) {
+		if (service.member_insert(vo)) {
 			String code = common.getRandomCode(8);
 			common.emailAuthSend(vo, code);
 			// 8자리 난수를 생성하여 이메일을 보냄
 			System.out.println("Controller의 join : code = " + code);
-			
+
 			msg += "alert('회원가입을 축하합니다. 이메일을 인증해주세요.'); location='" + request.getContextPath() + "'";
-		
-				
+
 		} else {
 			msg += "alert('회원가입에 실패했습니다. 관리자에게 문의하세요.'); history.go(-1)";
 		}
-		
+
 		msg += "</script>";
-		
+
 		return msg;
-	} //join()
+	} // join()
 
 	// 회원가입화면 요청
 	@RequestMapping("/member")
@@ -358,122 +355,125 @@ public class MemberController {
 
 		return "member/join";
 	} // member()
-	
+
 	// 아이디 중복확인 요청
-	@ResponseBody @RequestMapping("/id_check")
+	@ResponseBody
+	@RequestMapping("/id_check")
 	public boolean id_check(String id) {
-		//화면에서 입력한 아이디가 DB에 존재하는지 여부를 판단한다
-		
+		// 화면에서 입력한 아이디가 DB에 존재하는지 여부를 판단한다
+
 		return service.member_id_check(id);
-	} //id_check()
-	
+	} // id_check()
+
 	// 닉네임 중복확인 요청
-	@ResponseBody @RequestMapping("/nickname_check")
+	@ResponseBody
+	@RequestMapping("/nickname_check")
 	public boolean nickname_check(String nickname) {
-		//화면에서 입력한 아이디가 DB에 존재하는지 여부를 판단한다
-		
+		// 화면에서 입력한 아이디가 DB에 존재하는지 여부를 판단한다
+
 		return service.member_nickname_check(nickname);
-	} //nickname_check()
-	
+	} // nickname_check()
+
 	// 이메일 인증 버튼 누를 때
-	@ResponseBody @RequestMapping(value = "/emailAuth", produces = "text/html; charset=utf-8") 
+	@ResponseBody
+	@RequestMapping(value = "/emailAuth", produces = "text/html; charset=utf-8")
 	public String email_auth(@RequestParam String code, @RequestParam String member_id) {
 		String msg = "<script type='text/javascript'>";
 		MemberVO vo = new MemberVO();
 		vo.setMember_id(member_id);
 		vo.setMember_token(code);
-		
-		if(service.update_token(vo) > 0) {
+
+		if (service.update_token(vo) > 0) {
 			msg += "location.href = '/dteam'";
 		} else {
 			msg += "alert('이메일 인증 실패했습니다. 관리자에게 문의하세요.'); history.go(-1)";
 		}
-		
+
 		msg += "</script>";
-		
+
 		return msg;
-	} //email_auth()
-	
+	} // email_auth()
+
 	// 아이디/비밀번호 찾기 화면 요청
 	@RequestMapping("/searchIdPw_view")
 	public String searchIdPw_view() {
-		
+
 		return "member/searchIdPw_view";
-	} //searchIdPw_view()
-	
+	} // searchIdPw_view()
+
 	// 아이디 찾기 화면 요청
 	@RequestMapping("/searchId_view")
 	public String searchId_view(HttpSession session) {
 		session.setAttribute("searchType", "id");
-		
+
 		return "member/searchId";
 	}
-	
+
 	// 비밀번호 찾기 화면 요청
 	@RequestMapping("/searchPw_view")
 	public String searchPw_view(HttpSession session) {
 		session.setAttribute("searchType", "pw");
-		
+
 		return "member/searchPw";
 	}
-	
+
 	// 아이디 찾기
-	@ResponseBody @RequestMapping("/searchId")
+	@ResponseBody
+	@RequestMapping("/searchId")
 	public String searchId(String member_name, String member_tel) {
 		// 화면에서 입력한 이름, 핸드폰 번호가 일치하면 회원 아이디를 가져옴
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("member_name", member_name);
 		map.put("member_tel", member_tel);
 		String member_id = service.member_searchId(map);
-		
+
 		String[] split = member_id.split("@");
-        int split0length = split[0].length();   //5
-        String email = split[0].replace(split[0].substring(split0length - 3, split0length), "***");
-        email += "@" + split[1];
-		
+		int split0length = split[0].length(); // 5
+		String email = split[0].replace(split[0].substring(split0length - 3, split0length), "***");
+		email += "@" + split[1];
+
 		return email;
 	}
-	
+
 	// 비밀번호 재설정
-	@ResponseBody @RequestMapping("/searchPw")
+	@ResponseBody
+	@RequestMapping("/searchPw")
 	public boolean searchPw(String member_name, String member_id) {
 		boolean state = false;
-		
+
 		// 화면에서 입력한 이름, 핸드폰 번호가 일치하면 회원 아이디를 가져옴
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("member_name", member_name);
 		map.put("member_id", member_id);
 		String member_token = service.member_searchPw(map);
-		
-		if(member_token != null) {
+
+		if (member_token != null) {
 			state = true;
-			common.resetPwSend(member_id, member_name, member_token);	//이메일 보내기
+			common.resetPwSend(member_id, member_name, member_token); // 이메일 보내기
 		}
-		
+
 		return state;
 	}
-	
+
 	// 비밀번호 재설정 화면 요청
 	@RequestMapping("/resetPwForm")
 	public String resetPwForm(@RequestParam String member_token, HttpSession session) {
 		session.setAttribute("member_token", member_token);
 		System.out.println("resetPwForm()의 토큰 : " + member_token);
-		
+
 		return "member/resetPwForm";
 	}
-	
+
 	// 재설정된 비밀번호를 DB에 저장
-	@ResponseBody @RequestMapping(value = "resetPw")
+	@ResponseBody
+	@RequestMapping(value = "resetPw")
 	public boolean restPw(String member_pw, String member_token) {
-		
+
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("member_pw", member_pw);
 		map.put("member_token", member_token);
-		
-		
+
 		return service.member_resetPw(map);
 	}
-	
-	
 
 }
