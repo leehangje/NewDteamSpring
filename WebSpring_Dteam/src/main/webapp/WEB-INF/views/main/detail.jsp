@@ -182,7 +182,7 @@ tbody{
 									<td colspan="2" style="color: #696763; "><img src="img/pro_img.png" style="width: 20px; height: 20px; "> ${list.member_nickname}</td>
 								</tr>
 								<tr>
-									<td colspan="2" style="color: #696763; " onclick="search_location();"><img src="img/address.png" style="width: 20px; height: 20px; margin-right: 5px;" >${info.member_addr}
+									<td colspan="2" style="color: #696763; cursor: pointer;" onclick="search_location();"><img src="img/address.png" style="width: 20px; height: 20px; margin-right: 5px;" >${info.member_addr}
 										<c:if test="${(info.member_latitude ne null) and (info.member_longitude ne null)}">
 											<span><i class="fas fa-map-marker-alt" id="btn_gps" onclick="search_location();"></i></span>
 										</c:if>
