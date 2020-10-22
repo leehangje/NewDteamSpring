@@ -65,7 +65,8 @@ public class MemberController {
 		service.member_update(vo);
 		 session.setAttribute("login_info", vo);
 		return "redirect:mypage?member_id=" + vo.getMember_id();
-	}
+	}   
+	
 	
 	/****************************************
 	 * 로그인
